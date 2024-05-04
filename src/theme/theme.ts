@@ -1,21 +1,23 @@
-const fontSizes = [15, 16, 18, 24, 32, 64];
+const fontSizes = [14, 15, 16, 18, 24, 32, 64];
 const fontWeights = [400, 500, 700];
-const lineHeights = [19, 20, 22, 26, 30, 40, 80];
+const lineHeights = [17, 19, 20, 22, 26, 30, 40, 80];
 const colors = {
   hOrange: '#F17900',
-  hBlack: '#393939',
+  primary: '#393939',
   pOrange: '#E0A449',
   background: '#FAFAFA',
   white: '#FFF',
+  nonActiveBg: '#F9F9F9',
+  activeBg: 'rgba(251, 215, 178, 0.3)',
 };
 const spaces = [8, 16, 24, 40, 56, 80, 120, 220];
 const sizes = [
   24, 32, 48, 72, 94, 100, 120, 140, 255, 350, 445, 540, 600, 740, 1100,
 ];
+const gaps = [8, 11, 16, 24, 30, 40, 60, 80];
 const breakPoints = { mobile: 800, tablet: 1100, laptop: 1400 };
-const gaps = [8, 16, 24, 30, 40, 80];
-const paddings = [4, 8, 16, 24, 40, 56, 80, 100, 120, 400];
-const margins = [8, 16, 24, 32, 40, 56, 80, 120];
+const paddings = [8, 16, 17, 24, 40, 56, 80, 100, 120];
+const margins = [8, 16, 24, 32, 40, 56, 72, 120];
 const tops = [2, 4, 8, 32, 40, 80];
 const zIndexes = [-1, 5, 6, 10, 14, 15, 16];
 const rights = [0, 8, 16, 32];

@@ -11,9 +11,13 @@ export const GlobalStyles = createGlobalStyle`
         letter-spacing: 0.03em;
         font-style: normal;
     }
-    p{
-        font-family: "Inter",sans-serif;
+    p,button{
+        font-family: 'Inter', sans-serif;
     }
+    input::placeholder{
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+    }
+  
     h1,h2,h3,h4,h5,h6{
         font-family: 'Lexend Deca', sans-serif;
     }

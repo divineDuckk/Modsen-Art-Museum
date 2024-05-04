@@ -14,8 +14,8 @@ export const StyledHeader = styled.header`
   margin-bottom: ${({ theme }) => theme.margins[theme.margins.length - 1]}px;
 `;
 export const FavButton = styled.button`
-  font-size: ${({ theme }) => theme.fontSizes[2]}px;
-  line-height: ${({ theme }) => theme.lineHeights[3]}px;
+  font-size: ${({ theme }) => theme.fontSizes[3]}px;
+  line-height: ${({ theme }) => theme.lineHeights[4]}px;
   color: white;
   cursor: pointer;
   background: transparent;
