@@ -5,6 +5,7 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  box-sizing: border-box;
   img {
     width: 387px;
     height: 444px;
@@ -27,6 +28,7 @@ export const Info = styled.section`
     font-family: 'Lexend Deca';
     color: ${({ theme }) => theme.colors['black']};
     overflow: hidden;
+    width: 219px;
     p {
       font-weight: ${({ theme }) => theme.fontWeights[1]};
       font-size: ${({ theme }) => theme.fontSizes[3]}px;
@@ -62,6 +64,6 @@ export const AddToFavButton = styled.button<BgColorProps>`
   align-items: center;
   border: 0;
   cursor: pointer;
-  background-color: ${({ isActive, theme }) =>
-    isActive ? theme.colors['activeBg'] : theme.colors['nonActiveBg']};
+  background-color: ${({ is_active, theme }) =>
+    is_active ? theme.colors['activeBg'] : theme.colors['nonActiveBg']};
 `;

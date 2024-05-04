@@ -3,6 +3,7 @@ const fontWeights = [400, 500, 700];
 const lineHeights = [17, 19, 20, 22, 26, 30, 40, 80];
 const colors = {
   hOrange: '#F17900',
+  bgOrange: '#F17900',
   primary: '#393939',
   pOrange: '#E0A449',
   background: '#FAFAFA',
@@ -17,7 +18,7 @@ const sizes = [
 const gaps = [8, 11, 16, 24, 30, 40, 60, 80];
 const breakPoints = { mobile: 800, tablet: 1100, laptop: 1400 };
 const paddings = [8, 16, 17, 24, 40, 56, 80, 100, 120];
-const margins = [8, 16, 24, 32, 40, 56, 72, 120];
+const margins = [8, 16, 24, 32, 40, 72, 95, 120];
 const tops = [2, 4, 8, 32, 40, 80];
 const zIndexes = [-1, 5, 6, 10, 14, 15, 16];
 const rights = [0, 8, 16, 32];

@@ -6,5 +6,5 @@ export interface CardArtProps {
   access: boolean;
 }
 export interface BgColorProps {
-  isActive: boolean;
+  is_active: boolean;
 }

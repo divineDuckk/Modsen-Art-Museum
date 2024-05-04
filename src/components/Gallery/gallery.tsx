@@ -1,35 +1,45 @@
 import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL, limit } from '../../constants/constants';
+import { RootState } from '../../store';
+import { setArts } from '../../store/slices/gallerySlice';
 import { CardArt } from '../CardArt/cardArt';
-import { StyledGroup } from './styled';
-import { Art } from './types';
+import { SkeletonCard } from '../SkeletonCard/skeletonCard';
+import { SwitcherPage } from '../SwitcherPage/switcher';
+import { StyledGroup, SwitcherWrap } from './styled';
 
 export const Gallery: FC = () => {
-  const [arts, setArts] = useState<Art[]>([]);
-  const [page, setPage] = useState<number>(1);
+  const arts = useSelector((state: RootState) => state.gallery.arts);
+  const activePage = useSelector(
+    (state: RootState) => state.gallery.activePage
+  );
+  const [isLoad, setIsLoad] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const getImageSrc = (imageId: string): string => {
     return `https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`;
   };
   useEffect(() => {
     const fetchArts = async () => {
       try {
+        setIsLoad(true);
         const res = await axios.get(BASE_URL, {
-          params: { page: page, limit: limit },
+          params: { page: activePage, limit: limit },
         });
-        setArts(res.data.data);
+        dispatch(setArts(res.data.data));
+        setIsLoad(false);
       } catch (error) {
         console.log(error);
       }
     };
     fetchArts();
     console.log(arts);
-  }, [page]);
+  }, [activePage]);
   return (
     <>
       <StyledGroup>
-        {arts &&
-          arts.map((item) => (
+        {arts.map((item, i) =>
+          !isLoad ? (
             <CardArt
               id={item.id}
               access={item.is_public_domain}
@@ -38,9 +48,14 @@ export const Gallery: FC = () => {
               imgSrc={getImageSrc(item.image_id)}
               key={item.id}
             />
-          ))}
+          ) : (
+            <SkeletonCard key={i} />
+          )
+        )}
       </StyledGroup>
-      <button>click</button>
+      <SwitcherWrap>
+        <SwitcherPage />
+      </SwitcherWrap>
     </>
   );
 };

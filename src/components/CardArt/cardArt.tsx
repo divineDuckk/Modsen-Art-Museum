@@ -15,11 +15,11 @@ export const CardArt: FC<CardArtProps> = ({
       <Info>
         <div>
           <p>{title}</p>
-          <span шв>{artist}</span>
+          <span>{artist !== null ? artist : 'Unknown'}</span>
           <br />
           <b> {access ? 'Public' : 'Private'}</b>
         </div>
-        <AddToFavButton isActive={false}>
+        <AddToFavButton is_active={false}>
           <svg
             width="17"
             height="21"
