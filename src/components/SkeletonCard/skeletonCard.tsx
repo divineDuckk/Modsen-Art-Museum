@@ -5,8 +5,8 @@ export const SkeletonCard: FC = (props) => (
   <ContentLoader
     speed={2}
     width={387}
-    height={517}
-    viewBox="0 0 387 517"
+    height={444}
+    viewBox="0 0 387 444"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     {...props}

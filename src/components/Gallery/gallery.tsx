@@ -33,7 +33,6 @@ export const Gallery: FC = () => {
       }
     };
     fetchArts();
-    console.log(arts);
   }, [activePage]);
   return (
     <>

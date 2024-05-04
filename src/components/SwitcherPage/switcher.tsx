@@ -2,13 +2,20 @@ import { FC, MouseEventHandler, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { setPage } from '../../store/slices/gallerySlice';
+import {
+  MAX_VISIBLE_PAGE,
+  NUM_TO_HIDE,
+  Pages,
+  REQUIRED_REMAINDER_TO_MOVE_BACK,
+  REQUIRED_REMAINDER_TO_MOVE_FORWARD,
+} from './constants';
 import { StyledSwitcher, Switchers, ToNextButton } from './styled';
-const NUM_TO_HIDE = 5;
+
 export const SwitcherPage: FC = () => {
-  const [value1, setValue1] = useState(1);
-  const [value2, setValue2] = useState(2);
-  const [value3, setValue3] = useState(3);
-  const [value4, setValue4] = useState(4);
+  const [value1, setValue1] = useState(Pages.FirstPage);
+  const [value2, setValue2] = useState(Pages.SecondPage);
+  const [value3, setValue3] = useState(Pages.ThirdPage);
+  const [value4, setValue4] = useState(Pages.FourthPage);
   const activePage = useSelector(
     (state: RootState) => state.gallery.activePage
   );
@@ -16,26 +23,32 @@ export const SwitcherPage: FC = () => {
   const dispatch = useDispatch();
   const choosePage: MouseEventHandler<HTMLButtonElement> = (e) => {
     const target = e.target as HTMLButtonElement;
-    const buttonText = target.textContent ?? '1';
-    const value: number = buttonText ? parseInt(buttonText) : 1;
+    const buttonText = target.textContent ?? String(Pages.FirstPage);
+    const value: number = buttonText ? parseInt(buttonText) : Pages.FirstPage;
     dispatch(setPage(value));
   };
   const toNextPageArt = (): void => {
     dispatch(setPage(activePage + 1));
-    if (activePage + 1 >= 5 && (activePage + 1) % 4 === 1) {
-      setValue1((prev) => prev + 4);
-      setValue2((prev) => prev + 4);
-      setValue3((prev) => prev + 4);
-      setValue4((prev) => prev + 4);
+    if (
+      activePage + 1 >= NUM_TO_HIDE &&
+      (activePage + 1) % MAX_VISIBLE_PAGE === REQUIRED_REMAINDER_TO_MOVE_FORWARD
+    ) {
+      setValue1((prev) => prev + MAX_VISIBLE_PAGE);
+      setValue2((prev) => prev + MAX_VISIBLE_PAGE);
+      setValue3((prev) => prev + MAX_VISIBLE_PAGE);
+      setValue4((prev) => prev + MAX_VISIBLE_PAGE);
     }
   };
   const toPrevPageArt = (): void => {
     dispatch(setPage(activePage - 1));
-    if (activePage >= 5 && (activePage - 1) % 4 === 0) {
-      setValue1((prev) => prev - 4);
-      setValue2((prev) => prev - 4);
-      setValue3((prev) => prev - 4);
-      setValue4((prev) => prev - 4);
+    if (
+      activePage >= NUM_TO_HIDE &&
+      (activePage - 1) % MAX_VISIBLE_PAGE === REQUIRED_REMAINDER_TO_MOVE_BACK
+    ) {
+      setValue1((prev) => prev - MAX_VISIBLE_PAGE);
+      setValue2((prev) => prev - MAX_VISIBLE_PAGE);
+      setValue3((prev) => prev - MAX_VISIBLE_PAGE);
+      setValue4((prev) => prev - MAX_VISIBLE_PAGE);
     }
   };
 
