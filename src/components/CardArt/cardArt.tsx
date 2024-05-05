@@ -1,4 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { addToFav } from '../../store/slices/favArtsSlice';
 import { AddToFavButton, Card, Info, TextInfo } from './styled';
 import { CardArtProps } from './types';
 
@@ -9,18 +12,35 @@ export const CardArt: FC<CardArtProps> = ({
   artist,
   title,
 }) => {
+  const alreadyInFavs = (id: number) => {
+    return favs.some((item) => item.id === id);
+  };
+  const favs = useSelector((state: RootState) => state.fav.arts);
+  const [isFav, setIsFav] = useState<boolean>(alreadyInFavs(id));
+  const dispatch = useDispatch();
+
+  const addToFavHandler = (obj: CardArtProps) => () => {
+    setIsFav(true);
+    if (alreadyInFavs(obj.id)) return;
+    dispatch(addToFav({ ...obj, isFav }));
+  };
+  useEffect(() => {
+    console.log(favs);
+  }, [favs]);
   return (
     <Card>
       <img src={imgSrc} alt="image of art" />
       <Info>
         <TextInfo>
           <p>{title}</p>
-
           <span>{artist !== null ? artist : 'Unknown'}</span>
           <br />
           <b> {access ? 'Public' : 'Private'}</b>
         </TextInfo>
-        <AddToFavButton is_active={false}>
+        <AddToFavButton
+          onClick={addToFavHandler({ id, imgSrc, access, artist, title })}
+          is_active={isFav}
+        >
           <svg
             width="17"
             height="21"

@@ -5,7 +5,7 @@ interface Art {
   title: string;
   id: number;
   image_id: string;
-  is_public_domain: true;
+  is_public_domain: boolean;
 }
 interface ArtState {
   arts: Art[];

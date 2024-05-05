@@ -11,7 +11,7 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 127px;
-  margin-bottom: ${({ theme }) => theme.margins[9]}px;
+  margin-bottom: ${({ theme }) => theme.margins[8]}px;
 `;
 export const FavButton = styled.button`
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
