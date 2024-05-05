@@ -6,12 +6,12 @@ export const StyledHeader = styled.header`
     #484848 69.22%,
     #282828 98.98%
   );
-  padding: 0 320px;
+  padding: 0 16.66%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 127px;
-  margin-bottom: ${({ theme }) => theme.margins[theme.margins.length - 1]}px;
+  margin-bottom: ${({ theme }) => theme.margins[9]}px;
 `;
 export const FavButton = styled.button`
   font-size: ${({ theme }) => theme.fontSizes[3]}px;

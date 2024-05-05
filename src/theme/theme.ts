@@ -10,6 +10,7 @@ const colors = {
   white: '#FFF',
   nonActiveBg: '#F9F9F9',
   activeBg: 'rgba(251, 215, 178, 0.3)',
+  red: '#FF0000',
 };
 const spaces = [8, 16, 24, 40, 56, 80, 120, 220];
 const sizes = [
@@ -17,8 +18,8 @@ const sizes = [
 ];
 const gaps = [8, 11, 16, 24, 30, 40, 60, 80];
 const breakPoints = { mobile: 800, tablet: 1100, laptop: 1400 };
-const paddings = [8, 16, 17, 24, 40, 56, 80, 100, 120];
-const margins = [8, 16, 24, 32, 40, 72, 95, 120];
+const paddings = [8, 13, 16, 17, 24, 25, 120, 320];
+const margins = [8, 12, 16, 24, 32, 40, 72, 95, 120, 320];
 const tops = [2, 4, 8, 32, 40, 80];
 const zIndexes = [-1, 5, 6, 10, 14, 15, 16];
 const rights = [0, 8, 16, 32];

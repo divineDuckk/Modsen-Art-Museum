@@ -5,7 +5,7 @@ export const StyledTitle = styled.h1`
   line-height: ${({ theme }) => theme.lineHeights[7]}px;
   font-weight: ${({ theme }) => theme.fontWeights[2]};
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.margins[7]}px;
+  margin-bottom: ${({ theme }) => theme.margins[8]}px;
   color: ${({ theme }) => theme.colors['primary']};
   span {
     color: ${({ theme }) => theme.colors['hOrange']};

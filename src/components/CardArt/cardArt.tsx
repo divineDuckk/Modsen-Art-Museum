@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { AddToFavButton, Card, Info } from './styled';
+import { AddToFavButton, Card, Info, TextInfo } from './styled';
 import { CardArtProps } from './types';
 
 export const CardArt: FC<CardArtProps> = ({
@@ -13,12 +13,13 @@ export const CardArt: FC<CardArtProps> = ({
     <Card>
       <img src={imgSrc} alt="image of art" />
       <Info>
-        <div>
+        <TextInfo>
           <p>{title}</p>
+
           <span>{artist !== null ? artist : 'Unknown'}</span>
           <br />
           <b> {access ? 'Public' : 'Private'}</b>
-        </div>
+        </TextInfo>
         <AddToFavButton is_active={false}>
           <svg
             width="17"

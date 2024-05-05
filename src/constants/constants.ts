@@ -1,2 +1,3 @@
 export const BASE_URL = 'https://api.artic.edu/api/v1/artworks';
-export const limit = 3;
+export const LIMIT = 3;
+export const BIG_LIMIT = 9;
