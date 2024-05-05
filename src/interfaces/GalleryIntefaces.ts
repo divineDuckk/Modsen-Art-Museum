@@ -11,3 +11,7 @@ export interface AnotherGalleryArtState {
   searchedArtIsLoad: boolean;
   needRenderSearchContent: boolean;
 }
+export interface GalleryArtState {
+  arts: Art[];
+  activePage: number;
+}

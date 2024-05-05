@@ -1,20 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-interface Art {
-  artist_title: string;
-  title: string;
-  id: number;
-  image_id: string;
-  is_public_domain: boolean;
-}
-interface ArtState {
-  arts: Art[];
-  searchedArts: Art[];
-  searchedArtIsLoad: boolean;
-  needRenderSearchContent: boolean;
-}
+import { AnotherGalleryArtState, Art } from '../../interfaces/GalleryIntefaces';
 
-const initialState: ArtState = {
+const initialState: AnotherGalleryArtState = {
   arts: new Array(9),
   searchedArts: [],
   searchedArtIsLoad: false,
