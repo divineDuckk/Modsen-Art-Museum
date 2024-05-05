@@ -8,6 +8,9 @@ export const StyledTitle = styled.h1`
   margin-bottom: ${({ theme }) => theme.margins[8]}px;
   color: ${({ theme }) => theme.colors['primary']};
   span {
+    svg {
+      transform: translateY(15px);
+    }
     color: ${({ theme }) => theme.colors['hOrange']};
   }
 `;

@@ -31,7 +31,9 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0 auto;
         padding: 0;
         background-color:#FAFAFA;
-
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
         @media (max-width: 1000px){
             overflow-x: hidden;
         }

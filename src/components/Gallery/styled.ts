@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledGroup = styled.div`
+export const StyledGroup = styled.main`
   display: grid;
   grid-template-columns: repeat(3, 387px);
   gap: ${({ theme }) => theme.gaps[6]}px;

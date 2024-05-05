@@ -3,8 +3,8 @@ import { AnotherStyledGalleryAttr } from './types';
 
 export const AnotherStyledGallery = styled.div<AnotherStyledGalleryAttr>`
   display: ${({ displayFlex }) => (displayFlex ? 'flex' : 'grid')};
-  grid-template-rows: repeat(3, 130px);
-  grid-template-columns: repeat(3, 416px);
+  grid-template-rows: repeat(${({ rows }) => rows}, 130px);
+  grid-template-columns: repeat(${({ colums }) => colums}, 416px);
   gap: ${({ theme }) => theme.gaps[2]}px;
   margin-bottom: ${({ theme }) => theme.margins[8]}px;
   @media (max-width: 1350px) {

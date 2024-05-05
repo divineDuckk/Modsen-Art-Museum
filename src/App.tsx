@@ -1,28 +1,26 @@
-import { ErrorBoundary } from './components/ErrorBoundary/errorBoudary';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { FavoritePage } from './Pages/Favorite/favorite';
+import { MainPage } from './Pages/Main/MainPage';
 import { Footer } from './components/Footer/footer';
-import { Gallery } from './components/Gallery/gallery';
 import { Header } from './components/Header/header';
-import { AnotherGallery } from './components/OtherWorksGallery/anotherGallery';
-import { SearhInput } from './components/SearchInput/searhInput';
-import { SearchResults } from './components/SearchResults/searchResults';
-import { Title } from './components/Title/title';
 import { Wrapper } from './components/Wrapper/styled';
-import { Topic } from './components/YoursTopic/Topic';
-
+import { getDataFromLocalStorage } from './constants/functions';
+import { setFavArts } from './store/slices/favArtsSlice';
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setFavArts(getDataFromLocalStorage()));
+  }, []);
   return (
     <>
       <Header />
       <Wrapper>
-        <Title />
-        <SearhInput />
-        <ErrorBoundary>
-          <SearchResults />
-        </ErrorBoundary>
-        <Topic hText="Our special gallery" spanText="Topics for you" />
-        <Gallery />
-        <Topic hText="Other works for you" spanText="Here some more" />
-        <AnotherGallery />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/favorites" element={<FavoritePage />} />
+        </Routes>
       </Wrapper>
       <Footer />
     </>

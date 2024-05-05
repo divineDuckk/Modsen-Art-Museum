@@ -13,6 +13,7 @@ export const StyledTopic = styled.div`
     line-height: ${({ theme }) => theme.lineHeights[6]}px;
     font-size: ${({ theme }) => theme.fontSizes[5]}px;
     color: ${({ theme }) => theme.colors['black']};
+    font-weight: ${({ theme }) => theme.fontWeights[0]};
   }
-  margin-bottom: ${({ theme }) => theme.margins[4]}px;
+  margin-bottom: ${({ theme }) => theme.margins[5]}px;
 `;

@@ -4,4 +4,5 @@ export interface SmallCardArtProps {
   title: string;
   artist: string;
   access: boolean;
+  inFavotites?: boolean;
 }

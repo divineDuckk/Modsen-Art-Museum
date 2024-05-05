@@ -19,7 +19,11 @@ export const SearchResults: FC = () => {
   return (
     <>
       {needToRender ? (
-        <AnotherStyledGallery displayFlex={isLoad || !foundedArts.length}>
+        <AnotherStyledGallery
+          colums={3}
+          rows={3}
+          displayFlex={isLoad || !foundedArts.length}
+        >
           {!isLoad ? (
             foundedArts.length ? (
               foundedArts.map((item) => (

@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { findObjectById } from '../../constants/functions';
 import { RootState } from '../../store';
 import { addToFav } from '../../store/slices/favArtsSlice';
 import { AddToFavButton, Card, Info, TextInfo } from './styled';
@@ -20,12 +21,18 @@ export const CardArt: FC<CardArtProps> = ({
   const dispatch = useDispatch();
 
   const addToFavHandler = (obj: CardArtProps) => () => {
-    setIsFav(true);
     if (alreadyInFavs(obj.id)) return;
-    dispatch(addToFav({ ...obj, isFav }));
+    setIsFav(true);
+    localStorage.setItem(
+      String(obj.id),
+      JSON.stringify({ ...obj, isFav: true })
+    );
+    dispatch(addToFav({ ...obj, isFav: true }));
   };
   useEffect(() => {
-    console.log(favs);
+    const obj = findObjectById(id, favs);
+    if (!obj) return;
+    setIsFav(obj.isFav);
   }, [favs]);
   return (
     <Card>

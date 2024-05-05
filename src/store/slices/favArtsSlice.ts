@@ -16,7 +16,10 @@ export const favArtsSlice = createSlice({
     addToFav: (state, action: PayloadAction<FavArt>) => {
       state.arts.push(action.payload);
     },
+    deleteFromFav: (state, action: PayloadAction<number>) => {
+      state.arts = [...state.arts.filter((el) => el.id !== action.payload)];
+    },
   },
 });
 export default favArtsSlice.reducer;
-export const { setFavArts, addToFav } = favArtsSlice.actions;
+export const { setFavArts, addToFav, deleteFromFav } = favArtsSlice.actions;

@@ -32,7 +32,7 @@ export const AnotherGallery: FC = () => {
     fetchAnotherArts();
   }, []);
   return (
-    <AnotherStyledGallery>
+    <AnotherStyledGallery colums={3} rows={3}>
       {anotherGalleryArts.map((item) =>
         !isLoad ? (
           <SmallCardArt
