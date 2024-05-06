@@ -1,27 +1,35 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { findObjectById } from '../../constants/functions';
+import { useNavigate } from 'react-router-dom';
+import { alreadyInFavs, findObjectById } from '../../constants/functions';
+import { CurrentArt } from '../../interfaces/CurrentArt';
 import { RootState } from '../../store';
+import { setCurrentArt } from '../../store/slices/currentArtSlice';
 import { addToFav } from '../../store/slices/favArtsSlice';
 import { AddToFavButton, Card, Info, TextInfo } from './styled';
-import { CardArtProps } from './types';
 
-export const CardArt: FC<CardArtProps> = ({
+export const CardArt: FC<CurrentArt> = ({
   imgSrc,
   id,
   access,
   artist,
   title,
+  country,
+  criditeLine,
+  date,
+  dimensions,
+  repository,
 }) => {
-  const alreadyInFavs = (id: number) => {
-    return favs.some((item) => item.id === id);
-  };
   const favs = useSelector((state: RootState) => state.fav.arts);
-  const [isFav, setIsFav] = useState<boolean>(alreadyInFavs(id));
+  const [isFav, setIsFav] = useState<boolean>(alreadyInFavs(id, favs));
   const dispatch = useDispatch();
-
-  const addToFavHandler = (obj: CardArtProps) => () => {
-    if (alreadyInFavs(obj.id)) return;
+  const navigate = useNavigate();
+  const onClickArt = (obj: CurrentArt) => () => {
+    dispatch(setCurrentArt(obj));
+    navigate(`/arts/${id}`);
+  };
+  const addToFavHandler = (obj: CurrentArt) => () => {
+    if (alreadyInFavs(obj.id, favs)) return;
     setIsFav(true);
     localStorage.setItem(
       String(obj.id),
@@ -36,7 +44,22 @@ export const CardArt: FC<CardArtProps> = ({
   }, [favs]);
   return (
     <Card>
-      <img src={imgSrc} alt="image of art" />
+      <img
+        onClick={onClickArt({
+          id,
+          imgSrc,
+          access,
+          artist,
+          title,
+          country,
+          criditeLine,
+          date,
+          dimensions,
+          repository,
+        })}
+        src={imgSrc}
+        alt="image of art"
+      />
       <Info>
         <TextInfo>
           <p>{title}</p>
@@ -45,7 +68,18 @@ export const CardArt: FC<CardArtProps> = ({
           <b> {access ? 'Public' : 'Private'}</b>
         </TextInfo>
         <AddToFavButton
-          onClick={addToFavHandler({ id, imgSrc, access, artist, title })}
+          onClick={addToFavHandler({
+            id,
+            imgSrc,
+            access,
+            artist,
+            title,
+            country,
+            criditeLine,
+            date,
+            dimensions,
+            repository,
+          })}
           is_active={isFav}
         >
           <svg

@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { FC } from 'react';
+import { FC, MouseEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { object, string } from 'yup';
-import { BASE_URL, BIG_LIMIT } from '../../constants/constants';
+import { BASE_URL, BIG_LIMIT, SORT_VALUES } from '../../constants/constants';
+import { sortByObj } from '../../constants/functions';
 import { RootState } from '../../store';
 import {
   setNeedToRenderSearchContent,
@@ -12,18 +13,31 @@ import {
 } from '../../store/slices/anotherGallerySlice';
 import {
   ClearButton,
+  DropMenu,
   ErrorMsg,
+  FlexDiv,
   Form,
   FormWrapper,
   SearchButton,
+  ShowDropMenuButton,
+  SortDiv,
   StyledInput,
 } from './styled';
 import { PromiseAllResponse, SearchResponse } from './types';
 export const SearhInput: FC = () => {
   const dispatch = useDispatch();
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [sortByValue, setSortByValue] = useState<string>(SORT_VALUES[0]);
   const needToRenderResults = useSelector(
     (state: RootState) => state.anotherGallery.needRenderSearchContent
   );
+  const onClickLi = (e: MouseEvent<HTMLLIElement>) => {
+    setIsVisible(false);
+    setSortByValue(e.currentTarget.innerText);
+  };
+  const onClickSortButton = () => {
+    setIsVisible(true);
+  };
   const searchHandler = async (values: { text: string }) => {
     try {
       dispatch(setNeedToRenderSearchContent(true));
@@ -38,11 +52,11 @@ export const SearhInput: FC = () => {
           axios.get(BASE_URL + '/' + el.id)
         )
       );
-
       const foundedArts = result.map(
         (res: PromiseAllResponse) => res.data.data
       );
-      dispatch(setSearchedArts(foundedArts));
+      const sortedArr = sortByObj[sortByValue](foundedArts);
+      dispatch(setSearchedArts(sortedArr));
       dispatch(setSearchedArtsIsLoad(false));
     } catch (e) {
       console.log(e);
@@ -97,13 +111,44 @@ export const SearhInput: FC = () => {
           </svg>
         </SearchButton>
       </Form>
+      <FlexDiv>
+        <SortDiv>
+          Sort by:
+          <ShowDropMenuButton onClick={onClickSortButton}>
+            {sortByValue}
+            <svg
+              width="10"
+              height="15"
+              viewBox="0 0 10 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M1.46791 13.7144L3 15L9.42788 7.33956L8.9266 6.91893L8.94602 6.89579L1.28558 0.467911L-1.07377e-07 2L6.62963 7.56292L1.46791 13.7144Z"
+                fill="#393939"
+              />
+            </svg>
+          </ShowDropMenuButton>
+          <DropMenu visibility={isVisible}>
+            <ul>
+              {SORT_VALUES.map((el: string) => (
+                <li key={el} onClick={onClickLi}>
+                  {el}
+                </li>
+              ))}
+            </ul>
+          </DropMenu>
+        </SortDiv>
+        {needToRenderResults ? (
+          <ClearButton onClick={clearResults}>Clear</ClearButton>
+        ) : (
+          <></>
+        )}
+      </FlexDiv>
       {formik.touched.text && formik.errors.text && (
         <ErrorMsg>{formik.errors.text}</ErrorMsg>
-      )}
-      {needToRenderResults ? (
-        <ClearButton onClick={clearResults}>Clear</ClearButton>
-      ) : (
-        <></>
       )}
     </FormWrapper>
   );

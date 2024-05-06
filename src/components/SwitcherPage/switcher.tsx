@@ -57,7 +57,7 @@ export const SwitcherPage: FC = () => {
       <ToNextButton
         onClick={toPrevPageArt}
         reversed
-        needToHide={activePage < NUM_TO_HIDE}
+        needtohide={activePage < NUM_TO_HIDE}
       >
         <svg
           width="10"

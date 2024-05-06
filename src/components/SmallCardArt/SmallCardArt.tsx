@@ -1,10 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { findObjectById } from '../../constants/functions';
+import { useNavigate } from 'react-router-dom';
+import { alreadyInFavs, findObjectById } from '../../constants/functions';
+import { CurrentArt } from '../../interfaces/CurrentArt';
 import { RootState } from '../../store';
+import { setCurrentArt } from '../../store/slices/currentArtSlice';
 import { addToFav, deleteFromFav } from '../../store/slices/favArtsSlice';
 import { AddToFavButton } from '../CardArt/styled';
-import { CardArtProps } from '../CardArt/types';
 import { SmallStyledCardArt, SmallTextInfo } from './styled';
 import { SmallCardArtProps } from './types';
 
@@ -15,15 +17,22 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
   title,
   id,
   inFavotites = false,
+  country,
+  criditeLine,
+  date,
+  dimensions,
+  repository,
 }) => {
-  const alreadyInFavs = (id: number) => {
-    return favs.some((item) => item.id === id);
-  };
   const favs = useSelector((state: RootState) => state.fav.arts);
-  const [isFav, setIsFav] = useState<boolean>(alreadyInFavs(id));
+  const [isFav, setIsFav] = useState<boolean>(alreadyInFavs(id, favs));
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const addToFavHandler = (obj: CardArtProps) => () => {
-    if (alreadyInFavs(obj.id)) return;
+  const onClickArt = (obj: CurrentArt) => () => {
+    dispatch(setCurrentArt(obj));
+    navigate(`/arts/${id}`);
+  };
+  const addToFavHandler = (obj: CurrentArt) => () => {
+    if (alreadyInFavs(obj.id, favs)) return;
     setIsFav(true);
     localStorage.setItem(
       String(obj.id),
@@ -43,7 +52,22 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
   }, [favs]);
   return (
     <SmallStyledCardArt>
-      <img src={imgSrc} alt="small image art" />
+      <img
+        src={imgSrc}
+        alt="small image art"
+        onClick={onClickArt({
+          id,
+          imgSrc,
+          access,
+          artist,
+          title,
+          country,
+          criditeLine,
+          date,
+          dimensions,
+          repository,
+        })}
+      />
       <SmallTextInfo>
         <p>{title}</p>
         <span>{artist !== null ? artist : 'Unknown'}</span>
@@ -54,7 +78,18 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
         onClick={
           inFavotites
             ? deleteFromFavHandler(id)
-            : addToFavHandler({ access, artist, id, imgSrc, title })
+            : addToFavHandler({
+                access,
+                artist,
+                id,
+                imgSrc,
+                title,
+                country,
+                criditeLine,
+                date,
+                dimensions,
+                repository,
+              })
         }
         is_active={isFav}
       >

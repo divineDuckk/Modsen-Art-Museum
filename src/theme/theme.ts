@@ -17,9 +17,9 @@ const sizes = [
   24, 32, 48, 72, 94, 100, 120, 140, 255, 350, 445, 540, 600, 740, 1100,
 ];
 const gaps = [8, 11, 16, 24, 30, 40, 60, 80];
-const breakPoints = { mobile: 800, tablet: 1100, laptop: 1400 };
+const breakPoints = [390, 925, 1350];
 const paddings = [8, 13, 16, 17, 24, 25, 120, 320];
-const margins = [8, 12, 16, 24, 32, 40, 72, 95, 120, 320];
+const margins = [8, 12, 16, 24, 32, 40, 72, 95, 120, 172, 320];
 const tops = [2, 4, 8, 32, 40, 80];
 const zIndexes = [-1, 5, 6, 10, 14, 15, 16];
 const rights = [0, 8, 16, 32];

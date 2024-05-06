@@ -1,7 +1,11 @@
 import { FC } from 'react';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
-import { getImageSrc } from '../../constants/functions';
+import {
+  getArtistCountry,
+  getArtistDate,
+  getImageSrc,
+} from '../../constants/functions';
 import { RootState } from '../../store';
 import { AnotherStyledGallery } from '../OtherWorksGallery/styled';
 import { SmallCardArt } from '../SmallCardArt/SmallCardArt';
@@ -34,6 +38,15 @@ export const SearchResults: FC = () => {
                   title={item.title}
                   imgSrc={getImageSrc(item.image_id)}
                   key={item.id}
+                  country={getArtistCountry(item.artist_display)}
+                  date={getArtistDate(item.artist_display)}
+                  criditeLine={item.credit_line}
+                  dimensions={item.dimensions}
+                  repository={
+                    item.publication_history
+                      ? item.publication_history.split(',')[0]
+                      : 'No repository'
+                  }
                 />
               ))
             ) : (

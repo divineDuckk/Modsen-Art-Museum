@@ -1,9 +1,10 @@
 import { FavArt } from '../interfaces/FavInterfaces';
+import { Art } from '../interfaces/GalleryIntefaces';
 
 export const getImageSrc = (imageId: string | null): string => {
   if (imageId === null)
-    return 'https://www.google.com/search?q=image+not+found&tbm=isch&ved=2ahUKEwiZhIqw6_aFAxVWv_0HHVtXDHMQ2-cCegQIABAA&oq=image+not+&gs_lp=EgNpbWciCmltYWdlIG5vdCAqAggBMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIEEAAYHjIEEAAYHjIEEAAYHjIEEAAYHjIEEAAYHjIEEAAYHkisNFDlBlitK3AFeACQAQCYAV-gAZEKqgECMTa4AQHIAQD4AQGKAgtnd3Mtd2l6LWltZ6gCCsICCxAAGIAEGLEDGIMBwgIIEAAYgAQYsQPCAgkQABiABBgBGArCAgsQABiABBgBGBgYCsICBxAAGIAEGBjCAgoQABiABBhDGIoFwgIHEAAYgAQYCsICBxAjGCcY6gKIBgE&sclient=img&ei=Zac3Ztm9Ftb-9u8P266xmAc&bih=919&biw=1920&prmd=ivnsmbt#imgrc=J-SEUou7K5gClM';
-  return `https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`;
+    return 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+  return `https://www.artic.edu/iiif/2/${imageId}/full/570,/0/default.jpg`;
 };
 export const getDataFromLocalStorage = (): FavArt[] => {
   const keys = Object.keys(localStorage);
@@ -16,9 +17,64 @@ export const getDataFromLocalStorage = (): FavArt[] => {
   });
   return dataArray;
 };
+type SortByObj = {
+  [key: string]: (arr: Art[]) => Art[];
+};
+
+export const sortByObj: SortByObj = {
+  'Title alphabetically': (arr: Art[]): Art[] => {
+    const sortedArr = [...arr].sort((a, b) => {
+      if (a.title > b.title) {
+        return 1;
+      }
+      if (a.title < b.title) {
+        return -1;
+      }
+      return 0;
+    });
+    return sortedArr;
+  },
+  None: (arr: Art[]): Art[] => arr,
+  'Artist alphabetically': (arr: Art[]): Art[] => {
+    const sortedArr = [...arr].sort((a, b) => {
+      if (a.artist_title > b.artist_title) {
+        return 1;
+      }
+      if (a.artist_title < b.artist_title) {
+        return -1;
+      }
+      return 0;
+    });
+    return sortedArr;
+  },
+};
 export const findObjectById = (
   id: number,
   arr: FavArt[]
 ): FavArt | undefined => {
   return arr.find((el) => el.id === id);
+};
+export const alreadyInFavs = (
+  id: number | undefined,
+  favs: FavArt[]
+): boolean => {
+  return favs.some((item) => item.id === id);
+};
+export const getArtistCountry = (artist_display: string): string => {
+  if (artist_display.includes('('))
+    return artist_display.split('(')[1].split(',')[0].trim();
+  else if (artist_display.includes('\n'))
+    return artist_display.split('\n')[1].split(',')[0].trim();
+  else if (artist_display.includes(',')) {
+    const arr = artist_display.split(',')[0];
+    if (arr.includes(' ')) return arr[arr.length - 1];
+    return artist_display.split(',')[0];
+  }
+  return artist_display;
+};
+
+export const getArtistDate = (artist_display: string): string => {
+  const matchResult = artist_display.match(/(\d{4}(?:–\d{2})?)/);
+  if (!matchResult || !matchResult.length) return 'No date info';
+  return matchResult[1];
 };

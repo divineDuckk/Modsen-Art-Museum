@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { AnotherStyledGallery } from '../../components/OtherWorksGallery/styled';
 import { SmallCardArt } from '../../components/SmallCardArt/SmallCardArt';
 import { StyledTitle } from '../../components/Title/styled';
@@ -37,14 +36,13 @@ export const FavoritePage: FC = () => {
       {favs.length ? (
         <AnotherStyledGallery colums={3} rows="auto">
           {favs.map((item) => (
-            <SmallCardArt key={item.id}inFavotites {...item} />
+            <SmallCardArt key={item.id} inFavotites {...item} />
           ))}
         </AnotherStyledGallery>
       ) : (
         <EmptyFavs>
           <p>Your favorites is empty</p>
           <img width={200} src="/src/assets/sad-icon.svg" alt="" />
-          <Link to="/">Go home</Link>
         </EmptyFavs>
       )}
     </StyledFavoritePage>

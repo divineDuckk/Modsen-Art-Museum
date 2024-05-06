@@ -2,7 +2,11 @@ import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL, BIG_LIMIT } from '../../constants/constants';
-import { getImageSrc } from '../../constants/functions';
+import {
+  getArtistCountry,
+  getArtistDate,
+  getImageSrc,
+} from '../../constants/functions';
 import { RootState } from '../../store';
 import { setArts } from '../../store/slices/anotherGallerySlice';
 import { SkeletonSmallCard } from '../SkeletonSmallCard/skeletonSmallCard';
@@ -12,6 +16,7 @@ export const AnotherGallery: FC = () => {
   const anotherGalleryArts = useSelector(
     (state: RootState) => state.anotherGallery.arts
   );
+
   const [isLoad, setIsLoad] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,6 +47,15 @@ export const AnotherGallery: FC = () => {
             title={item.title}
             imgSrc={getImageSrc(item.image_id)}
             key={item.id}
+            country={getArtistCountry(item.artist_display)}
+            date={getArtistDate(item.artist_display)}
+            criditeLine={item.credit_line}
+            dimensions={item.dimensions}
+            repository={
+              item.publication_history
+                ? item.publication_history.split(',')[0]
+                : 'No repository'
+            }
           />
         ) : (
           <SkeletonSmallCard key={item.id} />

@@ -1,13 +1,12 @@
-export interface SmallCardArtProps {
-  id: number;
-  imgSrc: string;
+export interface ArtPageProps {
   title: string;
   artist: string;
-  access: boolean;
-  inFavotites?: boolean;
   date: string;
   country: string;
   dimensions: string;
   criditeLine: string;
   repository: string;
+  access: boolean;
+  id: number;
+  imgSrc: string;
 }

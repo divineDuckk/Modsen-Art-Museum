@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { HomeButtonAttrs } from './types';
 export const StyledHeader = styled.header`
   background: linear-gradient(
     90deg,
@@ -12,6 +13,11 @@ export const StyledHeader = styled.header`
   align-items: center;
   height: 127px;
   margin-bottom: ${({ theme }) => theme.margins[8]}px;
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      padding: 0;
+    }
+  }
 `;
 export const FavButton = styled.button`
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
@@ -23,4 +29,16 @@ export const FavButton = styled.button`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.gaps[0]}px;
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      display: none;
+    }
+  }
+`;
+export const HomeButton = styled(FavButton)<HomeButtonAttrs>`
+  visibility: ${({ in_fav }) => (in_fav ? 'visible' : 'hidden')};
+`;
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.gaps[2]}px;
 `;

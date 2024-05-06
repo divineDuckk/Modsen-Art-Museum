@@ -10,4 +10,10 @@ export const StyledFooter = styled.footer`
   align-items: center;
   height: 127px;
   background-color: ${({ theme }) => theme.colors['white']};
+
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      padding: 0;
+    }
+  }
 `;

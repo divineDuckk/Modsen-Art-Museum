@@ -9,4 +9,3 @@ export const Topic: FC<TopicProps> = ({ hText, spanText }) => {
     </StyledTopic>
   );
 };
-// Topics for you Our special gallery

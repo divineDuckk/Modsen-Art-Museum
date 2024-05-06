@@ -9,6 +9,12 @@ export const Card = styled.div`
   img {
     width: 387px;
     height: 444px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.92;
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 export const TextInfo = styled.div`

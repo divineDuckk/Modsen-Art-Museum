@@ -13,4 +13,10 @@ export const StyledTitle = styled.h1`
     }
     color: ${({ theme }) => theme.colors['hOrange']};
   }
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      font-size: ${({ theme }) => theme.fontSizes[4]}px;
+      width: 100%;
+    }
+  }
 `;

@@ -4,6 +4,10 @@ export interface Art {
   id: number;
   image_id: string;
   is_public_domain: boolean;
+  artist_display: string;
+  dimensions: string;
+  credit_line: string;
+  publication_history: string;
 }
 export interface AnotherGalleryArtState {
   arts: Art[];

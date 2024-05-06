@@ -14,9 +14,7 @@ export const EmptyFavs = styled.div`
     font-size: ${({ theme }) => theme.fontSizes[5]}px;
     margin-bottom: ${({ theme }) => theme.margins[3]}px;
   }
-  a {
-    margin-top: ${({ theme }) => theme.margins[2]}px;
-    font-family: 'Inter';
-    font-size: ${({ theme }) => theme.fontSizes[4]}px;
+  img {
+    margin-bottom: ${({ theme }) => theme.margins[2]}px;
   }
 `;

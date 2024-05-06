@@ -5,7 +5,7 @@ export const StyledGroup = styled.main`
   grid-template-columns: repeat(3, 387px);
   gap: ${({ theme }) => theme.gaps[6]}px;
   margin-bottom: ${({ theme }) => theme.margins[7]}px;
-  @media (max-width: 1350px) {
+  @media (max-width: ${({ theme }) => theme.breakPoints[2]}px) {
     & {
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: auto;
