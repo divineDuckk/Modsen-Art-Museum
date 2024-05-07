@@ -16,7 +16,6 @@ import {
 export const ArtPage: FC = () => {
   const favs = useSelector((state: RootState) => state.fav.arts);
   const currArt = useSelector((state: RootState) => state.curr.currentArt);
-  console.log(currArt);
   return (
     <StyledArtPage>
       <ImageWithButton>

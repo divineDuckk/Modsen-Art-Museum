@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ArtPage } from './Pages/Art/artPage';
 import { FavoritePage } from './Pages/Favorite/favorite';
 import { MainPage } from './Pages/Main/MainPage';
+import { ContentWrapper } from './components/ContentWrapper/styled';
 import { Footer } from './components/Footer/footer';
 import { Header } from './components/Header/header';
 import { Wrapper } from './components/Wrapper/styled';
@@ -15,7 +16,7 @@ function App() {
     dispatch(setFavArts(getDataFromLocalStorage()));
   }, []);
   return (
-    <>
+    <ContentWrapper>
       <Header />
       <Wrapper>
         <Routes>
@@ -25,7 +26,7 @@ function App() {
         </Routes>
       </Wrapper>
       <Footer />
-    </>
+    </ContentWrapper>
   );
 }
 

@@ -34,9 +34,12 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        @media (max-width: 1000px){
-            overflow-x: hidden;
-        }
+       
+    }   
+    #root {
+      height: 100vh;
     }
+
+
 
 `;

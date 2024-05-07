@@ -20,4 +20,9 @@ export const SmallStyledCardArt = styled.div`
 `;
 export const SmallTextInfo = styled(TextInfo)`
   font-family: 'Inter';
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      width: 175px;
+    }
+  }
 `;

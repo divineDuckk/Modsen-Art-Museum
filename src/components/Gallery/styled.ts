@@ -18,3 +18,9 @@ export const SwitcherWrap = styled.div`
   justify-content: right;
   margin-bottom: ${({ theme }) => theme.margins[8]}px;
 `;
+export const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 444px;
+`;

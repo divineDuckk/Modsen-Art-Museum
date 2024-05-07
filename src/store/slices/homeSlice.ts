@@ -6,7 +6,7 @@ const initialState: { onHomePage: boolean } = {
 };
 
 export const homeSlice = createSlice({
-  name: 'fav',
+  name: 'home',
   initialState,
   reducers: {
     setOnHomePage: (state, action: PayloadAction<boolean>) => {

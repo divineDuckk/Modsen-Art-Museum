@@ -5,12 +5,42 @@ export const StyledArtPage = styled.div`
   display: flex;
   margin-bottom: ${({ theme }) => theme.margins[8]}px;
   gap: ${({ theme }) => theme.gaps[7]}px;
+
+  @media (max-width: ${({ theme }) => theme.breakPoints[1]}px) {
+    & {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 `;
 export const ImageWithButton = styled.div`
   position: relative;
   img {
     max-width: 500px;
     height: 570px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakPoints[2]}px) {
+    & {
+      max-width: 350px;
+      img {
+        max-width: 100%;
+        height: 430px;
+      }
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.breakPoints[1]}px) {
+    & {
+      max-width: 400px;
+      img {
+        max-width: 100%;
+        height: 470px;
+      }
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      margin-top: ${({ theme }) => theme.margins[9]}px;
+    }
   }
 `;
 export const AddToFavButtonAbsolutePos = styled(AddToFavButton)`
@@ -31,6 +61,11 @@ export const ArtistDate = styled.p`
   line-height: ${({ theme }) => theme.lineHeights[2]}px;
   font-size: ${({ theme }) => theme.fontSizes[2]}px;
   margin-bottom: ${({ theme }) => theme.margins[9]}px;
+  @media (max-width: ${({ theme }) => theme.breakPoints[2]}px) {
+    & {
+      margin-bottom: ${({ theme }) => theme.margins[3]}px;
+    }
+  }
 `;
 export const Info = styled.section`
   color: ${({ theme }) => theme.colors['primary']};
@@ -38,6 +73,16 @@ export const Info = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: ${({ theme }) => theme.breakPoints[2]}px) {
+    & {
+      height: 430px;
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      align-items: center;
+    }
+  }
 `;
 export const TitleWrapper = styled.div`
   overflow: hidden;
@@ -51,6 +96,17 @@ export const TitleInfo = styled.h3`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  @media (max-width: ${({ theme }) => theme.breakPoints[2]}px) {
+    & {
+      font-size: ${({ theme }) => theme.fontSizes[4]}px;
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      text-align: center;
+      white-space: normal;
+    }
+  }
 `;
 export const Description = styled.p`
   font-family: 'Lexend Deca';

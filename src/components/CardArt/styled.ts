@@ -16,6 +16,14 @@ export const Card = styled.div`
       opacity: 1;
     }
   }
+  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
+    & {
+      img {
+        width: 300px;
+        height: 380px;
+      }
+    }
+  }
 `;
 export const TextInfo = styled.div`
   font-family: 'Lexend Deca';

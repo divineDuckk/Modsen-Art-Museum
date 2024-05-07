@@ -82,7 +82,7 @@ export const Header: FC = () => {
           />
         </svg>
       </Link>
-      <ButtonsWrapper>
+      <ButtonsWrapper is_open>
         <HomeButton on_home_page={onHomePage} onClick={clickHomeHandler}>
           <svg
             width="24"
