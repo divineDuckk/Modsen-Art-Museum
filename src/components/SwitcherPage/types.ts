@@ -3,5 +3,5 @@ export interface SwitcherProps {
 }
 export interface ToNextButtonProps {
   reversed?: boolean;
-  needToHide?: boolean;
+  needtohide?: boolean;
 }

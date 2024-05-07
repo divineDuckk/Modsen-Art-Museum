@@ -36,7 +36,7 @@ export const FavButton = styled.button`
   }
 `;
 export const HomeButton = styled(FavButton)<HomeButtonAttrs>`
-  visibility: ${({ in_fav }) => (in_fav ? 'visible' : 'hidden')};
+  visibility: ${({ on_home_page }) => (on_home_page ? 'visible' : 'hidden')};
 `;
 export const ButtonsWrapper = styled.div`
   display: flex;

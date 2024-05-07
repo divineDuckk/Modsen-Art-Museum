@@ -13,5 +13,4 @@ export interface FavArt {
 }
 export interface FavArtState {
   arts: FavArt[];
-  inFav: boolean;
 }

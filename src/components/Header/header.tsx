@@ -2,22 +2,22 @@ import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
-import { setInFav } from '../../store/slices/favArtsSlice';
+import { setOnHomePage } from '../../store/slices/homeSlice';
 import { ButtonsWrapper, FavButton, HomeButton, StyledHeader } from './styled';
 export const Header: FC = () => {
   const navigate = useNavigate();
-  const inFav = useSelector((state: RootState) => state.fav.inFav);
+  const onHomePage = useSelector((state: RootState) => state.home.onHomePage);
   const dispatch = useDispatch();
   const toFavoritesHandler = () => {
-    dispatch(setInFav(true));
+    dispatch(setOnHomePage(true));
     navigate('/favorites');
   };
   const clickLogoHandler = () => {
-    dispatch(setInFav(false));
+    dispatch(setOnHomePage(false));
   };
   const clickHomeHandler = () => {
     navigate('/');
-    dispatch(setInFav(false));
+    dispatch(setOnHomePage(false));
   };
 
   return (
@@ -83,7 +83,7 @@ export const Header: FC = () => {
         </svg>
       </Link>
       <ButtonsWrapper>
-        <HomeButton in_fav={inFav} onClick={clickHomeHandler}>
+        <HomeButton on_home_page={onHomePage} onClick={clickHomeHandler}>
           <svg
             width="24"
             height="25"
