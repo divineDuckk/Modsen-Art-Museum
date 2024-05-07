@@ -17,12 +17,12 @@ export const ToNextButton = styled.button<ToNextButtonProps>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  visibility: ${({ needToHide }) => (needToHide ? 'hidden' : 'visible')};
+  visibility: ${({ needtohide }) => (needtohide ? 'hidden' : 'visible')};
   &:hover {
     background: rgba(0, 0, 0, 0.1);
   }
   svg {
-    visibility: ${({ needToHide }) => (needToHide ? 'hidden' : 'visible')};
+    visibility: ${({ needtohide }) => (needtohide ? 'hidden' : 'visible')};
 
     transform: ${({ reversed }) =>
       reversed ? 'rotate(-176deg)' : 'rotate(4deg)'};

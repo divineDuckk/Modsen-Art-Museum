@@ -4,7 +4,6 @@ import { FavArt, FavArtState } from '../../interfaces/FavInterfaces';
 
 const initialState: FavArtState = {
   arts: [],
-  inFav: false,
 };
 
 export const favArtsSlice = createSlice({
@@ -20,11 +19,7 @@ export const favArtsSlice = createSlice({
     deleteFromFav: (state, action: PayloadAction<number>) => {
       state.arts = [...state.arts.filter((el) => el.id !== action.payload)];
     },
-    setInFav: (state, action: PayloadAction<boolean>) => {
-      state.inFav = action.payload;
-    },
   },
 });
 export default favArtsSlice.reducer;
-export const { setFavArts, addToFav, deleteFromFav, setInFav } =
-  favArtsSlice.actions;
+export const { setFavArts, addToFav, deleteFromFav } = favArtsSlice.actions;

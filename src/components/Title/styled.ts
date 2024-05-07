@@ -16,6 +16,9 @@ export const StyledTitle = styled.h1`
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
       font-size: ${({ theme }) => theme.fontSizes[4]}px;
+      margin-bottom: ${({ theme }) => theme.margins[7]}px;
+      margin-top: ${({ theme }) => theme.margins[9]}px;
+
       width: 100%;
     }
   }

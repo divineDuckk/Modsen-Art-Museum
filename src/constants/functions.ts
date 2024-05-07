@@ -4,7 +4,7 @@ import { Art } from '../interfaces/GalleryIntefaces';
 export const getImageSrc = (imageId: string | null): string => {
   if (imageId === null)
     return 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
-  return `https://www.artic.edu/iiif/2/${imageId}/full/570,/0/default.jpg`;
+  return `https://www.artic.edu/iiif/2/${imageId}/full/451,/0/default.jpg`;
 };
 export const getDataFromLocalStorage = (): FavArt[] => {
   const keys = Object.keys(localStorage);

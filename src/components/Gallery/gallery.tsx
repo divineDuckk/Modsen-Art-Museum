@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
+import { InfinitySpin } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL, LIMIT } from '../../constants/constants';
 import {
@@ -10,9 +11,8 @@ import {
 import { RootState } from '../../store';
 import { setArts } from '../../store/slices/gallerySlice';
 import { CardArt } from '../CardArt/cardArt';
-import { SkeletonCard } from '../SkeletonCard/skeletonCard';
 import { SwitcherPage } from '../SwitcherPage/switcher';
-import { StyledGroup, SwitcherWrap } from './styled';
+import { LoaderWrapper, StyledGroup, SwitcherWrap } from './styled';
 export const Gallery: FC = () => {
   const arts = useSelector((state: RootState) => state.gallery.arts);
   const activePage = useSelector(
@@ -37,10 +37,10 @@ export const Gallery: FC = () => {
   }, [activePage]);
   return (
     <>
-      <StyledGroup>
-        {arts.length &&
-          arts.map((item, i) =>
-            !isLoad ? (
+      {!isLoad ? (
+        <StyledGroup>
+          {arts.length &&
+            arts.map((item) => (
               <CardArt
                 id={item.id}
                 access={item.is_public_domain}
@@ -58,11 +58,13 @@ export const Gallery: FC = () => {
                     : 'No repository'
                 }
               />
-            ) : (
-              <SkeletonCard key={i} />
-            )
-          )}
-      </StyledGroup>
+            ))}
+        </StyledGroup>
+      ) : (
+        <LoaderWrapper>
+          <InfinitySpin></InfinitySpin>
+        </LoaderWrapper>
+      )}
       <SwitcherWrap>
         <SwitcherPage />
       </SwitcherWrap>

@@ -6,6 +6,7 @@ import { CurrentArt } from '../../interfaces/CurrentArt';
 import { RootState } from '../../store';
 import { setCurrentArt } from '../../store/slices/currentArtSlice';
 import { addToFav } from '../../store/slices/favArtsSlice';
+import { setOnHomePage } from '../../store/slices/homeSlice';
 import { AddToFavButton, Card, Info, TextInfo } from './styled';
 
 export const CardArt: FC<CurrentArt> = ({
@@ -25,6 +26,7 @@ export const CardArt: FC<CurrentArt> = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onClickArt = (obj: CurrentArt) => () => {
+    dispatch(setOnHomePage(false));
     dispatch(setCurrentArt(obj));
     navigate(`/arts/${id}`);
   };

@@ -6,6 +6,7 @@ import { CurrentArt } from '../../interfaces/CurrentArt';
 import { RootState } from '../../store';
 import { setCurrentArt } from '../../store/slices/currentArtSlice';
 import { addToFav, deleteFromFav } from '../../store/slices/favArtsSlice';
+import { setOnHomePage } from '../../store/slices/homeSlice';
 import { AddToFavButton } from '../CardArt/styled';
 import { SmallStyledCardArt, SmallTextInfo } from './styled';
 import { SmallCardArtProps } from './types';
@@ -28,6 +29,8 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const onClickArt = (obj: CurrentArt) => () => {
+    dispatch(setOnHomePage(false));
+
     dispatch(setCurrentArt(obj));
     navigate(`/arts/${id}`);
   };
