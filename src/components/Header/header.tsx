@@ -1,25 +1,40 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
 import { setOnHomePage } from '../../store/slices/homeSlice';
-import { ButtonsWrapper, FavButton, HomeButton, StyledHeader } from './styled';
+import { FlexDiv } from '../SearchInput/styled';
+import {
+  BurgerButton,
+  ButtonsWrapper,
+  FavButton,
+  HomeButton,
+  StyledHeader,
+} from './styled';
 export const Header: FC = () => {
   const navigate = useNavigate();
   const onHomePage = useSelector((state: RootState) => state.home.onHomePage);
   const dispatch = useDispatch();
   const toFavoritesHandler = () => {
-    dispatch(setOnHomePage(true));
+    setIsMenuOpen(false);
+    dispatch(setOnHomePage(false));
     navigate('/favorites');
   };
   const clickLogoHandler = () => {
-    dispatch(setOnHomePage(false));
+    dispatch(setOnHomePage(true));
   };
   const clickHomeHandler = () => {
+    setIsMenuOpen(false);
     navigate('/');
-    dispatch(setOnHomePage(false));
+    dispatch(setOnHomePage(true));
   };
-
+  useEffect(() => {
+    console.log(onHomePage);
+  }, [onHomePage]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenuHandler = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
     <StyledHeader>
       <Link to="/" onClick={clickLogoHandler}>
@@ -82,51 +97,92 @@ export const Header: FC = () => {
           />
         </svg>
       </Link>
-      <ButtonsWrapper is_open>
-        <HomeButton on_home_page={onHomePage} onClick={clickHomeHandler}>
+      <FlexDiv>
+        <ButtonsWrapper is_open={isMenuOpen}>
+          <HomeButton on_home_page={onHomePage} onClick={clickHomeHandler}>
+            <svg
+              width="20"
+              height="23"
+              viewBox="0 0 20 23"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 8.5L10 1.5L19 8.5V19.5C19 20.0304 18.7893 20.5391 18.4142 20.9142C18.0391 21.2893 17.5304 21.5 17 21.5H3C2.46957 21.5 1.96086 21.2893 1.58579 20.9142C1.21071 20.5391 1 20.0304 1 19.5V8.5Z"
+                stroke="#E0A449"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Home
+          </HomeButton>
+          <FavButton onClick={toFavoritesHandler}>
+            <svg
+              width="17"
+              height="21"
+              viewBox="0 0 17 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.5 19.5L8.375 15.5L1.25 19.5V3.5C1.25 2.96957 1.46448 2.46086 1.84625 2.08579C2.22802 1.71071 2.74581 1.5 3.28571 1.5H13.4643C14.0042 1.5 14.522 1.71071 14.9038 2.08579C15.2855 2.46086 15.5 2.96957 15.5 3.5V19.5Z"
+                stroke="#E0A449"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Your favorites
+          </FavButton>
+        </ButtonsWrapper>
+        <BurgerButton onClick={toggleMenuHandler}>
           <svg
-            width="24"
-            height="25"
-            viewBox="0 0 24 25"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            viewBox="0,0,256,256"
+            width="50px"
+            height="50px"
           >
-            <path
-              d="M3 9.5L12 2.5L21 9.5V20.5C21 21.0304 20.7893 21.5391 20.4142 21.9142C20.0391 22.2893 19.5304 22.5 19 22.5H5C4.46957 22.5 3.96086 22.2893 3.58579 21.9142C3.21071 21.5391 3 21.0304 3 20.5V9.5Z"
-              stroke="#E0A449"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M9 22.5V12.5H15V22.5"
-              stroke="#E0A449"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <g
+              fill-opacity="0"
+              fill="#dddddd"
+              fill-rule="nonzero"
+              stroke="none"
+              stroke-width="1"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              stroke-miterlimit="10"
+              stroke-dasharray=""
+              stroke-dashoffset="0"
+              font-family="none"
+              font-weight="none"
+              font-size="none"
+              text-anchor="none"
+            >
+              <path d="M0,256v-256h256v256z" id="bgRectangle"></path>
+            </g>
+            <g
+              fill="#ffffff"
+              fill-rule="nonzero"
+              stroke="none"
+              stroke-width="1"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              stroke-miterlimit="10"
+              stroke-dasharray=""
+              stroke-dashoffset="0"
+              font-family="none"
+              font-weight="none"
+              font-size="none"
+              text-anchor="none"
+            >
+              <g transform="scale(5.12,5.12)">
+                <path d="M5,8c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,23c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,38c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175z"></path>
+              </g>
+            </g>
           </svg>
-          Home
-        </HomeButton>
-        <FavButton onClick={toFavoritesHandler}>
-          <svg
-            width="17"
-            height="21"
-            viewBox="0 0 17 21"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.5 19.5L8.375 15.5L1.25 19.5V3.5C1.25 2.96957 1.46448 2.46086 1.84625 2.08579C2.22802 1.71071 2.74581 1.5 3.28571 1.5H13.4643C14.0042 1.5 14.522 1.71071 14.9038 2.08579C15.2855 2.46086 15.5 2.96957 15.5 3.5V19.5Z"
-              stroke="#E0A449"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Your favorites
-        </FavButton>
-      </ButtonsWrapper>
+        </BurgerButton>
+      </FlexDiv>
     </StyledHeader>
   );
 };
