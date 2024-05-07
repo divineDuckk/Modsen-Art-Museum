@@ -40,6 +40,11 @@ export const ImageWithButton = styled.div`
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
       margin-top: ${({ theme }) => theme.margins[9]}px;
+      max-width: 340px;
+      img {
+        max-width: 100%;
+        height: 370px;
+      }
     }
   }
 `;
