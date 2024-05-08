@@ -7,15 +7,13 @@ import {
   getArtistDate,
   getImageSrc,
 } from '../../constants/functions';
-import { RootState } from '../../store';
+import { anotherGalleryArts } from '../../store/selectors/anotherGallerySelectors';
 import { setArts } from '../../store/slices/anotherGallerySlice';
 import { SkeletonSmallCard } from '../SkeletonSmallCard/skeletonSmallCard';
 import { SmallCardArt } from '../SmallCardArt/SmallCardArt';
 import { AnotherStyledGallery } from './styled';
 export const AnotherGallery: FC = () => {
-  const anotherGalleryArts = useSelector(
-    (state: RootState) => state.anotherGallery.arts
-  );
+  const anotherArts = useSelector(anotherGalleryArts);
 
   const [isLoad, setIsLoad] = useState(false);
   const dispatch = useDispatch();
@@ -38,7 +36,7 @@ export const AnotherGallery: FC = () => {
   }, []);
   return (
     <AnotherStyledGallery colums={3} rows={3}>
-      {anotherGalleryArts.map((item) =>
+      {anotherArts.map((item) =>
         !isLoad ? (
           <SmallCardArt
             access={item.is_public_domain}

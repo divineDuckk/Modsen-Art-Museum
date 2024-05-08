@@ -1,11 +1,11 @@
+import { favArts } from '@/store/selectors/favArtsSelectors';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { alreadyInFavs, findObjectById } from '../../constants/functions';
 import { CurrentArt } from '../../interfaces/CurrentArt';
-import { RootState } from '../../store';
 import { setCurrentArt } from '../../store/slices/currentArtSlice';
-import { addToFav } from '../../store/slices/favArtsSlice';
+import { addToFav, deleteFromFav } from '../../store/slices/favArtsSlice';
 import { setOnHomePage } from '../../store/slices/homeSlice';
 import { AddToFavButton, Card, Info, TextInfo } from './styled';
 
@@ -21,7 +21,7 @@ export const CardArt: FC<CurrentArt> = ({
   dimensions,
   repository,
 }) => {
-  const favs = useSelector((state: RootState) => state.fav.arts);
+  const favs = useSelector(favArts);
   const [isFav, setIsFav] = useState<boolean>(alreadyInFavs(id, favs));
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,19 +30,24 @@ export const CardArt: FC<CurrentArt> = ({
     dispatch(setCurrentArt(obj));
     navigate(`/arts/${id}`);
   };
-  const addToFavHandler = (obj: CurrentArt) => () => {
-    if (alreadyInFavs(obj.id, favs)) return;
-    setIsFav(true);
-    localStorage.setItem(
-      String(obj.id),
-      JSON.stringify({ ...obj, isFav: true })
-    );
-    dispatch(addToFav({ ...obj, isFav: true }));
+  const toggleFavHandler = (art: CurrentArt) => () => {
+    setIsFav((prev) => !prev);
+    if (isFav) {
+      localStorage.removeItem(String(id));
+      dispatch(deleteFromFav(id));
+    } else {
+      localStorage.setItem(
+        String(art.id),
+        JSON.stringify({ ...art, isFav: !isFav })
+      );
+      dispatch(addToFav({ ...art, isFav: !isFav }));
+    }
   };
+
   useEffect(() => {
-    const obj = findObjectById(id, favs);
-    if (!obj) return;
-    setIsFav(obj.isFav);
+    const art = findObjectById(id, favs);
+    if (!art) return;
+    setIsFav(art.isFav);
   }, [favs]);
   return (
     <Card>
@@ -70,7 +75,7 @@ export const CardArt: FC<CurrentArt> = ({
           <b> {access ? 'Public' : 'Private'}</b>
         </TextInfo>
         <AddToFavButton
-          onClick={addToFavHandler({
+          onClick={toggleFavHandler({
             id,
             imgSrc,
             access,

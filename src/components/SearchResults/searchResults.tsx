@@ -6,19 +6,17 @@ import {
   getArtistDate,
   getImageSrc,
 } from '../../constants/functions';
-import { RootState } from '../../store';
+import {
+  isNeedRenderSearchContent,
+  searchedArtIsLoading,
+  searchedArtsResults,
+} from '../../store/selectors/anotherGallerySelectors';
 import { AnotherStyledGallery } from '../OtherWorksGallery/styled';
 import { SmallCardArt } from '../SmallCardArt/SmallCardArt';
 export const SearchResults: FC = () => {
-  const foundedArts = useSelector(
-    (state: RootState) => state.anotherGallery.searchedArts
-  );
-  const isLoad = useSelector(
-    (state: RootState) => state.anotherGallery.searchedArtIsLoad
-  );
-  const needToRender = useSelector(
-    (state: RootState) => state.anotherGallery.needRenderSearchContent
-  );
+  const foundedArts = useSelector(searchedArtsResults);
+  const isLoad = useSelector(searchedArtIsLoading);
+  const needToRender = useSelector(isNeedRenderSearchContent);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { numOfActivePage } from '../../store/selectors/gallerySelectors';
 import { setPage } from '../../store/slices/gallerySlice';
 import {
   MAX_VISIBLE_PAGE,
@@ -16,9 +16,7 @@ export const SwitcherPage: FC = () => {
   const [value2, setValue2] = useState(Pages.SecondPage);
   const [value3, setValue3] = useState(Pages.ThirdPage);
   const [value4, setValue4] = useState(Pages.FourthPage);
-  const activePage = useSelector(
-    (state: RootState) => state.gallery.activePage
-  );
+  const activePage = useSelector(numOfActivePage);
 
   const dispatch = useDispatch();
   const choosePage: MouseEventHandler<HTMLButtonElement> = (e) => {

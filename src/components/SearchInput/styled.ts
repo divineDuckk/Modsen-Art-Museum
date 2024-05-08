@@ -89,17 +89,17 @@ export const DropMenu = styled.div<DropMenuAttr>`
   width: 220px;
   top: 35px;
   left: 86px;
-  visibility: ${({ visibility }) => (visibility ? 'visible' : 'hidden')};
+  display: ${({ visibility }) => (visibility ? 'block' : 'none')};
   ul {
     padding: ${({ theme }) => theme.paddings[0]}px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: ${({ theme }) => theme.gaps[0]}px;
+    background-color: white;
     li {
       text-align: center;
       font-size: ${({ theme }) => theme.fontSizes[2]}px;
-      background-color: white;
       width: 100%;
       transition: 0.2s;
       cursor: pointer;
@@ -140,7 +140,7 @@ export const StyledInput = styled.input.attrs(() => ({
   background: rgba(57, 57, 57, 0.05);
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
   padding-left: ${({ theme }) => theme.paddings[2]}px;
-  padding-right: ${({ theme }) => theme.paddings[6]}px;
+  padding-right: ${({ theme }) => theme.paddings[7]}px;
   font-weight: ${({ theme }) => theme.fontWeights[0]};
   &::placeholder {
     font-weight: ${({ theme }) => theme.fontWeights[0]};

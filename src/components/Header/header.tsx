@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { RootState } from '../../store';
+import { onHome } from '../../store/selectors/homeSelectors';
 import { setOnHomePage } from '../../store/slices/homeSlice';
 import { FlexDiv } from '../SearchInput/styled';
 import {
@@ -13,7 +13,7 @@ import {
 } from './styled';
 export const Header: FC = () => {
   const navigate = useNavigate();
-  const onHomePage = useSelector((state: RootState) => state.home.onHomePage);
+  const onHomePage = useSelector(onHome);
   const dispatch = useDispatch();
   const toFavoritesHandler = () => {
     setIsMenuOpen(false);

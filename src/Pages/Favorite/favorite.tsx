@@ -4,11 +4,11 @@ import { AnotherStyledGallery } from '../../components/OtherWorksGallery/styled'
 import { SmallCardArt } from '../../components/SmallCardArt/SmallCardArt';
 import { StyledTitle } from '../../components/Title/styled';
 import { Topic } from '../../components/YoursTopic/Topic';
-import { RootState } from '../../store';
+import { favArts } from '../../store/selectors/favArtsSelectors';
 import { EmptyFavs, StyledFavoritePage } from './styled';
 
 export const FavoritePage: FC = () => {
-  const favs = useSelector((state: RootState) => state.fav.arts);
+  const favs = useSelector(favArts);
   return (
     <StyledFavoritePage>
       <StyledTitle>

@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { alreadyInFavs } from '../../constants/functions';
-import { RootState } from '../../store';
+import { currArt } from '../../store/selectors/currentArtSelectors';
+import { favArts } from '../../store/selectors/favArtsSelectors';
 import {
   AddToFavButtonAbsolutePos,
   ArtistDate,
@@ -14,13 +15,15 @@ import {
   TitleWrapper,
 } from './styled';
 export const ArtPage: FC = () => {
-  const favs = useSelector((state: RootState) => state.fav.arts);
-  const currArt = useSelector((state: RootState) => state.curr.currentArt);
+  const favs = useSelector(favArts);
+  const currentArt = useSelector(currArt);
   return (
     <StyledArtPage>
       <ImageWithButton>
-        <img src={currArt?.imgSrc} alt="image of art" />
-        <AddToFavButtonAbsolutePos is_active={alreadyInFavs(currArt?.id, favs)}>
+        <img src={currentArt?.imgSrc} alt="image of art" />
+        <AddToFavButtonAbsolutePos
+          is_active={alreadyInFavs(currentArt?.id, favs)}
+        >
           <svg
             width="17"
             height="21"
@@ -40,30 +43,32 @@ export const ArtPage: FC = () => {
       </ImageWithButton>
       <Info>
         <TitleWrapper>
-          <TitleInfo>{currArt?.title}</TitleInfo>
+          <TitleInfo>{currentArt?.title}</TitleInfo>
         </TitleWrapper>
-        <ArtistName>{currArt?.artist ? currArt.artist : 'Unknown'}</ArtistName>
-        <ArtistDate>{currArt?.date}</ArtistDate>
+        <ArtistName>
+          {currentArt?.artist ? currentArt.artist : 'Unknown'}
+        </ArtistName>
+        <ArtistDate>{currentArt?.date}</ArtistDate>
         <TitleWrapper>
           <TitleInfo>Overview</TitleInfo>
         </TitleWrapper>
         <Description>
           <span>Artist nacionality: </span>
-          {currArt?.country}
+          {currentArt?.country}
         </Description>
         <Description>
           <span>Dimensions: Sheet: </span>
-          {currArt?.dimensions}
+          {currentArt?.dimensions}
         </Description>
         <Description>
           <span>Credit Line: </span>
-          {currArt?.criditeLine}
+          {currentArt?.criditeLine}
         </Description>
         <Description>
           <span>Repository: </span>
-          {currArt?.repository}
+          {currentArt?.repository}
         </Description>
-        <Description>{currArt?.access ? 'Public' : 'Private'}</Description>
+        <Description>{currentArt?.access ? 'Public' : 'Private'}</Description>
       </Info>
     </StyledArtPage>
   );

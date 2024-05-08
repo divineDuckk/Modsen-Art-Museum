@@ -8,16 +8,17 @@ import {
   getArtistDate,
   getImageSrc,
 } from '../../constants/functions';
-import { RootState } from '../../store';
+import {
+  galleryArts,
+  numOfActivePage,
+} from '../../store/selectors/gallerySelectors';
 import { setArts } from '../../store/slices/gallerySlice';
 import { CardArt } from '../CardArt/cardArt';
 import { SwitcherPage } from '../SwitcherPage/switcher';
 import { LoaderWrapper, StyledGroup, SwitcherWrap } from './styled';
 export const Gallery: FC = () => {
-  const arts = useSelector((state: RootState) => state.gallery.arts);
-  const activePage = useSelector(
-    (state: RootState) => state.gallery.activePage
-  );
+  const arts = useSelector(galleryArts);
+  const activePage = useSelector(numOfActivePage);
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const dispatch = useDispatch();
   useEffect(() => {

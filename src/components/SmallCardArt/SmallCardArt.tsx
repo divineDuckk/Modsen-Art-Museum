@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { alreadyInFavs, findObjectById } from '../../constants/functions';
 import { CurrentArt } from '../../interfaces/CurrentArt';
-import { RootState } from '../../store';
+import { favArts } from '../../store/selectors/favArtsSelectors';
 import { setCurrentArt } from '../../store/slices/currentArtSlice';
 import { addToFav, deleteFromFav } from '../../store/slices/favArtsSlice';
 import { setOnHomePage } from '../../store/slices/homeSlice';
@@ -17,37 +17,35 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
   artist,
   title,
   id,
-  inFavotites = false,
   country,
   criditeLine,
   date,
   dimensions,
   repository,
 }) => {
-  const favs = useSelector((state: RootState) => state.fav.arts);
+  const favs = useSelector(favArts);
   const [isFav, setIsFav] = useState<boolean>(alreadyInFavs(id, favs));
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const onClickArt = (obj: CurrentArt) => () => {
     dispatch(setOnHomePage(false));
-
     dispatch(setCurrentArt(obj));
     navigate(`/arts/${id}`);
   };
-  const addToFavHandler = (obj: CurrentArt) => () => {
-    if (alreadyInFavs(obj.id, favs)) return;
-    setIsFav(true);
-    localStorage.setItem(
-      String(obj.id),
-      JSON.stringify({ ...obj, isFav: true })
-    );
-    dispatch(addToFav({ ...obj, isFav: true }));
+  const toggleFavHandler = (art: CurrentArt) => () => {
+    setIsFav((prev) => !prev);
+    if (isFav) {
+      localStorage.removeItem(String(id));
+      dispatch(deleteFromFav(id));
+    } else {
+      localStorage.setItem(
+        String(art.id),
+        JSON.stringify({ ...art, isFav: !isFav })
+      );
+      dispatch(addToFav({ ...art, isFav: !isFav }));
+    }
   };
-  const deleteFromFavHandler = (id: number) => () => {
-    setIsFav(false);
-    localStorage.removeItem(String(id));
-    dispatch(deleteFromFav(id));
-  };
+
   useEffect(() => {
     const obj = findObjectById(id, favs);
     if (!obj) return;
@@ -78,22 +76,18 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
         <b> {access ? 'Public' : 'Private'}</b>
       </SmallTextInfo>
       <AddToFavButton
-        onClick={
-          inFavotites
-            ? deleteFromFavHandler(id)
-            : addToFavHandler({
-                access,
-                artist,
-                id,
-                imgSrc,
-                title,
-                country,
-                criditeLine,
-                date,
-                dimensions,
-                repository,
-              })
-        }
+        onClick={toggleFavHandler({
+          access,
+          artist,
+          id,
+          imgSrc,
+          title,
+          country,
+          criditeLine,
+          date,
+          dimensions,
+          repository,
+        })}
         is_active={isFav}
       >
         <svg

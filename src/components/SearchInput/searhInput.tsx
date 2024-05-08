@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { object, string } from 'yup';
 import { BASE_URL, BIG_LIMIT, SORT_VALUES } from '../../constants/constants';
 import { sortByObj } from '../../constants/functions';
-import { RootState } from '../../store';
+import { isNeedRenderSearchContent } from '../../store/selectors/anotherGallerySelectors';
 import {
   setNeedToRenderSearchContent,
   setSearchedArts,
@@ -28,15 +28,13 @@ export const SearhInput: FC = () => {
   const dispatch = useDispatch();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [sortByValue, setSortByValue] = useState<string>(SORT_VALUES[0]);
-  const needToRenderResults = useSelector(
-    (state: RootState) => state.anotherGallery.needRenderSearchContent
-  );
+  const needToRenderResults = useSelector(isNeedRenderSearchContent);
   const onClickLi = (e: MouseEvent<HTMLLIElement>) => {
     setIsVisible(false);
     setSortByValue(e.currentTarget.innerText);
   };
   const onClickSortButton = () => {
-    setIsVisible(true);
+    setIsVisible(!isVisible);
   };
   const searchHandler = async (values: { text: string }) => {
     try {
