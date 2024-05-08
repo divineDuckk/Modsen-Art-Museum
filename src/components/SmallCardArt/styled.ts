@@ -7,15 +7,15 @@ export const SmallStyledCardArt = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.gaps[2]}px;
   background-color: ${({ theme }) => theme.colors['white']};
-  img {
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-    transition: 0.3s;
-    opacity: 0.9;
-    &:hover {
-      opacity: 1;
-    }
+`;
+export const LittleArtImage = styled.img`
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
   }
 `;
 export const SmallTextInfo = styled(TextInfo)`

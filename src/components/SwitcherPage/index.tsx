@@ -1,7 +1,7 @@
+import { numOfActivePage } from '@/store/selectors/gallerySelectors';
+import { setPage } from '@/store/slices/gallerySlice';
 import { FC, MouseEventHandler, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { numOfActivePage } from '../../store/selectors/gallerySelectors';
-import { setPage } from '../../store/slices/gallerySlice';
 import {
   MAX_VISIBLE_PAGE,
   NUM_TO_HIDE,
@@ -9,7 +9,7 @@ import {
   REQUIRED_REMAINDER_TO_MOVE_BACK,
   REQUIRED_REMAINDER_TO_MOVE_FORWARD,
 } from './constants';
-import { StyledSwitcher, Switchers, ToNextButton } from './styled';
+import { StyledSwitcher, Switchers, ToNextButton, ToNextIcon } from './styled';
 
 export const SwitcherPage: FC = () => {
   const [value1, setValue1] = useState(Pages.FirstPage);
@@ -57,20 +57,12 @@ export const SwitcherPage: FC = () => {
         reversed
         needtohide={activePage < NUM_TO_HIDE}
       >
-        <svg
-          width="10"
-          height="15"
-          viewBox="0 0 10 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M1.46791 13.7144L3 15L9.42788 7.33956L8.9266 6.91893L8.94602 6.89579L1.28558 0.467911L-1.07377e-07 2L6.62963 7.56292L1.46791 13.7144Z"
-            fill="#393939"
-          />
-        </svg>
+        <ToNextIcon
+          src="./src/assets/arrow.svg"
+          alt="to next page"
+          reversed
+          needtohide={activePage < NUM_TO_HIDE}
+        />
       </ToNextButton>
       <StyledSwitcher onClick={choosePage} is_active={activePage === value1}>
         {value1}
@@ -85,20 +77,7 @@ export const SwitcherPage: FC = () => {
         {value4}
       </StyledSwitcher>
       <ToNextButton onClick={toNextPageArt}>
-        <svg
-          width="10"
-          height="15"
-          viewBox="0 0 10 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M1.46791 13.7144L3 15L9.42788 7.33956L8.9266 6.91893L8.94602 6.89579L1.28558 0.467911L-1.07377e-07 2L6.62963 7.56292L1.46791 13.7144Z"
-            fill="#393939"
-          />
-        </svg>
+        <ToNextIcon src="./src/assets/arrow.svg" alt="to next page" />
       </ToNextButton>
     </Switchers>
   );

@@ -11,11 +11,19 @@ export interface Art {
 }
 export interface AnotherGalleryArtState {
   arts: Art[];
+  isLoading: boolean;
+  error: unknown;
+}
+export interface SearchedGalleryArtState {
   searchedArts: Art[];
   searchedArtIsLoad: boolean;
   needRenderSearchContent: boolean;
+  isLoading: boolean;
+  error: unknown;
 }
 export interface GalleryArtState {
   arts: Art[];
   activePage: number;
+  isLoading: boolean;
+  error: unknown;
 }

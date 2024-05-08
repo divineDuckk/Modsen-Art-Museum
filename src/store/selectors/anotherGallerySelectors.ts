@@ -1,10 +1,6 @@
-import { RootState } from '..';
+import { RootState } from '../types';
 
 export const anotherGalleryArts = (state: RootState) =>
   state.anotherGallery.arts;
-export const isNeedRenderSearchContent = (state: RootState) =>
-  state.anotherGallery.needRenderSearchContent;
-export const searchedArtIsLoading = (state: RootState) =>
-  state.anotherGallery.searchedArtIsLoad;
-export const searchedArtsResults = (state: RootState) =>
-  state.anotherGallery.searchedArts;
+export const isLoading = (state: RootState) => state.anotherGallery.isLoading;
+export const error = (state: RootState) => state.anotherGallery.error;

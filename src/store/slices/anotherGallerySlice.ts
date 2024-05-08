@@ -1,12 +1,12 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { AnotherGalleryArtState, Art } from '../../interfaces/GalleryIntefaces';
+import { fetchAnotherArts } from '../thunks/fetchAnotherArts';
 
 const initialState: AnotherGalleryArtState = {
   arts: new Array(9),
-  searchedArts: [],
-  searchedArtIsLoad: false,
-  needRenderSearchContent: false,
+  isLoading: false,
+  error: null,
 };
 
 export const anotherGallerySlice = createSlice({
@@ -16,21 +16,25 @@ export const anotherGallerySlice = createSlice({
     setArts: (state, action: PayloadAction<Art[]>) => {
       state.arts = [...action.payload];
     },
-    setSearchedArts: (state, action: PayloadAction<Art[]>) => {
-      state.searchedArts = [...action.payload];
-    },
-    setSearchedArtsIsLoad: (state, action: PayloadAction<boolean>) => {
-      state.searchedArtIsLoad = action.payload;
-    },
-    setNeedToRenderSearchContent: (state, action: PayloadAction<boolean>) => {
-      state.needRenderSearchContent = action.payload;
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAnotherArts.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(
+        fetchAnotherArts.fulfilled,
+        (state, action: PayloadAction<Art[]>) => {
+          state.arts = [...action.payload];
+          state.isLoading = false;
+        }
+      )
+      .addCase(fetchAnotherArts.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
   },
 });
 export default anotherGallerySlice.reducer;
-export const {
-  setArts,
-  setSearchedArts,
-  setSearchedArtsIsLoad,
-  setNeedToRenderSearchContent,
-} = anotherGallerySlice.actions;
+export const { setArts } = anotherGallerySlice.actions;

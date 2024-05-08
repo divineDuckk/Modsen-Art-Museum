@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledFooter = styled.footer`
+export const ContentFooter = styled.footer`
   padding: 0 16.66%;
   bottom: 0;
   width: 100%;
@@ -17,3 +17,5 @@ export const StyledFooter = styled.footer`
     }
   }
 `;
+export const FooterLogo = styled.img``;
+export const ModsenLogo = styled.img``;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BurgerMenu, HomeButtonAttrs } from './types';
-export const StyledHeader = styled.header`
+export const ContentHeader = styled.header`
   background: linear-gradient(
     90deg,
     #343333 38.05%,
@@ -25,6 +25,7 @@ export const StyledHeader = styled.header`
     }
   }
 `;
+export const HeaderModsenLogo = styled.img``;
 export const FavButton = styled.button`
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
   line-height: ${({ theme }) => theme.lineHeights[4]}px;
@@ -46,6 +47,7 @@ export const HomeButton = styled(FavButton)<HomeButtonAttrs>`
     }
   }
 `;
+export const HomeIcon = styled.img``;
 export const ButtonsWrapper = styled.nav<BurgerMenu>`
   display: flex;
   gap: ${({ theme }) => theme.gaps[2]}px;
@@ -74,13 +76,13 @@ export const BurgerButton = styled.button`
   display: none;
   cursor: pointer;
   align-items: center;
-  svg {
-    width: 40px;
-    height: 40px;
-  }
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
       display: flex;
     }
   }
+`;
+export const BurgerIcon = styled.img`
+  width: 40px;
+  height: 40px;
 `;

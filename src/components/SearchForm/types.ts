@@ -8,6 +8,11 @@ export interface PromiseAllResponse {
     data: Art;
   };
 }
+export interface PromiseAllResponseArray {
+  data: {
+    data: Art[];
+  };
+}
 export interface DropMenuAttr {
   visibility: boolean;
 }

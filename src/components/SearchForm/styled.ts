@@ -75,11 +75,29 @@ export const ShowDropMenuButton = styled.button`
       font-size: ${({ theme }) => theme.fontSizes[1]}px;
     }
   }
-  svg {
-    position: absolute;
-    right: 15px;
-    top: 13px;
-    transform: rotate(95deg);
+`;
+export const DropDownIcon = styled.img`
+  position: absolute;
+  right: 15px;
+  top: 13px;
+  transform: rotate(95deg);
+`;
+export const SortByList = styled.ul`
+  padding: ${({ theme }) => theme.paddings[0]}px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.gaps[0]}px;
+  background-color: white;
+`;
+export const ListElem = styled.li`
+  text-align: center;
+  font-size: ${({ theme }) => theme.fontSizes[2]}px;
+  width: 100%;
+  transition: 0.2s;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(90, 255, 255, 0.6);
   }
 `;
 export const DropMenu = styled.div<DropMenuAttr>`
@@ -90,24 +108,6 @@ export const DropMenu = styled.div<DropMenuAttr>`
   top: 35px;
   left: 86px;
   display: ${({ visibility }) => (visibility ? 'block' : 'none')};
-  ul {
-    padding: ${({ theme }) => theme.paddings[0]}px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: ${({ theme }) => theme.gaps[0]}px;
-    background-color: white;
-    li {
-      text-align: center;
-      font-size: ${({ theme }) => theme.fontSizes[2]}px;
-      width: 100%;
-      transition: 0.2s;
-      cursor: pointer;
-      &:hover {
-        background-color: rgba(90, 255, 255, 0.6);
-      }
-    }
-  }
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
       width: 200px;
@@ -128,7 +128,8 @@ export const SearchButton = styled.button`
   justify-content: center;
   align-items: center;
 `;
-export const StyledInput = styled.input.attrs(() => ({
+export const SearchIcon = styled.img``;
+export const SearchInput = styled.input.attrs(() => ({
   type: 'text',
   placeholder: 'Search Art, Artist, Work...',
 }))`

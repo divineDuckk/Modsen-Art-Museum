@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledGroup = styled.main`
+export const Group = styled.main`
   display: grid;
   grid-template-columns: repeat(3, 387px);
   gap: ${({ theme }) => theme.gaps[6]}px;
@@ -23,4 +23,5 @@ export const LoaderWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 444px;
+  margin-bottom: ${({ theme }) => theme.margins[7]}px;
 `;

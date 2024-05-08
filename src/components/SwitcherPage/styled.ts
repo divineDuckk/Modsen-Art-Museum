@@ -21,14 +21,12 @@ export const ToNextButton = styled.button<ToNextButtonProps>`
   &:hover {
     background: rgba(0, 0, 0, 0.1);
   }
-  svg {
-    visibility: ${({ needtohide }) => (needtohide ? 'hidden' : 'visible')};
-
-    transform: ${({ reversed }) =>
-      reversed ? 'rotate(-176deg)' : 'rotate(4deg)'};
-  }
 `;
-
+export const ToNextIcon = styled.img<ToNextButtonProps>`
+  visibility: ${({ needtohide }) => (needtohide ? 'hidden' : 'visible')};
+  transform: ${({ reversed }) =>
+    reversed ? 'rotate(-176deg)' : 'rotate(4deg)'};
+`;
 export const StyledSwitcher = styled.button<SwitcherProps>`
   border: 0;
   border-radius: 3px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AnotherStyledGalleryAttr } from './types';
 
-export const AnotherStyledGallery = styled.div<AnotherStyledGalleryAttr>`
+export const AnotherGalleryGroup = styled.div<AnotherStyledGalleryAttr>`
   display: ${({ displayFlex }) => (displayFlex ? 'flex' : 'grid')};
   grid-template-rows: repeat(${({ rows }) => rows}, 130px);
   grid-template-columns: repeat(${({ colums }) => colums}, 416px);
