@@ -12,6 +12,7 @@ import {
 } from '@/store/selectors/anotherGallerySelectors';
 import { fetchAnotherArts } from '@/store/thunks/fetchAnotherArts';
 import { SmallCardArt } from '../SmallCardArt';
+import { CardSkeleton } from '../SmallSkeletonLoader/styled';
 import { AnotherGalleryGroup } from './styled';
 export const AnotherGallery: FC = () => {
   const anotherArts = useAppSelector(anotherGalleryArts);

@@ -16,7 +16,6 @@ export interface AnotherGalleryArtState {
 }
 export interface SearchedGalleryArtState {
   searchedArts: Art[];
-  searchedArtIsLoad: boolean;
   needRenderSearchContent: boolean;
   isLoading: boolean;
   error: unknown;
