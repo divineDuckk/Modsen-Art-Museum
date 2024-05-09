@@ -1,3 +1,4 @@
+import arrow from '@/assets/arrow.svg';
 import { numOfActivePage } from '@/store/selectors/gallerySelectors';
 import { setPage } from '@/store/slices/gallerySlice';
 import { FC, MouseEventHandler, useState } from 'react';
@@ -58,7 +59,7 @@ export const SwitcherPage: FC = () => {
         $needtohide={activePage < NUM_TO_HIDE}
       >
         <ToNextIcon
-          src="./src/assets/arrow.svg"
+          src={arrow}
           alt="to next page"
           $reversed
           $needtohide={activePage < NUM_TO_HIDE}
@@ -77,7 +78,7 @@ export const SwitcherPage: FC = () => {
         {value4}
       </StyledSwitcher>
       <ToNextButton onClick={toNextPageArt}>
-        <ToNextIcon src="./src/assets/arrow.svg" alt="to next page" />
+        <ToNextIcon src={arrow} alt="to next page" />
       </ToNextButton>
     </Switchers>
   );

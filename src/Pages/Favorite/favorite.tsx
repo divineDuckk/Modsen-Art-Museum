@@ -2,6 +2,8 @@ import { AnotherGalleryGroup } from '@/components/OtherWorksGallery/styled';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 
+import bigFavSvg from '@/assets/bigFav.svg';
+import sadSvg from '@/assets/sad-icon.svg';
 import { SmallCardArt } from '@/components/SmallCardArt';
 import { BigFavIcon, MainTitle, SubMainText } from '@/components/Title/styled';
 import { Topic } from '@/components/YoursTopic';
@@ -12,7 +14,6 @@ import {
   EmptyFavsImage,
   EmptyFavsParagraph,
 } from './styled';
-
 export const FavoritePage: FC = () => {
   const favs = useSelector(favArts);
   return (
@@ -20,7 +21,7 @@ export const FavoritePage: FC = () => {
       <MainTitle>
         Here Are Your <br />
         <SubMainText>
-          <BigFavIcon src="./src/assets/bigFav.svg" alt="big fav icon" />
+          <BigFavIcon src={bigFavSvg} alt="big fav icon" />
           Favorites
         </SubMainText>
       </MainTitle>
@@ -34,11 +35,7 @@ export const FavoritePage: FC = () => {
       ) : (
         <EmptyFavs>
           <EmptyFavsParagraph>Your favorites is empty</EmptyFavsParagraph>
-          <EmptyFavsImage
-            width={200}
-            src="./src/assets/sad-icon.svg"
-            alt="sad smile"
-          />
+          <EmptyFavsImage width={200} src={sadSvg} alt="sad smile" />
         </EmptyFavs>
       )}
     </ContentFavoritePage>

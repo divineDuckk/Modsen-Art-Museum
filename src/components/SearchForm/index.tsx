@@ -1,5 +1,6 @@
+import arrow from '@/assets/arrow.svg';
+import searchSvg from '@/assets/search.svg';
 import { SORT_VALUES } from '@/constants/constants';
-
 import { useAppDispatch } from '@/store/hooks';
 import { isNeedRenderSearchContent } from '@/store/selectors/searchGallerySelectors';
 import {
@@ -77,7 +78,7 @@ export const SearhForm: FC = () => {
           data-testid="input_value"
         />
         <SearchButton type="submit" data-testid="submit">
-          <SearchIcon src="./src/assets/search.svg" alt="search icon" />
+          <SearchIcon src={searchSvg} alt="search icon" />
         </SearchButton>
       </Form>
       <FlexDiv>
@@ -88,7 +89,7 @@ export const SearhForm: FC = () => {
             onClick={onClickSortButton}
           >
             {sortByValue}
-            <DropDownIcon src="./src/assets/arrow.svg" alt="drop down" />
+            <DropDownIcon src={arrow} alt="drop down" />
           </ShowDropMenuButton>
           <DropMenu data-testid="drop_menu" $visibility={isVisible}>
             <SortByList>

@@ -1,3 +1,7 @@
+import favSvg from '@/assets/fav.svg';
+import homeSvg from '@/assets/home.svg';
+import logo from '@/assets/logo.svg';
+import menu from '@/assets/menu.svg';
 import { onHome } from '@/store/selectors/homeSelectors';
 import { setOnHomePage } from '@/store/slices/homeSlice';
 import { FC, useState } from 'react';
@@ -15,6 +19,7 @@ import {
   HomeButton,
   HomeIcon,
 } from './styled';
+
 export const Header: FC = () => {
   const navigate = useNavigate();
   const onHomePage = useSelector(onHome);
@@ -39,7 +44,7 @@ export const Header: FC = () => {
   return (
     <ContentHeader>
       <Link to="/" onClick={clickLogoHandler}>
-        <HeaderModsenLogo src="./src/assets/logo.svg" alt="logo" />
+        <HeaderModsenLogo src={logo} alt="logo" />
       </Link>
       <FlexDiv>
         <ButtonsWrapper $is_open={isMenuOpen}>
@@ -48,16 +53,16 @@ export const Header: FC = () => {
             $on_home_page={onHomePage}
             onClick={clickHomeHandler}
           >
-            <HomeIcon src="./src/assets/home.svg" alt="home icon" />
+            <HomeIcon src={homeSvg} alt="home icon" />
             Home
           </HomeButton>
           <FavButton data-testid="to_fav_page" onClick={toFavoritesHandler}>
-            <FavIcon src="./src/assets/fav.svg" alt="fav icon" />
+            <FavIcon src={favSvg} alt="fav icon" />
             Your favorites
           </FavButton>
         </ButtonsWrapper>
         <BurgerButton onClick={toggleMenuHandler}>
-          <BurgerIcon src="./src/assets/menu.svg" alt="menu" />
+          <BurgerIcon src={menu} alt="menu" />
         </BurgerButton>
       </FlexDiv>
     </ContentHeader>

@@ -1,3 +1,4 @@
+import favSvg from '@/assets/fav.svg';
 import { AddToFavButton, FavIcon } from '@/components/CardArt/styled';
 import { alreadyInFavs } from '@/functions';
 import { FavArt } from '@/interfaces/FavInterfaces';
@@ -7,6 +8,7 @@ import { favArts } from '@/store/selectors/favArtsSelectors';
 import { addToFav, deleteFromFav } from '@/store/slices/favArtsSlice';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import {
   AddToFavButtonAbsolutePos,
   ArtistDate,
@@ -56,7 +58,7 @@ export const ArtPage: FC = () => {
             onClick={toggleFavHandler}
             $is_active={isFav ?? false}
           >
-            <FavIcon src="../src/assets/fav.svg" alt="toggle fav" />
+            <FavIcon src={favSvg} alt="toggle fav" />
           </AddToFavButton>
         </AddToFavButtonAbsolutePos>
       </ImageWithButton>

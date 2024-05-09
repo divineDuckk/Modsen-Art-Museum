@@ -1,5 +1,4 @@
-import { FC, useEffect } from 'react';
-
+import loader from '@/assets/loader.png';
 import { getArtistCountry, getArtistDate, getImageSrc } from '@/functions';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import {
@@ -8,6 +7,7 @@ import {
   numOfActivePage,
 } from '@/store/selectors/gallerySelectors';
 import { fetchArts } from '@/store/thunks/fetchArts';
+import { FC, useEffect } from 'react';
 import { CardArt } from '../CardArt';
 import { SpinLoader } from '../SpinLoader/styled';
 import { SwitcherPage } from '../SwitcherPage';
@@ -64,7 +64,7 @@ export const Gallery: FC = () => {
         </Group>
       ) : (
         <LoaderWrapper>
-          <SpinLoader src="/src/assets/loader.png" alt="loader" />
+          <SpinLoader src={loader} alt="loader" />
         </LoaderWrapper>
       )}
       <SwitcherWrap>

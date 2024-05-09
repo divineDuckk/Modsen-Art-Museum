@@ -1,3 +1,4 @@
+import favSvg from '@/assets/fav.svg';
 import { alreadyInFavs } from '@/functions';
 import { CurrentArt } from '@/interfaces/CurrentArt';
 import { useAppDispatch } from '@/store/hooks';
@@ -17,7 +18,6 @@ import {
 } from '../CardArt/styled';
 import { LittleArtImage, SmallStyledCardArt, SmallTextInfo } from './styled';
 import { SmallCardArtProps } from './types';
-
 export const SmallCardArt: FC<SmallCardArtProps> = ({
   imgSrc,
   access,
@@ -91,7 +91,7 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
         })}
         $is_active={isFav}
       >
-        <FavIcon src="./src/assets/fav.svg" alt="toggle fav" />
+        <FavIcon src={favSvg} alt="toggle fav" />
       </AddToFavButton>
     </SmallStyledCardArt>
   );

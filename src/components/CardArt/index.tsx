@@ -1,3 +1,4 @@
+import favSvg from '@/assets/fav.svg';
 import { alreadyInFavs } from '@/functions';
 import { CurrentArt } from '@/interfaces/CurrentArt';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -18,7 +19,6 @@ import {
   Info,
   TextInfo,
 } from './styled';
-
 export const CardArt: FC<CurrentArt> = ({
   imgSrc,
   id,
@@ -94,7 +94,7 @@ export const CardArt: FC<CurrentArt> = ({
           })}
           $is_active={isFav}
         >
-          <FavIcon src="./src/assets/fav.svg" alt="toggle fav" />
+          <FavIcon src={favSvg} alt="toggle fav" />
         </AddToFavButton>
       </Info>
     </Card>

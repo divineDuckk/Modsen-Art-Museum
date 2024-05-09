@@ -1,12 +1,12 @@
+import magnifier from '@/assets/magnifier.png';
 import { getArtistCountry, getArtistDate, getImageSrc } from '@/functions';
-import { FC } from 'react';
-
 import { useAppSelector } from '@/store/hooks';
 import {
   isLoading,
   isNeedRenderSearchContent,
   searchedArtsResults,
 } from '@/store/selectors/searchGallerySelectors';
+import { FC } from 'react';
 import { MagnifierLoader } from '../MagnifierLoader/styled';
 import { AnotherGalleryGroup } from '../OtherWorksGallery/styled';
 import { SmallCardArt } from '../SmallCardArt';
@@ -15,7 +15,6 @@ export const SearchResults: FC = () => {
   const foundedArts = useAppSelector(searchedArtsResults);
   const isLoad = useAppSelector(isLoading);
   const needToRender = useAppSelector(isNeedRenderSearchContent);
-
   return (
     <>
       {needToRender ? (
@@ -65,10 +64,7 @@ export const SearchResults: FC = () => {
               <NothingFoundHeader>Nothing found</NothingFoundHeader>
             )
           ) : (
-            <MagnifierLoader
-              src="./src/assets/magnifier.png"
-              alt="magnifier loader"
-            />
+            <MagnifierLoader src={magnifier} alt="magnifier loader" />
           )}
         </AnotherGalleryGroup>
       ) : (
