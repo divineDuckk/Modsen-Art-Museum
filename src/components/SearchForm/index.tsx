@@ -77,7 +77,7 @@ export const SearhForm: FC = () => {
           data-testid="input_value"
         />
         <SearchButton type="submit" data-testid="submit">
-          <SearchIcon src="/src/assets/search.svg" alt="search icon" />
+          <SearchIcon src="./src/assets/search.svg" alt="search icon" />
         </SearchButton>
       </Form>
       <FlexDiv>
@@ -88,7 +88,7 @@ export const SearhForm: FC = () => {
             onClick={onClickSortButton}
           >
             {sortByValue}
-            <DropDownIcon src="/src/assets/arrow.svg" alt="drop down" />
+            <DropDownIcon src="./src/assets/arrow.svg" alt="drop down" />
           </ShowDropMenuButton>
           <DropMenu data-testid="drop_menu" $visibility={isVisible}>
             <SortByList>

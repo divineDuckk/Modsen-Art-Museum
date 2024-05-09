@@ -2,6 +2,7 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
   transform: {
+    '^.+\\.svg$': 'jest-transformer-svg',
     '^.+\\.tsx?$': 'ts-jest',
     // process `*.tsx` files with `ts-jest`
   },

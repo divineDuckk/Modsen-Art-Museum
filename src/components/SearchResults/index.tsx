@@ -66,7 +66,7 @@ export const SearchResults: FC = () => {
             )
           ) : (
             <MagnifierLoader
-              src="/src/assets/magnifier.png"
+              src="./src/assets/magnifier.png"
               alt="magnifier loader"
             />
           )}

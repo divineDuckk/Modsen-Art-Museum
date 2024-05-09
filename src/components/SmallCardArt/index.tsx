@@ -1,13 +1,13 @@
+import { alreadyInFavs } from '@/functions';
+import { CurrentArt } from '@/interfaces/CurrentArt';
 import { useAppDispatch } from '@/store/hooks';
+import { favArts } from '@/store/selectors/favArtsSelectors';
+import { setCurrentArt } from '@/store/slices/currentArtSlice';
+import { addToFav, deleteFromFav } from '@/store/slices/favArtsSlice';
+import { setOnHomePage } from '@/store/slices/homeSlice';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { alreadyInFavs } from '../../constants/functions';
-import { CurrentArt } from '../../interfaces/CurrentArt';
-import { favArts } from '../../store/selectors/favArtsSelectors';
-import { setCurrentArt } from '../../store/slices/currentArtSlice';
-import { addToFav, deleteFromFav } from '../../store/slices/favArtsSlice';
-import { setOnHomePage } from '../../store/slices/homeSlice';
 import {
   AddToFavButton,
   ArtAccess,
@@ -91,7 +91,7 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
         })}
         $is_active={isFav}
       >
-        <FavIcon src="/src/assets/fav.svg" alt="toggle fav" />
+        <FavIcon src="./src/assets/fav.svg" alt="toggle fav" />
       </AddToFavButton>
     </SmallStyledCardArt>
   );

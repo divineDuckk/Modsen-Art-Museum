@@ -58,7 +58,7 @@ export const SwitcherPage: FC = () => {
         $needtohide={activePage < NUM_TO_HIDE}
       >
         <ToNextIcon
-          src="/src/assets/arrow.svg"
+          src="./src/assets/arrow.svg"
           alt="to next page"
           $reversed
           $needtohide={activePage < NUM_TO_HIDE}
@@ -77,7 +77,7 @@ export const SwitcherPage: FC = () => {
         {value4}
       </StyledSwitcher>
       <ToNextButton onClick={toNextPageArt}>
-        <ToNextIcon src="/src/assets/arrow.svg" alt="to next page" />
+        <ToNextIcon src="./src/assets/arrow.svg" alt="to next page" />
       </ToNextButton>
     </Switchers>
   );

@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: 'Modsen-Art-Museum',
+  base: '/Modsen-Art-Museum/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

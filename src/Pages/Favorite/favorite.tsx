@@ -20,7 +20,7 @@ export const FavoritePage: FC = () => {
       <MainTitle>
         Here Are Your <br />
         <SubMainText>
-          <BigFavIcon src="/src/assets/bigFav.svg" alt="big fav icon" />
+          <BigFavIcon src="./src/assets/bigFav.svg" alt="big fav icon" />
           Favorites
         </SubMainText>
       </MainTitle>
@@ -36,7 +36,7 @@ export const FavoritePage: FC = () => {
           <EmptyFavsParagraph>Your favorites is empty</EmptyFavsParagraph>
           <EmptyFavsImage
             width={200}
-            src="/src/assets/sad-icon.svg"
+            src="./src/assets/sad-icon.svg"
             alt="sad smile"
           />
         </EmptyFavs>

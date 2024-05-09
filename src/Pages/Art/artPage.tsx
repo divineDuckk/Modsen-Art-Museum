@@ -56,7 +56,7 @@ export const ArtPage: FC = () => {
             onClick={toggleFavHandler}
             $is_active={isFav ?? false}
           >
-            <FavIcon src="/src/assets/fav.svg" alt="toggle fav" />
+            <FavIcon src="../src/assets/fav.svg" alt="toggle fav" />
           </AddToFavButton>
         </AddToFavButtonAbsolutePos>
       </ImageWithButton>

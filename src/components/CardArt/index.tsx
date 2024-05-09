@@ -1,4 +1,4 @@
-import { alreadyInFavs } from '@/constants/functions';
+import { alreadyInFavs } from '@/functions';
 import { CurrentArt } from '@/interfaces/CurrentArt';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { favArts } from '@/store/selectors/favArtsSelectors';
@@ -41,7 +41,7 @@ export const CardArt: FC<CurrentArt> = ({
     navigate(`/arts/${id}`);
   };
   const toggleFavHandler = (art: CurrentArt) => () => {
-    setIsFav((prev: boolean) => !prev);
+    setIsFav((prev) => !prev);
     if (isFav) {
       localStorage.removeItem(String(id));
       dispatch(deleteFromFav(id));
@@ -94,7 +94,7 @@ export const CardArt: FC<CurrentArt> = ({
           })}
           $is_active={isFav}
         >
-          <FavIcon src="/src/assets/fav.svg" alt="toggle fav" />
+          <FavIcon src="./src/assets/fav.svg" alt="toggle fav" />
         </AddToFavButton>
       </Info>
     </Card>
