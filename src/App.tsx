@@ -8,7 +8,8 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Wrapper } from './components/Wrapper/styled';
-import { getDataFromLocalStorage } from './constants/functions';
+
+import { getDataFromLocalStorage } from './functions';
 import { useAppDispatch } from './store/hooks';
 import { setFavArts } from './store/slices/favArtsSlice';
 function App() {
