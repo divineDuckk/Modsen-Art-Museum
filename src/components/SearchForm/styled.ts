@@ -107,7 +107,7 @@ export const DropMenu = styled.div<DropMenuAttr>`
   width: 220px;
   top: 35px;
   left: 86px;
-  display: ${({ visibility }) => (visibility ? 'block' : 'none')};
+  display: ${({ $visibility }) => ($visibility ? 'block' : 'none')};
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
       width: 200px;

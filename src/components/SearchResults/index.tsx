@@ -1,8 +1,4 @@
-import {
-  getArtistCountry,
-  getArtistDate,
-  getImageSrc,
-} from '@/constants/functions';
+import { getArtistCountry, getArtistDate, getImageSrc } from '@/functions';
 import { FC } from 'react';
 
 import { useAppSelector } from '@/store/hooks';

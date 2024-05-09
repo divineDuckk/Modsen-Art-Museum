@@ -54,30 +54,30 @@ export const SwitcherPage: FC = () => {
     <Switchers>
       <ToNextButton
         onClick={toPrevPageArt}
-        reversed
-        needtohide={activePage < NUM_TO_HIDE}
+        $reversed
+        $needtohide={activePage < NUM_TO_HIDE}
       >
         <ToNextIcon
-          src="./src/assets/arrow.svg"
+          src="/src/assets/arrow.svg"
           alt="to next page"
-          reversed
-          needtohide={activePage < NUM_TO_HIDE}
+          $reversed
+          $needtohide={activePage < NUM_TO_HIDE}
         />
       </ToNextButton>
-      <StyledSwitcher onClick={choosePage} is_active={activePage === value1}>
+      <StyledSwitcher onClick={choosePage} $is_active={activePage === value1}>
         {value1}
       </StyledSwitcher>
-      <StyledSwitcher onClick={choosePage} is_active={activePage === value2}>
+      <StyledSwitcher onClick={choosePage} $is_active={activePage === value2}>
         {value2}
       </StyledSwitcher>
-      <StyledSwitcher onClick={choosePage} is_active={activePage === value3}>
+      <StyledSwitcher onClick={choosePage} $is_active={activePage === value3}>
         {value3}
       </StyledSwitcher>
-      <StyledSwitcher onClick={choosePage} is_active={activePage === value4}>
+      <StyledSwitcher onClick={choosePage} $is_active={activePage === value4}>
         {value4}
       </StyledSwitcher>
       <ToNextButton onClick={toNextPageArt}>
-        <ToNextIcon src="./src/assets/arrow.svg" alt="to next page" />
+        <ToNextIcon src="/src/assets/arrow.svg" alt="to next page" />
       </ToNextButton>
     </Switchers>
   );

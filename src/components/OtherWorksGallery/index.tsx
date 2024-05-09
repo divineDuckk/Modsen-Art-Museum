@@ -1,11 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { FC, useEffect } from 'react';
 
-import {
-  getArtistCountry,
-  getArtistDate,
-  getImageSrc,
-} from '@/constants/functions';
+import { getArtistCountry, getArtistDate, getImageSrc } from '@/functions';
 import {
   anotherGalleryArts,
   isLoading,

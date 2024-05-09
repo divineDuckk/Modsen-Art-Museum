@@ -40,18 +40,19 @@ export const FavButton = styled.button`
 export const HomeButton = styled(FavButton)<HomeButtonAttrs>`
   display: flex;
   align-items: center;
-  visibility: ${({ on_home_page }) => (on_home_page ? 'hidden' : 'visible')};
+  visibility: ${({ $on_home_page }) => ($on_home_page ? 'hidden' : 'visible')};
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
-      display: ${({ on_home_page }) => (on_home_page ? 'none' : 'flex')};
+      display: ${({ $on_home_page }) => ($on_home_page ? 'none' : 'flex')};
     }
   }
 `;
+
 export const HomeIcon = styled.img``;
 export const ButtonsWrapper = styled.nav<BurgerMenu>`
   display: flex;
   gap: ${({ theme }) => theme.gaps[2]}px;
-  transform: translateX(${({ is_open }) => (is_open ? '100%' : 0)});
+  transform: translateX(${({ $is_open }) => ($is_open ? '100%' : 0)});
   transition: transform 0.3s ease-out;
 
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
@@ -68,7 +69,9 @@ export const ButtonsWrapper = styled.nav<BurgerMenu>`
     }
   }
 `;
-
+ButtonsWrapper.defaultProps = {
+  suppressHydrationWarning: true,
+};
 export const BurgerButton = styled.button`
   border: 0;
   width: 30px;

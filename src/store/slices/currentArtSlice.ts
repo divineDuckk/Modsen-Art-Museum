@@ -3,7 +3,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import { CurrentArt, CurrentArtState } from '../../interfaces/CurrentArt';
 
 const initialState: CurrentArtState = {
-  currentArt: null,
+  currentArt: {
+    title: '',
+    artist: '',
+    date: '',
+    country: '',
+    access: false,
+    criditeLine: '',
+    dimensions: '',
+    id: 0,
+    imgSrc: '',
+    repository: '',
+  },
 };
 export const currArtSlice = createSlice({
   name: 'curr',

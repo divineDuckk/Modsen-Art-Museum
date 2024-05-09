@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.42% </span>
+                <span class="strong">68.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/35</span>
+                <span class='fraction'>24/35</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>3/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/30</span>
+                <span class='fraction'>20/30</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -203,22 +203,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -226,12 +226,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -298,7 +298,7 @@ import {
   TextInfo,
 } from './styled';
 &nbsp;
-export const CardArt: FC&lt;CurrentArt&gt; = <span class="fstat-no" title="function not covered" >({</span>
+export const CardArt: FC&lt;CurrentArt&gt; = ({
   imgSrc,
   id,
   access,
@@ -310,16 +310,16 @@ export const CardArt: FC&lt;CurrentArt&gt; = <span class="fstat-no" title="funct
   dimensions,
   repository,
 }) =&gt; {
-  const favs = <span class="cstat-no" title="statement not covered" >useAppSelector(favArts);</span>
-  const [isFav, setIsFav] = <span class="cstat-no" title="statement not covered" >useState(alreadyInFavs(id, favs));</span>
-  const dispatch = <span class="cstat-no" title="statement not covered" >useAppDispatch();</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
-  const onClickArt = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(o</span>bj: CurrentArt) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span></span>
+  const favs = useAppSelector(favArts);
+  const [isFav, setIsFav] = useState(alreadyInFavs(id, favs));
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const onClickArt = (obj: CurrentArt) =&gt; <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(setOnHomePage(false));</span>
 <span class="cstat-no" title="statement not covered" >    dispatch(setCurrentArt(obj));</span>
 <span class="cstat-no" title="statement not covered" >    navigate(`/arts/${id}`);</span>
   };
-  const toggleFavHandler = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>rt: CurrentArt) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span></span>
+  const toggleFavHandler = (art: CurrentArt) =&gt; <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >    setIsFav(<span class="fstat-no" title="function not covered" >(p</span>rev) =&gt; <span class="cstat-no" title="statement not covered" >!prev)</span>;</span>
 <span class="cstat-no" title="statement not covered" >    if (isFav) {</span>
 <span class="cstat-no" title="statement not covered" >      localStorage.removeItem(String(id));</span>
@@ -333,12 +333,12 @@ export const CardArt: FC&lt;CurrentArt&gt; = <span class="fstat-no" title="funct
     }
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-    const art = <span class="cstat-no" title="statement not covered" >findObjectById(id, favs);</span>
-<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!art) <span class="cstat-no" title="statement not covered" >return;</span></span>
+  useEffect(() =&gt; {
+    const art = findObjectById(id, favs);
+    if (!art) return;
 <span class="cstat-no" title="statement not covered" >    setIsFav(art.isFav);</span>
   }, [favs]);
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;Card&gt;
       &lt;ArtImage
         onClick={onClickArt({
@@ -359,9 +359,9 @@ export const CardArt: FC&lt;CurrentArt&gt; = <span class="fstat-no" title="funct
       &lt;Info&gt;
         &lt;TextInfo&gt;
           &lt;ArtTitle&gt;{title}&lt;/ArtTitle&gt;
-          &lt;ArtistName&gt;{artist !== null ? artist : 'Unknown'}&lt;/ArtistName&gt;
+          &lt;ArtistName&gt;{artist !== null ? artist : <span class="branch-1 cbranch-no" title="branch not covered" >'Unknown'}</span>&lt;/ArtistName&gt;
           &lt;br /&gt;
-          &lt;ArtAccess&gt; {access ? 'Public' : 'Private'}&lt;/ArtAccess&gt;
+          &lt;ArtAccess&gt; {access ? 'Public' : <span class="branch-1 cbranch-no" title="branch not covered" >'Private'}</span>&lt;/ArtAccess&gt;
         &lt;/TextInfo&gt;
         &lt;AddToFavButton
           onClick={toggleFavHandler({
@@ -376,7 +376,7 @@ export const CardArt: FC&lt;CurrentArt&gt; = <span class="fstat-no" title="funct
             dimensions,
             repository,
           })}
-          is_active={isFav}
+          $is_active={isFav}
         &gt;
           &lt;FavIcon src="./src/assets/fav.svg" alt="toggle fav" /&gt;
         &lt;/AddToFavButton&gt;
@@ -391,7 +391,7 @@ export const CardArt: FC&lt;CurrentArt&gt; = <span class="fstat-no" title="funct
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-05-08T22:03:59.426Z
+                at 2024-05-09T16:21:25.091Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

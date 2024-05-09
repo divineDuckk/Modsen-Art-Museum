@@ -1,11 +1,11 @@
-import { alreadyInFavs, findObjectById } from '@/constants/functions';
+import { alreadyInFavs } from '@/constants/functions';
 import { CurrentArt } from '@/interfaces/CurrentArt';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { favArts } from '@/store/selectors/favArtsSelectors';
 import { setCurrentArt } from '@/store/slices/currentArtSlice';
 import { addToFav, deleteFromFav } from '@/store/slices/favArtsSlice';
 import { setOnHomePage } from '@/store/slices/homeSlice';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   AddToFavButton,
@@ -41,7 +41,7 @@ export const CardArt: FC<CurrentArt> = ({
     navigate(`/arts/${id}`);
   };
   const toggleFavHandler = (art: CurrentArt) => () => {
-    setIsFav((prev) => !prev);
+    setIsFav((prev: boolean) => !prev);
     if (isFav) {
       localStorage.removeItem(String(id));
       dispatch(deleteFromFav(id));
@@ -54,11 +54,6 @@ export const CardArt: FC<CurrentArt> = ({
     }
   };
 
-  useEffect(() => {
-    const art = findObjectById(id, favs);
-    if (!art) return;
-    setIsFav(art.isFav);
-  }, [favs]);
   return (
     <Card>
       <ArtImage
@@ -97,9 +92,9 @@ export const CardArt: FC<CurrentArt> = ({
             dimensions,
             repository,
           })}
-          is_active={isFav}
+          $is_active={isFav}
         >
-          <FavIcon src="./src/assets/fav.svg" alt="toggle fav" />
+          <FavIcon src="/src/assets/fav.svg" alt="toggle fav" />
         </AddToFavButton>
       </Info>
     </Card>

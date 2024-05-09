@@ -11,6 +11,7 @@ import { useFormik } from 'formik';
 import { FC, MouseEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { object, string } from 'yup';
+import { MAX_LENGTH, MAX_MESSAGE, MIN_LENGTH, MIN_MESSAGE } from './constants';
 import {
   ClearButton,
   DropDownIcon,
@@ -29,8 +30,8 @@ import {
 } from './styled';
 export const SearhForm: FC = () => {
   const dispatch = useAppDispatch();
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [sortByValue, setSortByValue] = useState<string>(SORT_VALUES[0]);
+  const [isVisible, setIsVisible] = useState(false);
+  const [sortByValue, setSortByValue] = useState(SORT_VALUES[0]);
   const needToRenderResults = useSelector(isNeedRenderSearchContent);
   const onClickLi = (e: MouseEvent<HTMLLIElement>) => {
     setIsVisible(false);
@@ -53,7 +54,10 @@ export const SearhForm: FC = () => {
     },
     onSubmit: searchHandler,
     validationSchema: object({
-      text: string().max(20, 'Must be 20 characters or less').required(),
+      text: string()
+        .min(MIN_LENGTH, MIN_MESSAGE)
+        .max(MAX_LENGTH, MAX_MESSAGE)
+        .required(),
     }),
   });
   const clearResults = () => {
@@ -63,26 +67,30 @@ export const SearhForm: FC = () => {
   };
   return (
     <FormWrapper>
-      <Form onSubmit={formik.handleSubmit}>
+      <Form onSubmit={formik.handleSubmit} data-testid="form">
         <SearchInput
           id="text"
           type="text"
           value={formik.values.text}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          data-testid="input_value"
         />
-        <SearchButton type="submit">
-          <SearchIcon src="./src/assets/search.svg" alt="search icon" />
+        <SearchButton type="submit" data-testid="submit">
+          <SearchIcon src="/src/assets/search.svg" alt="search icon" />
         </SearchButton>
       </Form>
       <FlexDiv>
         <SortDiv>
           Sort by:
-          <ShowDropMenuButton onClick={onClickSortButton}>
+          <ShowDropMenuButton
+            data-testid="show_drop"
+            onClick={onClickSortButton}
+          >
             {sortByValue}
-            <DropDownIcon src="./src/assets/arrow.svg" alt="drop down" />
+            <DropDownIcon src="/src/assets/arrow.svg" alt="drop down" />
           </ShowDropMenuButton>
-          <DropMenu visibility={isVisible}>
+          <DropMenu data-testid="drop_menu" $visibility={isVisible}>
             <SortByList>
               {SORT_VALUES.map((el: string) => (
                 <ListElem key={el} onClick={onClickLi}>
@@ -99,7 +107,7 @@ export const SearhForm: FC = () => {
         )}
       </FlexDiv>
       {formik.touched.text && formik.errors.text && (
-        <ErrorMsg>{formik.errors.text}</ErrorMsg>
+        <ErrorMsg data-testid="error_input">{formik.errors.text}</ErrorMsg>
       )}
     </FormWrapper>
   );

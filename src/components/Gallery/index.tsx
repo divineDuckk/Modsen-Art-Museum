@@ -1,10 +1,6 @@
 import { FC, useEffect } from 'react';
 
-import {
-  getArtistCountry,
-  getArtistDate,
-  getImageSrc,
-} from '@/constants/functions';
+import { getArtistCountry, getArtistDate, getImageSrc } from '@/functions';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import {
   galleryArts,
@@ -24,9 +20,6 @@ export const Gallery: FC = () => {
   useEffect(() => {
     dispatch(fetchArts(activePage));
   }, [activePage]);
-  useEffect(() => {
-    console.log(arts);
-  }, [arts]);
   return (
     <>
       {!isLoad ? (
@@ -52,6 +45,7 @@ export const Gallery: FC = () => {
                   : 'No repository';
                 return (
                   <CardArt
+                    data-testid="gallery_cards"
                     id={id}
                     access={is_public_domain}
                     artist={artist_title}

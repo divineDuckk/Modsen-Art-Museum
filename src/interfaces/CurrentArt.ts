@@ -11,5 +11,5 @@ export interface CurrentArt {
   imgSrc: string;
 }
 export interface CurrentArtState {
-  currentArt: CurrentArt | null;
+  currentArt: CurrentArt;
 }

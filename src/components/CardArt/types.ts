@@ -1,3 +1,3 @@
 export interface BgColorProps {
-  is_active: boolean;
+  $is_active: boolean;
 }

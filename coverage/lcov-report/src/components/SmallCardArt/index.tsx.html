@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.7% </span>
+                <span class="strong">67.74% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/31</span>
+                <span class='fraction'>21/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.74% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/27</span>
+                <span class='fraction'>18/27</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -191,29 +191,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -276,7 +276,7 @@ import {
 import { LittleArtImage, SmallStyledCardArt, SmallTextInfo } from './styled';
 import { SmallCardArtProps } from './types';
 &nbsp;
-export const SmallCardArt: FC&lt;SmallCardArtProps&gt; = <span class="fstat-no" title="function not covered" >({</span>
+export const SmallCardArt: FC&lt;SmallCardArtProps&gt; = ({
   imgSrc,
   access,
   artist,
@@ -288,16 +288,16 @@ export const SmallCardArt: FC&lt;SmallCardArtProps&gt; = <span class="fstat-no" 
   dimensions,
   repository,
 }) =&gt; {
-  const favs = <span class="cstat-no" title="statement not covered" >useSelector(favArts);</span>
-  const [isFav, setIsFav] = <span class="cstat-no" title="statement not covered" >useState(alreadyInFavs(id, favs));</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
-  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
-  const onClickArt = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(o</span>bj: CurrentArt) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span></span>
+  const favs = useSelector(favArts);
+  const [isFav, setIsFav] = useState(alreadyInFavs(id, favs));
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const onClickArt = (obj: CurrentArt) =&gt; <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(setOnHomePage(false));</span>
 <span class="cstat-no" title="statement not covered" >    dispatch(setCurrentArt(obj));</span>
 <span class="cstat-no" title="statement not covered" >    navigate(`/arts/${id}`);</span>
   };
-  const toggleFavHandler = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>rt: CurrentArt) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span></span>
+  const toggleFavHandler = (art: CurrentArt) =&gt; <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >    setIsFav(<span class="fstat-no" title="function not covered" >(p</span>rev) =&gt; <span class="cstat-no" title="statement not covered" >!prev)</span>;</span>
 <span class="cstat-no" title="statement not covered" >    if (isFav) {</span>
 <span class="cstat-no" title="statement not covered" >      localStorage.removeItem(String(id));</span>
@@ -310,7 +310,7 @@ export const SmallCardArt: FC&lt;SmallCardArtProps&gt; = <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >      dispatch(addToFav({ ...art, isFav: !isFav }));</span>
     }
   };
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;SmallStyledCardArt&gt;
       &lt;LittleArtImage
         src={imgSrc}
@@ -330,9 +330,9 @@ export const SmallCardArt: FC&lt;SmallCardArtProps&gt; = <span class="fstat-no" 
       /&gt;
       &lt;SmallTextInfo&gt;
         &lt;ArtTitle&gt;{title}&lt;/ArtTitle&gt;
-        &lt;ArtistName&gt;{artist !== null ? artist : 'Unknown'}&lt;/ArtistName&gt;
+        &lt;ArtistName&gt;{artist !== null ? artist : <span class="branch-1 cbranch-no" title="branch not covered" >'Unknown'}</span>&lt;/ArtistName&gt;
         &lt;br /&gt;
-        &lt;ArtAccess&gt; {access ? 'Public' : 'Private'}&lt;/ArtAccess&gt;
+        &lt;ArtAccess&gt; {access ? 'Public' : <span class="branch-1 cbranch-no" title="branch not covered" >'Private'}</span>&lt;/ArtAccess&gt;
       &lt;/SmallTextInfo&gt;
       &lt;AddToFavButton
         onClick={toggleFavHandler({
@@ -347,7 +347,7 @@ export const SmallCardArt: FC&lt;SmallCardArtProps&gt; = <span class="fstat-no" 
           dimensions,
           repository,
         })}
-        is_active={isFav}
+        $is_active={isFav}
       &gt;
         &lt;FavIcon src="./src/assets/fav.svg" alt="toggle fav" /&gt;
       &lt;/AddToFavButton&gt;
@@ -361,7 +361,7 @@ export const SmallCardArt: FC&lt;SmallCardArtProps&gt; = <span class="fstat-no" 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-05-08T22:03:59.426Z
+                at 2024-05-09T16:21:25.091Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -74,8 +74,8 @@ export const AddToFavButton = styled.button<BgColorProps>`
   align-items: center;
   border: 0;
   cursor: pointer;
-  background-color: ${({ is_active, theme }) =>
-    is_active ? theme.colors['activeBg'] : theme.colors['nonActiveBg']};
+  background-color: ${({ $is_active, theme }) =>
+    $is_active ? theme.colors['activeBg'] : theme.colors['nonActiveBg']};
 `;
 export const FavIcon = styled.img`
   width: 19px;

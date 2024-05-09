@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <BrowserRouter>
+      <BrowserRouter basename="/Modsen-Art-Museum/">
         <Provider store={store}>
           <App />
         </Provider>

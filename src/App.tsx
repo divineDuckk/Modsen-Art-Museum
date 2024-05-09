@@ -4,6 +4,7 @@ import { ArtPage } from './Pages/Art/artPage';
 import { FavoritePage } from './Pages/Favorite/favorite';
 import { MainPage } from './Pages/Main/MainPage';
 import { ContentWrapper } from './components/ContentWrapper/styled';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Wrapper } from './components/Wrapper/styled';
@@ -17,15 +18,17 @@ function App() {
   }, []);
   return (
     <ContentWrapper>
-      <Header />
-      <Wrapper>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/favorites" element={<FavoritePage />} />
-          <Route path="/arts/:id" element={<ArtPage />} />
-        </Routes>
-      </Wrapper>
-      <Footer />
+      <ErrorBoundary>
+        <Header />
+        <Wrapper>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/favorites" element={<FavoritePage />} />
+            <Route path="/arts/:id" element={<ArtPage />} />
+          </Routes>
+        </Wrapper>
+        <Footer />
+      </ErrorBoundary>
     </ContentWrapper>
   );
 }

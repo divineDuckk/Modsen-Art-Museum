@@ -1,8 +1,11 @@
-import { FavIcon } from '@/components/CardArt/styled';
-import { alreadyInFavs } from '@/constants/functions';
+import { AddToFavButton, FavIcon } from '@/components/CardArt/styled';
+import { alreadyInFavs } from '@/functions';
+import { FavArt } from '@/interfaces/FavInterfaces';
+import { useAppDispatch } from '@/store/hooks';
 import { currArt } from '@/store/selectors/currentArtSelectors';
 import { favArts } from '@/store/selectors/favArtsSelectors';
-import { FC } from 'react';
+import { addToFav, deleteFromFav } from '@/store/slices/favArtsSlice';
+import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   AddToFavButtonAbsolutePos,
@@ -21,14 +24,40 @@ import {
 export const ArtPage: FC = () => {
   const favs = useSelector(favArts);
   const currentArt = useSelector(currArt);
+  const [isFav, setIsFav] = useState(
+    currentArt && alreadyInFavs(currentArt.id, favs)
+  );
+  const dispatch = useAppDispatch();
+  const toggleFavHandler = () => {
+    setIsFav((prev) => !prev);
+    if (isFav && currentArt.id) {
+      localStorage.removeItem(String(currentArt.id));
+      dispatch(deleteFromFav(currentArt.id));
+    } else {
+      localStorage.setItem(
+        String(currentArt.id),
+        JSON.stringify({ ...currentArt, isFav: !isFav })
+      );
+      const favArt: FavArt = {
+        ...currentArt,
+        isFav: !isFav,
+      };
+      dispatch(addToFav(favArt));
+    }
+  };
   return (
     <CurrentArtPage>
       <ImageWithButton>
         <CurrentArtImage src={currentArt?.imgSrc} alt="image of art" />
         <AddToFavButtonAbsolutePos
-          is_active={alreadyInFavs(currentArt?.id, favs)}
+          $is_active={alreadyInFavs(currentArt?.id, favs)}
         >
-          <FavIcon src="/src/assets/fav.svg" alt="toggle fav" />
+          <AddToFavButton
+            onClick={toggleFavHandler}
+            $is_active={isFav ?? false}
+          >
+            <FavIcon src="/src/assets/fav.svg" alt="toggle fav" />
+          </AddToFavButton>
         </AddToFavButtonAbsolutePos>
       </ImageWithButton>
       <Info>

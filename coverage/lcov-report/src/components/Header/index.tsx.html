@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.41% </span>
+                <span class="strong">93.1% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/29</span>
+                <span class='fraction'>27/29</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/28</span>
+                <span class='fraction'>26/28</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -127,7 +127,11 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -145,30 +149,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,18 +220,18 @@ export const Header: FC = () =&gt; {
   const navigate = useNavigate();
   const onHomePage = useSelector(onHome);
   const dispatch = useDispatch();
-  const toFavoritesHandler = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
-<span class="cstat-no" title="statement not covered" >    setIsMenuOpen(false);</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(setOnHomePage(false));</span>
-<span class="cstat-no" title="statement not covered" >    navigate('/favorites');</span>
+  const toFavoritesHandler = () =&gt; {
+    setIsMenuOpen(false);
+    dispatch(setOnHomePage(false));
+    navigate('/favorites');
   };
   const clickLogoHandler = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(setOnHomePage(true));</span>
   };
-  const clickHomeHandler = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
-<span class="cstat-no" title="statement not covered" >    setIsMenuOpen(false);</span>
-<span class="cstat-no" title="statement not covered" >    navigate('/');</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(setOnHomePage(true));</span>
+  const clickHomeHandler = () =&gt; {
+    setIsMenuOpen(false);
+    navigate('/');
+    dispatch(setOnHomePage(true));
   };
   useEffect(() =&gt; {
     console.log(onHomePage);
@@ -238,12 +246,16 @@ export const Header: FC = () =&gt; {
         &lt;HeaderModsenLogo src="./src/assets/logo.svg" alt="logo" /&gt;
       &lt;/Link&gt;
       &lt;FlexDiv&gt;
-        &lt;ButtonsWrapper is_open={isMenuOpen}&gt;
-          &lt;HomeButton on_home_page={onHomePage} onClick={clickHomeHandler}&gt;
+        &lt;ButtonsWrapper $is_open={isMenuOpen}&gt;
+          &lt;HomeButton
+            data-testid="to_home_page"
+            $on_home_page={onHomePage}
+            onClick={clickHomeHandler}
+          &gt;
             &lt;HomeIcon src="./src/assets/home.svg" alt="home icon" /&gt;
             Home
           &lt;/HomeButton&gt;
-          &lt;FavButton onClick={toFavoritesHandler}&gt;
+          &lt;FavButton data-testid="to_fav_page" onClick={toFavoritesHandler}&gt;
             &lt;FavIcon src="./src/assets/fav.svg" alt="fav icon" /&gt;
             Your favorites
           &lt;/FavButton&gt;
@@ -262,7 +274,7 @@ export const Header: FC = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-05-08T22:03:59.426Z
+                at 2024-05-09T16:21:25.091Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

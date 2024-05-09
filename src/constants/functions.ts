@@ -48,12 +48,7 @@ export const sortByObj: SortByObj = {
     return sortedArr;
   },
 };
-export const findObjectById = (
-  id: number,
-  arr: FavArt[]
-): FavArt | undefined => {
-  return arr.find((el) => el.id === id);
-};
+
 export const alreadyInFavs = (
   id: number | undefined,
   favs: FavArt[]

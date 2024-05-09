@@ -1,7 +1,7 @@
 export interface SwitcherProps {
-  is_active: boolean;
+  $is_active: boolean;
 }
 export interface ToNextButtonProps {
-  reversed?: boolean;
-  needtohide?: boolean;
+  $reversed?: boolean;
+  $needtohide?: boolean;
 }

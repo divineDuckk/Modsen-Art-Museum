@@ -14,5 +14,5 @@ export interface PromiseAllResponseArray {
   };
 }
 export interface DropMenuAttr {
-  visibility: boolean;
+  $visibility: boolean;
 }

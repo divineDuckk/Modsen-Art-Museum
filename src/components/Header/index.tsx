@@ -42,21 +42,25 @@ export const Header: FC = () => {
   return (
     <ContentHeader>
       <Link to="/" onClick={clickLogoHandler}>
-        <HeaderModsenLogo src="./src/assets/logo.svg" alt="logo" />
+        <HeaderModsenLogo src="/src/assets/logo.svg" alt="logo" />
       </Link>
       <FlexDiv>
-        <ButtonsWrapper is_open={isMenuOpen}>
-          <HomeButton on_home_page={onHomePage} onClick={clickHomeHandler}>
-            <HomeIcon src="./src/assets/home.svg" alt="home icon" />
+        <ButtonsWrapper $is_open={isMenuOpen}>
+          <HomeButton
+            data-testid="to_home_page"
+            $on_home_page={onHomePage}
+            onClick={clickHomeHandler}
+          >
+            <HomeIcon src="/src/assets/home.svg" alt="home icon" />
             Home
           </HomeButton>
-          <FavButton onClick={toFavoritesHandler}>
-            <FavIcon src="./src/assets/fav.svg" alt="fav icon" />
+          <FavButton data-testid="to_fav_page" onClick={toFavoritesHandler}>
+            <FavIcon src="/src/assets/fav.svg" alt="fav icon" />
             Your favorites
           </FavButton>
         </ButtonsWrapper>
         <BurgerButton onClick={toggleMenuHandler}>
-          <BurgerIcon src="./src/assets/menu.svg" alt="menu" />
+          <BurgerIcon src="/src/assets/menu.svg" alt="menu" />
         </BurgerButton>
       </FlexDiv>
     </ContentHeader>

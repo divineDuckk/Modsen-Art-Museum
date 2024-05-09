@@ -1,5 +1,6 @@
+import { useAppDispatch } from '@/store/hooks';
 import { FC, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { alreadyInFavs } from '../../constants/functions';
 import { CurrentArt } from '../../interfaces/CurrentArt';
@@ -32,7 +33,7 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
   const favs = useSelector(favArts);
   const [isFav, setIsFav] = useState(alreadyInFavs(id, favs));
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const onClickArt = (obj: CurrentArt) => () => {
     dispatch(setOnHomePage(false));
     dispatch(setCurrentArt(obj));
@@ -88,9 +89,9 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({
           dimensions,
           repository,
         })}
-        is_active={isFav}
+        $is_active={isFav}
       >
-        <FavIcon src="./src/assets/fav.svg" alt="toggle fav" />
+        <FavIcon src="/src/assets/fav.svg" alt="toggle fav" />
       </AddToFavButton>
     </SmallStyledCardArt>
   );
