@@ -3,7 +3,7 @@ import {
   SearchResponse,
 } from '@/components/SearchForm/types';
 import { BASE_URL, BIG_LIMIT } from '@/constants/constants';
-import { sortByObj } from '@/constants/functions';
+import { sortByObj } from '@/functions';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
 
