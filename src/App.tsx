@@ -14,8 +14,12 @@ import { useAppDispatch } from './store/hooks';
 import { setFavArts } from './store/slices/favArtsSlice';
 function App() {
   const dispatch = useAppDispatch();
+  const deleteActivePage = () => {
+    localStorage.removeItem('activePage');
+  };
   useEffect(() => {
     dispatch(setFavArts(getDataFromLocalStorage()));
+    window.addEventListener('unload', deleteActivePage);
   }, []);
   return (
     <ContentWrapper>
