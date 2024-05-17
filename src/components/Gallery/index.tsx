@@ -1,28 +1,16 @@
 import loader from '@/assets/loader.png';
 import { getArtistCountry, getArtistDate, getImageSrc } from '@/functions';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import {
-  galleryArts,
-  isLoading,
-  numOfActivePage,
-} from '@/store/selectors/gallerySelectors';
-import { fetchArts } from '@/store/thunks/fetchArts';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { CardArt } from '../CardArt';
 import { SpinLoader } from '../SpinLoader/styled';
 import { SwitcherPage } from '../SwitcherPage';
+import { useFetchArts } from '../hooks/useFetchArts';
 import { Group, LoaderWrapper, SwitcherWrap } from './styled';
 export const Gallery: FC = () => {
-  const arts = useAppSelector(galleryArts);
-  const activePage = useAppSelector(numOfActivePage);
-  const isLoad = useAppSelector(isLoading);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchArts(activePage));
-  }, [activePage]);
+  const { arts, isLoading, setActivePage, activePage } = useFetchArts();
   return (
     <>
-      {!isLoad ? (
+      {!isLoading ? (
         <Group>
           {arts.length &&
             arts.map(
@@ -68,7 +56,7 @@ export const Gallery: FC = () => {
         </LoaderWrapper>
       )}
       <SwitcherWrap>
-        <SwitcherPage />
+        <SwitcherPage activePage={activePage} setActivePage={setActivePage} />
       </SwitcherWrap>
     </>
   );

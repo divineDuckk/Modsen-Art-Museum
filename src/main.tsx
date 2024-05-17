@@ -7,14 +7,14 @@ import App from './App.tsx';
 import { store } from './store/index.ts';
 import { GlobalStyles, theme } from './theme';
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <BrowserRouter basename="/Modsen-Art-Museum/">
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    </ThemeProvider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <BrowserRouter basename="/Modsen-Art-Museum/">
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            </BrowserRouter>
+        </ThemeProvider>
+    </React.StrictMode>
 );

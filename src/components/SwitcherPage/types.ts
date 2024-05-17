@@ -5,3 +5,7 @@ export interface ToNextButtonProps {
   $reversed?: boolean;
   $needtohide?: boolean;
 }
+export interface SwitcherPageProps {
+  activePage: number;
+  setActivePage: (num: number) => void;
+}

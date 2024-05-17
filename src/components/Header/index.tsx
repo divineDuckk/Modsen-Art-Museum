@@ -2,13 +2,10 @@ import favSvg from '@/assets/fav.svg';
 import homeSvg from '@/assets/home.svg';
 import logo from '@/assets/logo.svg';
 import menu from '@/assets/menu.svg';
-import { onHome } from '@/store/selectors/homeSelectors';
-import { setOnHomePage } from '@/store/slices/homeSlice';
+import { FavIcon } from '@/components/CardArt/styled';
+import { FlexDiv } from '@/components/SearchForm/styled';
 import { FC, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { FavIcon } from '../CardArt/styled';
-import { FlexDiv } from '../SearchForm/styled';
+import { Link, useLocation } from 'react-router-dom';
 import {
   BurgerButton,
   BurgerIcon,
@@ -21,42 +18,24 @@ import {
 } from './styled';
 
 export const Header: FC = () => {
-  const navigate = useNavigate();
-  const onHomePage = useSelector(onHome);
-  const dispatch = useDispatch();
-  const toFavoritesHandler = () => {
-    setIsMenuOpen(false);
-    dispatch(setOnHomePage(false));
-    navigate('/favorites');
-  };
-  const clickLogoHandler = () => {
-    dispatch(setOnHomePage(true));
-  };
-  const clickHomeHandler = () => {
-    setIsMenuOpen(false);
-    navigate('/');
-    dispatch(setOnHomePage(true));
-  };
+  const location = useLocation().pathname;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenuHandler = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenuHandler = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <ContentHeader>
-      <Link to="/" onClick={clickLogoHandler}>
+      <Link to="/">
         <HeaderModsenLogo src={logo} alt="logo" />
       </Link>
       <FlexDiv>
         <ButtonsWrapper $is_open={isMenuOpen}>
-          <HomeButton
-            data-testid="to_home_page"
-            $on_home_page={onHomePage}
-            onClick={clickHomeHandler}
-          >
-            <HomeIcon src={homeSvg} alt="home icon" />
-            Home
-          </HomeButton>
-          <FavButton data-testid="to_fav_page" onClick={toFavoritesHandler}>
+          {location !== '/' && (
+            <HomeButton to="/" data-testid="to_home_page">
+              <HomeIcon src={homeSvg} alt="home icon" />
+              Home
+            </HomeButton>
+          )}
+          <FavButton to="/favorites" data-testid="to_fav_page">
             <FavIcon src={favSvg} alt="fav icon" />
             Your favorites
           </FavButton>

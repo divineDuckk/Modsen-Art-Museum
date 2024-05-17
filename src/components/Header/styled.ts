@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { BurgerMenu, HomeButtonAttrs } from './types';
+import { BurgerMenu } from './types';
 export const ContentHeader = styled.header`
   background: linear-gradient(
     90deg,
@@ -26,7 +27,7 @@ export const ContentHeader = styled.header`
   }
 `;
 export const HeaderModsenLogo = styled.img``;
-export const FavButton = styled.button`
+export const FavButton = styled(Link)`
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
   line-height: ${({ theme }) => theme.lineHeights[4]}px;
   color: white;
@@ -37,16 +38,7 @@ export const FavButton = styled.button`
   align-items: center;
   gap: ${({ theme }) => theme.gaps[0]}px;
 `;
-export const HomeButton = styled(FavButton)<HomeButtonAttrs>`
-  display: flex;
-  align-items: center;
-  visibility: ${({ $on_home_page }) => ($on_home_page ? 'hidden' : 'visible')};
-  @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
-    & {
-      display: ${({ $on_home_page }) => ($on_home_page ? 'none' : 'flex')};
-    }
-  }
-`;
+export const HomeButton = styled(FavButton)``;
 
 export const HomeIcon = styled.img``;
 export const ButtonsWrapper = styled.nav<BurgerMenu>`

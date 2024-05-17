@@ -8,17 +8,17 @@ import { Topic } from '@/components/YoursTopic';
 import { FC } from 'react';
 
 export const MainPage: FC = () => {
-  return (
-    <>
-      <Title />
-      <SearhForm />
-      <ErrorBoundary>
-        <SearchResults />
-      </ErrorBoundary>
-      <Topic hText="Our special gallery" spanText="Topics for you" />
-      <Gallery />
-      <Topic hText="Other works for you" spanText="Here some more" />
-      <AnotherGallery />
-    </>
-  );
+    return (
+        <>
+            <Title />
+            <SearhForm />
+            <ErrorBoundary>
+                <SearchResults />
+            </ErrorBoundary>
+            <Topic hText="Our special gallery" spanText="Topics for you" />
+            <Gallery />
+            <Topic hText="Other works for you" spanText="Here some more" />
+            <AnotherGallery />
+        </>
+    );
 };
