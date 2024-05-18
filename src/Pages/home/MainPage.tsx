@@ -20,6 +20,7 @@ export const MainPage: FC = () => {
         setNeedToRenderResults={setNeedToRenderResults}
         fetchSearching={fetchSearching}
         setSearchedArts={setSearchedArts}
+        isLoading={isLoading}
       />
       <ErrorBoundary>
         <SearchResults

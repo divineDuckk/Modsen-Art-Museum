@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { FC, MouseEvent, useState } from 'react';
 import { object, string } from 'yup';
 import { MAX_LENGTH, MAX_MESSAGE, MIN_LENGTH, MIN_MESSAGE } from './constants';
+
 import {
   ClearButton,
   DropDownIcon,
@@ -21,12 +22,15 @@ import {
   SortByList,
   SortDiv,
 } from './styled';
+
 import { SearchFormProps } from './types';
+
 export const SearhForm: FC<SearchFormProps> = ({
   needToRenderResults,
   setNeedToRenderResults,
   fetchSearching,
   setSearchedArts,
+  isLoading,
 }) => {
   const [sortByValue, setSortByValue] = useState(SORT_VALUES[0]);
   const [isVisible, setIsVisible] = useState(false);
@@ -35,9 +39,11 @@ export const SearhForm: FC<SearchFormProps> = ({
     setIsVisible(false);
     setSortByValue(e.currentTarget.innerText);
   };
+
   const onClickSortButton = () => {
     setIsVisible(!isVisible);
   };
+
   const searchHandler = async (values: { text: string }) => {
     try {
       setNeedToRenderResults(true);
@@ -47,11 +53,21 @@ export const SearhForm: FC<SearchFormProps> = ({
     }
   };
 
+  const debounce = (
+    callback: (values: { text: string }) => void,
+    isLoading: boolean
+  ) => {
+    return function (values: { text: string }) {
+      if (isLoading) return;
+      callback(values);
+    };
+  };
+
   const formik = useFormik({
     initialValues: {
       text: '',
     },
-    onSubmit: searchHandler,
+    onSubmit: debounce(searchHandler, isLoading),
     validationSchema: object({
       text: string()
         .min(MIN_LENGTH, MIN_MESSAGE)

@@ -10,20 +10,3 @@ export interface Art {
   publication_history: string;
   isFav?: boolean;
 }
-export interface AnotherGalleryArtState {
-  arts: Art[];
-  isLoading: boolean;
-  error: unknown;
-}
-export interface SearchedGalleryArtState {
-  searchedArts: Art[];
-  needRenderSearchContent: boolean;
-  isLoading: boolean;
-  error: unknown;
-}
-export interface GalleryArtState {
-  arts: Art[];
-  activePage: number;
-  isLoading: boolean;
-  error: unknown;
-}

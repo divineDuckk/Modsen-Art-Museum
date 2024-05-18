@@ -1,4 +1,12 @@
 import favSvg from '@/assets/fav.svg';
+
+import {
+  AddToFavButton,
+  ArtAccess,
+  ArtTitle,
+  ArtistName,
+  FavIcon,
+} from '@/components/CardArt/styled';
 import {
   alreadyInFavs,
   getArtistCountry,
@@ -8,18 +16,13 @@ import {
   pushToLocalStorageFav,
   removeFromLocalStorageFav,
 } from '@/functions';
+
 import { CurrentArt } from '@/interfaces/CurrentArt';
 import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  AddToFavButton,
-  ArtAccess,
-  ArtTitle,
-  ArtistName,
-  FavIcon,
-} from '../CardArt/styled';
 import { LittleArtImage, SmallStyledCardArt, SmallTextInfo } from './styled';
 import { SmallCardArtProps } from './types';
+
 export const SmallCardArt: FC<SmallCardArtProps> = ({ art, setFavs }) => {
   const artistCountry = getArtistCountry(art.artist_display);
   const imageSrc = getImageSrc(art.image_id);
@@ -44,11 +47,12 @@ export const SmallCardArt: FC<SmallCardArtProps> = ({ art, setFavs }) => {
   };
   const favs = getDataFromLocalStorage();
   const [isFav, setIsFav] = useState(alreadyInFavs(art.id, favs));
-
   const navigate = useNavigate();
+
   const onClickArt = (art: CurrentArt) => () => {
     navigate(`/arts/${art.id}`);
   };
+
   const toggleFavHandler = () => {
     setIsFav((prev) => !prev);
     if (isFav) {

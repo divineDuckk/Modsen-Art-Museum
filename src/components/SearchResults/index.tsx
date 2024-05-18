@@ -1,8 +1,8 @@
 import magnifier from '@/assets/magnifier.png';
+import { MagnifierLoader } from '@/components/MagnifierLoader/styled';
+import { AnotherGalleryGroup } from '@/components/OtherWorksGallery/styled';
+import { SmallCardArt } from '@/components/SmallCardArt';
 import { FC } from 'react';
-import { MagnifierLoader } from '../MagnifierLoader/styled';
-import { AnotherGalleryGroup } from '../OtherWorksGallery/styled';
-import { SmallCardArt } from '../SmallCardArt';
 import { NothingFoundHeader } from './styled';
 import { SearchResultsProps } from './types';
 export const SearchResults: FC<SearchResultsProps> = ({

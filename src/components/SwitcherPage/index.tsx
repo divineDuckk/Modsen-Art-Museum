@@ -1,11 +1,14 @@
 import arrow from '@/assets/arrow.svg';
+
 import {
   getPageFromSessionStorage,
   getSwitcherPagesFromSessionStorage,
   pushPageToSessionStorage,
   pushSwitcherPagesToSessionStorage,
 } from '@/functions';
+
 import { FC, useEffect, useState } from 'react';
+
 import {
   MAX_VISIBLE_PAGE,
   NUM_TO_HIDE,
@@ -13,6 +16,7 @@ import {
   REQUIRED_REMAINDER_TO_MOVE_BACK,
   REQUIRED_REMAINDER_TO_MOVE_FORWARD,
 } from './constants';
+
 import { StyledSwitcher, Switchers, ToNextButton, ToNextIcon } from './styled';
 import { SwitcherPageProps } from './types';
 
@@ -33,7 +37,7 @@ export const SwitcherPage: FC<SwitcherPageProps> = ({
     pushSwitcherPagesToSessionStorage(pagesArr);
   };
 
-  const toNextPageArt = (): void => {
+  const toNextPageArt = () => {
     setActivePage(activePage + Pages.FirstPage);
     pushPageToSessionStorage(activePage + Pages.FirstPage);
 
@@ -49,7 +53,7 @@ export const SwitcherPage: FC<SwitcherPageProps> = ({
     }
   };
 
-  const toPrevPageArt = (): void => {
+  const toPrevPageArt = () => {
     setActivePage(activePage - Pages.FirstPage);
     pushPageToSessionStorage(activePage - Pages.FirstPage);
 

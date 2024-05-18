@@ -24,6 +24,7 @@ import {
   Info,
   TextInfo,
 } from './styled';
+
 import { CardArtProps } from './types';
 
 export const CardArt: FC<CardArtProps> = ({ art }) => {

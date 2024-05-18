@@ -19,6 +19,7 @@ export interface DropMenuAttr {
 
 export interface SearchFormProps {
   needToRenderResults: boolean;
+  isLoading: boolean;
   setNeedToRenderResults: (isNeed: boolean) => void;
   fetchSearching: ({
     text,

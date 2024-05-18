@@ -1,5 +1,6 @@
 import favSvg from '@/assets/fav.svg';
 import { AddToFavButton, FavIcon } from '@/components/CardArt/styled';
+
 import {
   alreadyInFavs,
   getCurrArtFromSessionStorage,
@@ -7,6 +8,7 @@ import {
   pushToLocalStorageFav,
   removeFromLocalStorageFav,
 } from '@/functions';
+
 import { FC, useState } from 'react';
 
 import {
@@ -23,6 +25,7 @@ import {
   WrapperArtInfo,
   WrapperArtistInfo,
 } from './styled';
+
 export const ArtPage: FC = () => {
   const favs = getDataFromLocalStorage();
   const currentArt = getCurrArtFromSessionStorage();

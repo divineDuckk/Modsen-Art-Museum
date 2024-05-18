@@ -12,6 +12,3 @@ export interface CurrentArt {
   artist_display: string;
   image_id: string;
 }
-export interface CurrentArtState {
-  currentArt: CurrentArt;
-}
