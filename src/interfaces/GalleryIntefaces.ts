@@ -8,6 +8,7 @@ export interface Art {
   dimensions: string;
   credit_line: string;
   publication_history: string;
+  isFav?: boolean;
 }
 export interface AnotherGalleryArtState {
   arts: Art[];

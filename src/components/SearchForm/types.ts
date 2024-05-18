@@ -16,3 +16,16 @@ export interface PromiseAllResponseArray {
 export interface DropMenuAttr {
   $visibility: boolean;
 }
+
+export interface SearchFormProps {
+  needToRenderResults: boolean;
+  setNeedToRenderResults: (isNeed: boolean) => void;
+  fetchSearching: ({
+    text,
+    sortByValue,
+  }: {
+    text: string;
+    sortByValue: string;
+  }) => void;
+  setSearchedArts: (arr: Art[]) => void;
+}

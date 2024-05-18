@@ -1,16 +1,8 @@
 import arrow from '@/assets/arrow.svg';
 import searchSvg from '@/assets/search.svg';
 import { SORT_VALUES } from '@/constants/constants';
-import { useAppDispatch } from '@/store/hooks';
-import { isNeedRenderSearchContent } from '@/store/selectors/searchGallerySelectors';
-import {
-  setNeedToRenderSearchContent,
-  setSearchedArts,
-} from '@/store/slices/searchedGallerySlice';
-import { fetchResultsOfSearch } from '@/store/thunks/fetchResultOfSearch';
 import { useFormik } from 'formik';
 import { FC, MouseEvent, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { object, string } from 'yup';
 import { MAX_LENGTH, MAX_MESSAGE, MIN_LENGTH, MIN_MESSAGE } from './constants';
 import {
@@ -29,11 +21,16 @@ import {
   SortByList,
   SortDiv,
 } from './styled';
-export const SearhForm: FC = () => {
-  const dispatch = useAppDispatch();
-  const [isVisible, setIsVisible] = useState(false);
+import { SearchFormProps } from './types';
+export const SearhForm: FC<SearchFormProps> = ({
+  needToRenderResults,
+  setNeedToRenderResults,
+  fetchSearching,
+  setSearchedArts,
+}) => {
   const [sortByValue, setSortByValue] = useState(SORT_VALUES[0]);
-  const needToRenderResults = useSelector(isNeedRenderSearchContent);
+  const [isVisible, setIsVisible] = useState(false);
+
   const onClickLi = (e: MouseEvent<HTMLLIElement>) => {
     setIsVisible(false);
     setSortByValue(e.currentTarget.innerText);
@@ -43,12 +40,13 @@ export const SearhForm: FC = () => {
   };
   const searchHandler = async (values: { text: string }) => {
     try {
-      dispatch(setNeedToRenderSearchContent(true));
-      dispatch(fetchResultsOfSearch({ text: values.text, sortByValue }));
+      setNeedToRenderResults(true);
+      fetchSearching({ text: values.text, sortByValue });
     } catch (e) {
       console.log(e);
     }
   };
+
   const formik = useFormik({
     initialValues: {
       text: '',
@@ -61,9 +59,10 @@ export const SearhForm: FC = () => {
         .required(),
     }),
   });
+
   const clearResults = () => {
-    dispatch(setNeedToRenderSearchContent(false));
-    dispatch(setSearchedArts([]));
+    setNeedToRenderResults(false);
+    setSearchedArts([]);
     formik.values.text = '';
   };
   return (

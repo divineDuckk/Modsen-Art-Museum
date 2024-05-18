@@ -87,8 +87,9 @@ export const SwitcherPage: FC<SwitcherPageProps> = ({
         />
       </ToNextButton>
 
-      {pagesArr.map((page) => (
+      {pagesArr.map((page, i) => (
         <StyledSwitcher
+          key={i}
           onClick={choosePage(page)}
           $is_active={activePage === page}
         >

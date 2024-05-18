@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AnotherStyledGalleryAttr } from './types';
 
 export const AnotherGalleryGroup = styled.div<AnotherStyledGalleryAttr>`
-  display: ${({ displayFlex }) => (displayFlex ? 'flex' : 'grid')};
+  display: ${({ $display_flex }) => ($display_flex ? 'flex' : 'grid')};
   grid-template-rows: repeat(${({ rows }) => rows}, 130px);
   grid-template-columns: repeat(${({ colums }) => colums}, 416px);
   gap: ${({ theme }) => theme.gaps[2]}px;

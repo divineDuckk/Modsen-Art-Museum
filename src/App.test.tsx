@@ -1,10 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
-import { store } from './store';
 import { GlobalStyles, theme } from './theme';
 
 describe('App', () => {
@@ -13,9 +11,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -26,9 +22,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -40,9 +34,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -56,9 +48,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -74,9 +64,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -93,9 +81,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -110,9 +96,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -127,9 +111,7 @@ describe('App', () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </BrowserRouter>
       </ThemeProvider>
     );

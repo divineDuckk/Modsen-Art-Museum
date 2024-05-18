@@ -1,8 +1,8 @@
-import { FavArt } from '@/interfaces/FavInterfaces';
+import { Art } from '@/interfaces/GalleryIntefaces';
 
-export const getDataFromLocalStorage = (): FavArt[] => {
+export const getDataFromLocalStorage = (): Art[] => {
   const keys = Object.keys(localStorage);
-  const dataArray: FavArt[] = [];
+  const dataArray: Art[] = [];
   keys.forEach((key) => {
     const data = localStorage.getItem(key);
     if (data) {

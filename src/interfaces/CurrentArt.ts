@@ -9,6 +9,8 @@ export interface CurrentArt {
   access: boolean;
   id: number;
   imgSrc: string;
+  artist_display: string;
+  image_id: string;
 }
 export interface CurrentArtState {
   currentArt: CurrentArt;

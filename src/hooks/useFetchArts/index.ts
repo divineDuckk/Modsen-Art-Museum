@@ -13,7 +13,7 @@ export const useFetchArts = () => {
     setIsLoading(true);
     setError('');
     try {
-      const res = await fetchArts(activePage, LIMIT);
+      const res = await fetchArts(LIMIT, activePage);
       setArts(res);
       setIsLoading(false);
     } catch (error) {
