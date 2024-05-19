@@ -1,5 +1,3 @@
-import { FC, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import {
   BurgerButton,
   BurgerIcon,
@@ -11,13 +9,15 @@ import {
   HomeButton,
   HomeIcon,
 } from './styled';
+import { FC, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
+import { FavIcon } from '@/components/card-art/styled';
+import { FlexDiv } from '@/components/search-form/styled';
 import favSvg from '@/assets/fav.svg';
 import homeSvg from '@/assets/home.svg';
 import logo from '@/assets/logo.svg';
 import menu from '@/assets/menu.svg';
-import { FavIcon } from '@/components/card-art/styled';
-import { FlexDiv } from '@/components/search-form/styled';
 
 export const Header: FC = () => {
   const location = useLocation().pathname;
