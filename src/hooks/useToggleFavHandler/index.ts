@@ -16,15 +16,15 @@ export const useToggleFavHandler = ({
   favs,
 }: useTogleFavHanderProps): NavigateToArtFunction => {
   return useCallback(() => {
-    setIsFav(!isFav);
+    setIsFav((prev) => !prev);
 
     if (isFav) {
       removeFromLocalStorageFav(art.id);
-      setFavs && favs && setFavs(favs.filter((el) => el.id !== art.id));
+      setFavs && setFavs((prev) => prev.filter((el) => el.id !== art.id));
       return;
     }
 
     pushToLocalStorageFav(art, isFav);
-    setFavs && favs && setFavs([...favs, { ...art, isFav: !isFav }]);
+    setFavs && setFavs((prev) => [...prev, { ...art, isFav: !isFav }]);
   }, [art, favs, isFav, setFavs, setIsFav]);
 };
