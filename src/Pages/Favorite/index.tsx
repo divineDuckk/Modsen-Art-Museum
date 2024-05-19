@@ -1,19 +1,20 @@
-import { AnotherGalleryGroup } from '@/components/OtherWorksGallery/styled';
 import { FC, useState } from 'react';
-
-import bigFavSvg from '@/assets/bigFav.svg';
-import sadSvg from '@/assets/sad-icon.svg';
-import { SmallCardArt } from '@/components/SmallCardArt';
-import { BigFavIcon, MainTitle, SubMainText } from '@/components/Title/styled';
-import { Topic } from '@/components/YoursTopic';
-import { getDataFromLocalStorage } from '@/functions';
-
 import {
+  BigFavIcon,
   ContentFavoritePage,
   EmptyFavs,
   EmptyFavsImage,
   EmptyFavsParagraph,
 } from './styled';
+
+import bigFavSvg from '@/assets/bigFav.svg';
+import sadSvg from '@/assets/sad-icon.svg';
+import { AnotherGalleryGroup } from '@/components/OtherWorksGallery/styled';
+import { SmallCardArt } from '@/components/SmallCardArt';
+import { Topic } from '@/components/YoursTopic';
+import { DEFAULT_COLUMS_COUNT } from '@/constants/constants';
+import { MainTitle, SubMainText } from '@/pages/home/styled';
+import { getDataFromLocalStorage } from '@/utils/functions';
 
 export const FavoritePage: FC = () => {
   const [favs, setFavs] = useState(getDataFromLocalStorage());
@@ -29,7 +30,7 @@ export const FavoritePage: FC = () => {
       </MainTitle>
       <Topic hText="Your favorites list" spanText="Saved by you" />
       {favs.length ? (
-        <AnotherGalleryGroup colums={3} rows="auto">
+        <AnotherGalleryGroup $colums={DEFAULT_COLUMS_COUNT} $rows="auto">
           {favs.map((art) => (
             <SmallCardArt
               key={art.id}
@@ -42,7 +43,7 @@ export const FavoritePage: FC = () => {
       ) : (
         <EmptyFavs>
           <EmptyFavsParagraph>Your favorites is empty</EmptyFavsParagraph>
-          <EmptyFavsImage width={200} src={sadSvg} alt="sad smile" />
+          <EmptyFavsImage src={sadSvg} alt="sad smile" />
         </EmptyFavs>
       )}
     </ContentFavoritePage>

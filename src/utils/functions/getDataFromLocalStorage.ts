@@ -1,4 +1,4 @@
-import { Art } from '@/interfaces/GalleryIntefaces';
+import { Art } from '@/utils/interfaces/galleryIntefaces';
 
 export const getDataFromLocalStorage = (): Art[] => {
   const keys = Object.keys(localStorage);

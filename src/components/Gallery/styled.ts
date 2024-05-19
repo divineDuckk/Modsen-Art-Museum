@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const LOADER_HEIGHT = 444;
 
 export const Group = styled.main`
   display: grid;
@@ -22,6 +24,19 @@ export const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 444px;
+  height: ${LOADER_HEIGHT}px;
   margin-bottom: ${({ theme }) => theme.margins[7]}px;
+`;
+
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export const SpinLoader = styled.img`
+  animation: ${spin} 2s linear infinite;
 `;

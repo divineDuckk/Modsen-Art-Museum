@@ -1,8 +1,23 @@
 import styled from 'styled-components';
 import { BgColorProps } from './types';
+
+const D_IMAGE_WIDTH = 387;
+const D_IMAGE_HEIGHT = 444;
+
+const S_IMAGE_WIDTH = 300;
+const S_IMAGE_HEIGHT = 380;
+
+const TEXT_INFO_WIDTH = 219;
+const INFO_BOTTOM_VALUE = -55;
+const INFO_SECTION_WIDTH = 334;
+
+const FAV_BUTTON_SIZE = 59;
+const FAV_ICON_WIDTH = 19;
+const FAV_ICON_HEIGHT = 21;
+
 export const ArtImage = styled.img`
-  width: 387px;
-  height: 444px;
+  width: ${D_IMAGE_WIDTH}px;
+  height: ${D_IMAGE_HEIGHT}px;
   cursor: pointer;
   transition: 0.3s;
   opacity: 0.92;
@@ -11,8 +26,8 @@ export const ArtImage = styled.img`
   }
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
-      width: 300px;
-      height: 380px;
+      width: ${S_IMAGE_WIDTH}px;
+      height: ${S_IMAGE_HEIGHT}px;
     }
   }
 `;
@@ -51,9 +66,8 @@ export const TextInfo = styled.div`
   font-family: 'Lexend Deca';
   color: ${({ theme }) => theme.colors['black']};
   overflow: hidden;
-  width: 219px;
+  width: ${TEXT_INFO_WIDTH}px;
 `;
-export const CONTAINER_HEIGHT = 132 / -2.4;
 export const Info = styled.section`
   display: flex;
   align-items: center;
@@ -62,12 +76,12 @@ export const Info = styled.section`
     ${({ theme }) => theme.paddings[4]}px;
   background: ${({ theme }) => theme.colors['white']};
   justify-content: space-between;
-  width: 334px;
-  bottom: ${CONTAINER_HEIGHT}px;
+  width: ${INFO_SECTION_WIDTH}px;
+  bottom: ${INFO_BOTTOM_VALUE}px;
 `;
 export const AddToFavButton = styled.button<BgColorProps>`
-  width: 59px;
-  height: 59px;
+  width: ${FAV_BUTTON_SIZE}px;
+  height: ${FAV_BUTTON_SIZE}px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -78,6 +92,6 @@ export const AddToFavButton = styled.button<BgColorProps>`
     $is_active ? theme.colors['activeBg'] : theme.colors['nonActiveBg']};
 `;
 export const FavIcon = styled.img`
-  width: 19px;
-  height: 21px;
+  width: ${FAV_ICON_WIDTH}px;
+  height: ${FAV_ICON_HEIGHT}px;
 `;

@@ -1,12 +1,15 @@
-import loader from '@/assets/loader.png';
-import { useFetchArts } from '@/hooks/useFetchArts';
 import { FC } from 'react';
-import { CardArt } from '../CardArt';
-import { SpinLoader } from '../SpinLoader/styled';
-import { SwitcherPage } from '../SwitcherPage';
-import { Group, LoaderWrapper, SwitcherWrap } from './styled';
+
+import loader from '@/assets/loader.png';
+import { CardArt } from '@/components/CardArt';
+import { SwitcherPage } from '@/components/SwitcherPage';
+import { useFetchArts } from '@/hooks/useFetchArts';
+
+import { Group, LoaderWrapper, SpinLoader, SwitcherWrap } from './styled';
+
 export const Gallery: FC = () => {
   const { arts, isLoading, setActivePage, activePage } = useFetchArts();
+
   return (
     <>
       {!isLoading ? (

@@ -1,5 +1,5 @@
 export interface AnotherStyledGalleryAttr {
   $display_flex?: boolean;
-  rows?: number | string;
-  colums: number;
+  $rows?: number | string;
+  $colums: number;
 }

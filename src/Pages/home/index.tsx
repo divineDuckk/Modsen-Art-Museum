@@ -1,12 +1,14 @@
+import { FC, useState } from 'react';
+
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Gallery } from '@/components/Gallery';
 import { AnotherGallery } from '@/components/OtherWorksGallery';
 import { SearhForm } from '@/components/SearchForm';
 import { SearchResults } from '@/components/SearchResults';
-import { Title } from '@/components/Title';
 import { Topic } from '@/components/YoursTopic';
 import { useFetchSearchedArts } from '@/hooks/useFetchSearchedArts';
-import { FC, useState } from 'react';
+
+import { MainTitle, SubMainText } from './styled';
 
 export const MainPage: FC = () => {
   const [needToRenderResults, setNeedToRenderResults] = useState(false);
@@ -14,7 +16,9 @@ export const MainPage: FC = () => {
     useFetchSearchedArts();
   return (
     <>
-      <Title />
+      <MainTitle>
+        Let's Find Some <SubMainText>Art</SubMainText> Here!
+      </MainTitle>
       <SearhForm
         needToRenderResults={needToRenderResults}
         setNeedToRenderResults={setNeedToRenderResults}

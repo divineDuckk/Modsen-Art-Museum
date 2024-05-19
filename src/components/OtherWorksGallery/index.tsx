@@ -1,14 +1,22 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import { SmallCardArt } from '@/components/SmallCardArt';
-import { CardSkeleton } from '@/components/SmallSkeletonLoader/styled';
+import {
+  DEFAULT_COLUMS_COUNT,
+  DEFAULT_ROWS_COUNT,
+} from '@/constants/constants';
 import { useFetchAnotherArts } from '@/hooks/useFetchAnotherArts';
-import { AnotherGalleryGroup } from './styled';
-export const AnotherGallery: FC = () => {
+
+import { AnotherGalleryGroup, CardSkeleton } from './styled';
+
+export const AnotherGallery: FC = memo(() => {
   const { anotherArts, isLoading } = useFetchAnotherArts();
 
   return (
-    <AnotherGalleryGroup colums={3} rows={3}>
+    <AnotherGalleryGroup
+      $colums={DEFAULT_COLUMS_COUNT}
+      $rows={DEFAULT_ROWS_COUNT}
+    >
       {anotherArts.map((art) => {
         return !isLoading ? (
           <SmallCardArt key={art.id} art={art} />
@@ -18,4 +26,4 @@ export const AnotherGallery: FC = () => {
       })}
     </AnotherGalleryGroup>
   );
-};
+});

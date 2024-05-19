@@ -1,11 +1,6 @@
-import arrow from '@/assets/arrow.svg';
-import searchSvg from '@/assets/search.svg';
-import { SORT_VALUES } from '@/constants/constants';
 import { useFormik } from 'formik';
 import { FC, MouseEvent, useState } from 'react';
 import { object, string } from 'yup';
-import { MAX_LENGTH, MAX_MESSAGE, MIN_LENGTH, MIN_MESSAGE } from './constants';
-
 import {
   ClearButton,
   DropDownIcon,
@@ -23,6 +18,11 @@ import {
   SortDiv,
 } from './styled';
 
+import arrow from '@/assets/arrow.svg';
+import searchSvg from '@/assets/search.svg';
+import { SORT_VALUES } from '@/constants/constants';
+
+import { MAX_LENGTH, MAX_MESSAGE, MIN_LENGTH, MIN_MESSAGE } from './constants';
 import { SearchFormProps } from './types';
 
 export const SearhForm: FC<SearchFormProps> = ({
@@ -81,6 +81,7 @@ export const SearhForm: FC<SearchFormProps> = ({
     setSearchedArts([]);
     formik.values.text = '';
   };
+
   return (
     <FormWrapper>
       <Form onSubmit={formik.handleSubmit} data-testid="form">

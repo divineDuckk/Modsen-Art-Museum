@@ -1,6 +1,15 @@
+import { PADD_PERSENT } from '@/constants/constants';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { BurgerMenu } from './types';
+
+const D_HEADER_HEIGHT = 127;
+const S_HEADER_HEIGHT = 100;
+
+const BUTTONS_WRAPPER_WIDTH = 200;
+
+const BURGER_ICON_SIZE = 40;
+
 export const ContentHeader = styled.header`
   background: linear-gradient(
     90deg,
@@ -8,11 +17,11 @@ export const ContentHeader = styled.header`
     #484848 69.22%,
     #282828 98.98%
   );
-  padding: 0 16.66%;
+  padding: 0 ${PADD_PERSENT}%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 127px;
+  height: ${D_HEADER_HEIGHT}px;
   z-index: 1;
   margin-bottom: ${({ theme }) => theme.margins[8]}px;
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
@@ -21,12 +30,13 @@ export const ContentHeader = styled.header`
       width: 100%;
       position: fixed;
       top: 0;
-      height: 127px;
       justify-content: space-around;
+      height: ${S_HEADER_HEIGHT}px;
     }
   }
 `;
 export const HeaderModsenLogo = styled.img``;
+
 export const FavButton = styled(Link)`
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
   line-height: ${({ theme }) => theme.lineHeights[4]}px;
@@ -39,21 +49,21 @@ export const FavButton = styled(Link)`
   gap: ${({ theme }) => theme.gaps[0]}px;
 `;
 export const HomeButton = styled(FavButton)``;
-
 export const HomeIcon = styled.img``;
+
 export const ButtonsWrapper = styled.nav<BurgerMenu>`
   display: flex;
   gap: ${({ theme }) => theme.gaps[2]}px;
   transform: translateX(${({ $is_open }) => ($is_open ? '100%' : 0)});
   transition: transform 0.3s ease-out;
-
+  z-index: 2;
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
       position: fixed;
       top: 0;
-      left: -200px;
+      left: -${BUTTONS_WRAPPER_WIDTH}px;
       flex-direction: column;
-      width: 200px;
+      width: ${BUTTONS_WRAPPER_WIDTH}px;
       height: 100%;
       background: ${({ theme }) => theme.colors['primary']};
       padding-left: ${({ theme }) => theme.paddings[4]}px;
@@ -61,12 +71,16 @@ export const ButtonsWrapper = styled.nav<BurgerMenu>`
     }
   }
 `;
-ButtonsWrapper.defaultProps = {
-  suppressHydrationWarning: true,
-};
+export const DarkWrapper = styled.div`
+  top: 0;
+  right: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
 export const BurgerButton = styled.button`
   border: 0;
-  width: 30px;
   background-color: transparent;
   display: none;
   cursor: pointer;
@@ -78,6 +92,6 @@ export const BurgerButton = styled.button`
   }
 `;
 export const BurgerIcon = styled.img`
-  width: 40px;
-  height: 40px;
+  width: ${BURGER_ICON_SIZE}px;
+  height: ${BURGER_ICON_SIZE}px;
 `;

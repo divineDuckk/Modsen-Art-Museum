@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { AddToFavButton } from '../../components/CardArt/styled';
 
 export const CurrentArtPage = styled.div`
   display: flex;
@@ -55,7 +54,7 @@ export const ImageWithButton = styled.div`
     }
   }
 `;
-export const AddToFavButtonAbsolutePos = styled(AddToFavButton)`
+export const AddToFavButtonAbsolutePos = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;

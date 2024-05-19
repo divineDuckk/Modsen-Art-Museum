@@ -1,9 +1,3 @@
-import favSvg from '@/assets/fav.svg';
-import homeSvg from '@/assets/home.svg';
-import logo from '@/assets/logo.svg';
-import menu from '@/assets/menu.svg';
-import { FavIcon } from '@/components/CardArt/styled';
-import { FlexDiv } from '@/components/SearchForm/styled';
 import { FC, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -11,11 +5,19 @@ import {
   BurgerIcon,
   ButtonsWrapper,
   ContentHeader,
+  DarkWrapper,
   FavButton,
   HeaderModsenLogo,
   HomeButton,
   HomeIcon,
 } from './styled';
+
+import favSvg from '@/assets/fav.svg';
+import homeSvg from '@/assets/home.svg';
+import logo from '@/assets/logo.svg';
+import menu from '@/assets/menu.svg';
+import { FavIcon } from '@/components/CardArt/styled';
+import { FlexDiv } from '@/components/SearchForm/styled';
 
 export const Header: FC = () => {
   const location = useLocation().pathname;
@@ -40,6 +42,7 @@ export const Header: FC = () => {
             Your favorites
           </FavButton>
         </ButtonsWrapper>
+        {isMenuOpen && <DarkWrapper onClick={toggleMenuHandler} />}
         <BurgerButton onClick={toggleMenuHandler}>
           <BurgerIcon src={menu} alt="menu" />
         </BurgerButton>

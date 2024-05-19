@@ -1,10 +1,16 @@
+import { FC } from 'react';
+
 import magnifier from '@/assets/magnifier.png';
-import { MagnifierLoader } from '@/components/MagnifierLoader/styled';
 import { AnotherGalleryGroup } from '@/components/OtherWorksGallery/styled';
 import { SmallCardArt } from '@/components/SmallCardArt';
-import { FC } from 'react';
-import { NothingFoundHeader } from './styled';
+import {
+  DEFAULT_COLUMS_COUNT,
+  DEFAULT_ROWS_COUNT,
+} from '@/constants/constants';
+
+import { MagnifierLoader, NothingFoundHeader } from './styled';
 import { SearchResultsProps } from './types';
+
 export const SearchResults: FC<SearchResultsProps> = ({
   needToRenderResults,
   isLoading,
@@ -14,8 +20,8 @@ export const SearchResults: FC<SearchResultsProps> = ({
     <>
       {needToRenderResults ? (
         <AnotherGalleryGroup
-          colums={3}
-          rows={3}
+          $colums={DEFAULT_COLUMS_COUNT}
+          $rows={DEFAULT_ROWS_COUNT}
           $display_flex={isLoading || !searchedArts.length}
         >
           {!isLoading ? (

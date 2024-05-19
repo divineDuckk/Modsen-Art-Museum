@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const MainTitle = styled.h1`
   width: 684px;
   font-size: ${({ theme }) => theme.fontSizes[6]}px;

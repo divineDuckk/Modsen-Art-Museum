@@ -1,7 +1,8 @@
-import { BIG_LIMIT } from '@/constants/constants';
-import { fetchArts } from '@/functions/fetchArts';
-import { Art } from '@/interfaces/GalleryIntefaces';
 import { useEffect, useState } from 'react';
+
+import { BIG_LIMIT } from '@/constants/constants';
+import { fetchArts } from '@/utils/functions/fetchArts';
+import { Art } from '@/utils/interfaces/galleryIntefaces';
 
 export const useFetchAnotherArts = () => {
   const [anotherArts, setArts] = useState<Art[]>([]);

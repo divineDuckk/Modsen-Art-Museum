@@ -1,4 +1,6 @@
 export * from './alreadyInFav';
+export * from './convertFromCurrArtToArt';
+export * from './createCurrArt';
 export * from './getActivePageFromSessionStorage';
 export * from './getArtistCounty';
 export * from './getArtistDate';

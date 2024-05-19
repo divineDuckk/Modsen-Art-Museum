@@ -1,14 +1,15 @@
-import { Pages } from '@/components/SwitcherPage/constants';
-import { LIMIT } from '@/constants/constants';
-import { fetchArts } from '@/functions/fetchArts';
-import { Art } from '@/interfaces/GalleryIntefaces';
 import { useEffect, useState } from 'react';
+
+import { LIMIT } from '@/constants/constants';
+import { getPageFromSessionStorage } from '@/utils/functions';
+import { fetchArts } from '@/utils/functions/fetchArts';
+import { Art } from '@/utils/interfaces/galleryIntefaces';
 
 export const useFetchArts = () => {
   const [arts, setArts] = useState<Art[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [activePage, setActivePage] = useState(Pages.FirstPage);
+  const [activePage, setActivePage] = useState(getPageFromSessionStorage());
   const fetchData = async () => {
     setIsLoading(true);
     setError('');

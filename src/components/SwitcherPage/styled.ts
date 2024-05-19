@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { SwitcherProps, ToNextButtonProps } from './types';
 
+const TO_NEXT_BUTTON_SIZE = 30;
+const TO_NEXT_BUTTON_BORDER_RADIUS = 3;
+
+const SWITCHER_SIZE = 30;
+const SWITCHER_BORDER_RADIUS = 3;
+
 export const Switchers = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.gaps[0]}px;
@@ -9,10 +15,10 @@ export const Switchers = styled.div`
 
 export const ToNextButton = styled.button<ToNextButtonProps>`
   border: 0;
-  border-radius: 3px;
-  width: 30px;
+  border-radius: ${TO_NEXT_BUTTON_BORDER_RADIUS}px;
+  width: ${TO_NEXT_BUTTON_SIZE}px;
+  height: ${TO_NEXT_BUTTON_SIZE}px;
   background: transparent;
-  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,11 +33,11 @@ export const ToNextIcon = styled.img<ToNextButtonProps>`
   transform: ${({ $reversed }) =>
     $reversed ? 'rotate(-176deg)' : 'rotate(4deg)'};
 `;
-export const StyledSwitcher = styled.button<SwitcherProps>`
+export const Switcher = styled.button<SwitcherProps>`
   border: 0;
-  border-radius: 3px;
-  width: 30px;
-  height: 30px;
+  border-radius: ${SWITCHER_BORDER_RADIUS}px;
+  width: ${SWITCHER_SIZE}px;
+  height: ${SWITCHER_SIZE}px;
   color: ${({ $is_active, theme }) =>
     $is_active ? theme.colors['white'] : theme.colors['black']};
   background: ${({ $is_active, theme }) =>

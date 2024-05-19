@@ -1,4 +1,4 @@
-import { Art } from '@/interfaces/GalleryIntefaces';
+import { Art } from '@/components/utils/interfaces/galleryIntefaces';
 
 export interface SearchResultsProps {
   needToRenderResults: boolean;

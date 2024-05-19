@@ -1,6 +1,7 @@
-import { fetchResultsOfSearch } from '@/functions/fetchResultsOfSearch';
-import { Art } from '@/interfaces/GalleryIntefaces';
 import { useState } from 'react';
+
+import { fetchResultsOfSearch } from '@/utils/functions/fetchResultsOfSearch';
+import { Art } from '@/utils/interfaces/galleryIntefaces';
 
 export const useFetchSearchedArts = () => {
   const [searchedArts, setSearchedArts] = useState<Art[]>([]);

@@ -1,4 +1,4 @@
-import { Art } from '@/interfaces/GalleryIntefaces';
+import { Art } from '@/utils/interfaces/galleryIntefaces';
 
 type SortByObj = {
   [key: string]: (arr: Art[]) => Art[];

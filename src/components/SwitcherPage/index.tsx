@@ -1,14 +1,8 @@
-import arrow from '@/assets/arrow.svg';
-
 import {
-  getPageFromSessionStorage,
-  getSwitcherPagesFromSessionStorage,
   pushPageToSessionStorage,
   pushSwitcherPagesToSessionStorage,
-} from '@/functions';
-
-import { FC, useEffect, useState } from 'react';
-
+} from '@/utils/functions';
+import { FC } from 'react';
 import {
   MAX_VISIBLE_PAGE,
   NUM_TO_HIDE,
@@ -17,19 +11,17 @@ import {
   REQUIRED_REMAINDER_TO_MOVE_FORWARD,
 } from './constants';
 
-import { StyledSwitcher, Switchers, ToNextButton, ToNextIcon } from './styled';
+import arrow from '@/assets/arrow.svg';
+import { useSwitcherState } from '@/hooks/useSwitcherState';
+
+import { Switcher, Switchers, ToNextButton, ToNextIcon } from './styled';
 import { SwitcherPageProps } from './types';
 
 export const SwitcherPage: FC<SwitcherPageProps> = ({
   activePage,
   setActivePage,
 }) => {
-  const [pagesArr, setPagesArr] = useState([
-    Pages.FirstPage,
-    Pages.SecondPage,
-    Pages.ThirdPage,
-    Pages.FourthPage,
-  ]);
+  const { pagesArr, setPagesArr } = useSwitcherState(setActivePage);
 
   const choosePage = (num: number) => () => {
     setActivePage(num);
@@ -69,19 +61,13 @@ export const SwitcherPage: FC<SwitcherPageProps> = ({
     }
   };
 
-  useEffect(() => {
-    const pages = getSwitcherPagesFromSessionStorage();
-    const page = getPageFromSessionStorage();
-    setActivePage(page);
-    setPagesArr(pages);
-  }, []);
-
   return (
     <Switchers>
       <ToNextButton
         onClick={toPrevPageArt}
         $reversed
         $needtohide={activePage < NUM_TO_HIDE}
+        data-testid="SwitcherButton"
       >
         <ToNextIcon
           src={arrow}
@@ -92,15 +78,15 @@ export const SwitcherPage: FC<SwitcherPageProps> = ({
       </ToNextButton>
 
       {pagesArr.map((page, i) => (
-        <StyledSwitcher
+        <Switcher
           key={i}
           onClick={choosePage(page)}
           $is_active={activePage === page}
         >
           {page}
-        </StyledSwitcher>
+        </Switcher>
       ))}
-      <ToNextButton onClick={toNextPageArt}>
+      <ToNextButton onClick={toNextPageArt} data-testid="SwitcherButton">
         <ToNextIcon src={arrow} alt="to next page" />
       </ToNextButton>
     </Switchers>

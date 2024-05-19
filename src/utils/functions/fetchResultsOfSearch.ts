@@ -2,9 +2,10 @@ import {
   PromiseAllResponse,
   SearchResponse,
 } from '@/components/SearchForm/types';
-import { BASE_URL, BIG_LIMIT } from '@/constants/constants';
-import { sortByObj } from '@/functions';
 import axios, { AxiosResponse } from 'axios';
+
+import { BASE_URL, BIG_LIMIT } from '@/constants/constants';
+import { sortByObj } from '@/utils/functions';
 
 export const fetchResultsOfSearch = async ({
   text,

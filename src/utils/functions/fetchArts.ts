@@ -1,5 +1,6 @@
-import { BASE_URL } from '@/constants/constants';
 import axios from 'axios';
+
+import { BASE_URL } from '@/constants/constants';
 
 export const fetchArts = async (limit: number, activePage?: number) => {
   try {

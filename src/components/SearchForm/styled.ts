@@ -1,11 +1,32 @@
 import styled from 'styled-components';
 import { DropMenuAttr } from './types';
 
+const FORM_WIDTH = 762;
+
+const CLEAR_BUTTON_MAX_WIDTH_PERSENT = 15;
+const CLEAR_BUTTON_BORDER_RADIUS = 16;
+
+const D_DROPMENU_BUTTON_WIDTH = 220;
+const S_DROPMENU_BUTTON_WIDTH = 200;
+const DROPMENU_BUTTON_BORDER_RADIUS = 16;
+
+const DROPDONW_ICON_TOP_POS = 13;
+const DROPDONW_ICON_RIGHT_POS = 15;
+
+const DROPMENU_LEFT_POS = 86;
+const DROPMENU_TOP_POS = 35;
+
+const SEARCH_BUTTON_RIGHT_POS = 20;
+const SEARCH_BUTTON_SIZE = 30;
+
+const SEARCH_INPUT_HEIGHT = 64;
+const SEARCH_INPUT_BORDER_RADIUS = 16;
+
 export const Form = styled.form`
   display: flex;
   align-items: center;
   position: relative;
-  width: 762px;
+  width: ${FORM_WIDTH}px;
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
       width: 100%;
@@ -30,14 +51,14 @@ export const FlexDiv = styled.div`
   justify-content: space-between;
 `;
 export const ClearButton = styled.button`
-  max-width: 15%;
+  max-width: ${CLEAR_BUTTON_MAX_WIDTH_PERSENT}%;
   font-size: ${({ theme }) => theme.fontSizes[2]}px;
   padding: ${({ theme }) => theme.paddings[0]}px
     ${({ theme }) => theme.paddings[4]}px;
   cursor: pointer;
   border: 0;
   background-color: white;
-  border-radius: 16px;
+  border-radius: ${CLEAR_BUTTON_BORDER_RADIUS}px;
   transition: 0.2s;
   &:hover {
     background-color: rgba(80, 255, 255, 0.8);
@@ -58,10 +79,10 @@ export const SortDiv = styled.div`
 `;
 export const ShowDropMenuButton = styled.button`
   cursor: pointer;
-  width: 220px;
+  width: ${D_DROPMENU_BUTTON_WIDTH}px;
   position: relative;
   border: 0;
-  border-radius: 16px;
+  border-radius: ${DROPMENU_BUTTON_BORDER_RADIUS}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,15 +92,15 @@ export const ShowDropMenuButton = styled.button`
   background-color: white;
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
-      width: 200px;
+      width: ${S_DROPMENU_BUTTON_WIDTH}px;
       font-size: ${({ theme }) => theme.fontSizes[1]}px;
     }
   }
 `;
 export const DropDownIcon = styled.img`
   position: absolute;
-  right: 15px;
-  top: 13px;
+  right: ${DROPDONW_ICON_RIGHT_POS}px;
+  top: ${DROPDONW_ICON_TOP_POS}px;
   transform: rotate(95deg);
 `;
 export const SortByList = styled.ul`
@@ -103,27 +124,27 @@ export const ListElem = styled.li`
 export const DropMenu = styled.div<DropMenuAttr>`
   position: absolute;
   background-color: white;
-  border-radius: 16px;
-  width: 220px;
-  top: 35px;
-  left: 86px;
+  border-radius: ${DROPMENU_BUTTON_BORDER_RADIUS}px;
+  width: ${D_DROPMENU_BUTTON_WIDTH}px;
+  top: ${DROPMENU_TOP_POS}px;
+  left: ${DROPMENU_LEFT_POS}px;
   display: ${({ $visibility }) => ($visibility ? 'block' : 'none')};
   @media (max-width: ${({ theme }) => theme.breakPoints[0]}px) {
     & {
-      width: 200px;
+      width: ${S_DROPMENU_BUTTON_WIDTH}px;
       font-size: ${({ theme }) => theme.fontSizes[1]}px;
     }
   }
 `;
 export const SearchButton = styled.button`
   position: absolute !important;
-  right: 20px;
+  right: ${SEARCH_BUTTON_RIGHT_POS}px;
   border: 0;
   background-color: transparent;
   cursor: pointer;
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: ${SEARCH_BUTTON_SIZE}px;
+  height: ${SEARCH_BUTTON_SIZE}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,8 +156,8 @@ export const SearchInput = styled.input.attrs(() => ({
 }))`
   box-sizing: border-box;
   width: 100%;
-  height: 64px;
-  border-radius: 16px;
+  height: ${SEARCH_INPUT_HEIGHT}px;
+  border-radius: ${SEARCH_INPUT_BORDER_RADIUS}px;
   border: 0;
   background: rgba(57, 57, 57, 0.05);
   font-size: ${({ theme }) => theme.fontSizes[3]}px;

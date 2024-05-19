@@ -1,7 +1,9 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+
+import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import App from './App';
 import { GlobalStyles, theme } from './theme';
 
@@ -26,8 +28,8 @@ describe('App', () => {
         </BrowserRouter>
       </ThemeProvider>
     );
-    const buttonHome = screen.getByText(/home/i);
-    expect(buttonHome).toBeInTheDocument();
+    const buttonHome = screen.queryByText(/home/i);
+    expect(buttonHome).toBeNull();
   });
   it('li in DOM', () => {
     render(
@@ -52,12 +54,11 @@ describe('App', () => {
         </BrowserRouter>
       </ThemeProvider>
     );
-    const homeButton = screen.getByTestId('to_home_page');
     const favButton = screen.getByTestId('to_fav_page');
     expect(screen.queryByText(/Here Are Your/i)).toBeNull();
     fireEvent.click(favButton);
     expect(screen.queryByText(/Here Are Your/i)).toBeInTheDocument();
-    fireEvent.click(homeButton);
+    fireEvent.click(screen.getByTestId('to_home_page'));
   });
   it('to click home ', () => {
     render(
@@ -68,12 +69,11 @@ describe('App', () => {
         </BrowserRouter>
       </ThemeProvider>
     );
-    const homeButton = screen.getByTestId('to_home_page');
     const favButton = screen.getByTestId('to_fav_page');
     expect(screen.queryByText("Let's Find Some Here!")).toBeInTheDocument();
     fireEvent.click(favButton);
     expect(screen.queryByText("Let's Find Some Here!")).toBeNull();
-    fireEvent.click(homeButton);
+    fireEvent.click(screen.getByTestId('to_home_page'));
     expect(screen.queryByText("Let's Find Some Here!")).toBeInTheDocument();
   });
   it('input event', async () => {
@@ -122,5 +122,35 @@ describe('App', () => {
     expect(screen.queryByText("Let's Find Some Here!")).toBeNull();
     fireEvent.click(footer_logo);
     expect(screen.queryByText("Let's Find Some Here!")).toBeInTheDocument();
+  });
+  it('prev switcher button in dom', () => {
+    render(
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    );
+    const btns = screen.getAllByTestId('SwitcherButton');
+    expect(btns[0]).toBeInTheDocument();
+  });
+  it('prev switcher button visibility', () => {
+    render(
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    );
+    const btns = screen.getAllByTestId('SwitcherButton');
+    expect(btns[0]).toBeInTheDocument();
+    fireEvent.click(btns[1]);
+    fireEvent.click(btns[1]);
+    fireEvent.click(btns[1]);
+    fireEvent.click(btns[1]);
+    fireEvent.click(btns[1]);
+    expect(btns[0]).toBeVisible();
   });
 });

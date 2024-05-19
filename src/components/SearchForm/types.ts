@@ -1,4 +1,4 @@
-import { Art } from '../../interfaces/GalleryIntefaces';
+import { Art } from '../utils/interfaces/galleryIntefaces';
 
 export interface SearchResponse {
   id: number;
@@ -8,11 +8,7 @@ export interface PromiseAllResponse {
     data: Art;
   };
 }
-export interface PromiseAllResponseArray {
-  data: {
-    data: Art[];
-  };
-}
+
 export interface DropMenuAttr {
   $visibility: boolean;
 }
