@@ -85,10 +85,7 @@ export const SearhForm: FC<SearchFormProps> = ({
   };
   return (
     <FormWrapper>
-      <Form
-        onSubmit={debounce(DEBOUNCE_MS, formik.handleSubmit)}
-        data-testid="form"
-      >
+      <Form data-testid="form">
         <SearchInput
           id="text"
           type="text"
@@ -97,7 +94,7 @@ export const SearhForm: FC<SearchFormProps> = ({
           onBlur={formik.handleBlur}
           data-testid="input_value"
         />
-        <SearchButton data-testid="submit">
+        <SearchButton data-testid="submit" disabled>
           <SearchIcon src={searchSvg} alt="search icon" />
         </SearchButton>
       </Form>
