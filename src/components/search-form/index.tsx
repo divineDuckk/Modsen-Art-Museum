@@ -42,9 +42,10 @@ export const SearhForm: FC<SearchFormProps> = ({
   const [sortByValue, setSortByValue] = useState(SORT_VALUES[0]);
   const [isVisible, setIsVisible] = useState(false);
 
-  const onClickLi = (e: MouseEvent<HTMLLIElement>) => {
+  const handleSort = (e: MouseEvent<HTMLLIElement>) => {
     setIsVisible(false);
     setSortByValue(e.currentTarget.innerText);
+    formik.handleSubmit();
   };
 
   const onClickSortButton = () => {
@@ -111,7 +112,7 @@ export const SearhForm: FC<SearchFormProps> = ({
           <DropMenu data-testid="drop_menu" $visibility={isVisible}>
             <SortByList>
               {SORT_VALUES.map((el: string) => (
-                <ListElem key={el} onClick={onClickLi}>
+                <ListElem key={el} onClick={handleSort}>
                   {el}
                 </ListElem>
               ))}
