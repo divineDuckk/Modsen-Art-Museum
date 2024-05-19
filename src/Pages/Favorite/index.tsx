@@ -9,9 +9,9 @@ import {
 
 import bigFavSvg from '@/assets/bigFav.svg';
 import sadSvg from '@/assets/sad-icon.svg';
-import { AnotherGalleryGroup } from '@/components/OtherWorksGallery/styled';
-import { SmallCardArt } from '@/components/SmallCardArt';
-import { Topic } from '@/components/YoursTopic';
+import { AnotherGalleryGroup } from '@/components/other-works-gallery/styled';
+import { SmallCardArt } from '@/components/small-card-art';
+import { Topic } from '@/components/yours-topic';
 import { DEFAULT_COLUMS_COUNT } from '@/constants/constants';
 import { MainTitle, SubMainText } from '@/pages/home/styled';
 import { getDataFromLocalStorage } from '@/utils/functions';

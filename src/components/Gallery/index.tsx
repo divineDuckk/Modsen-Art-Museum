@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
 import loader from '@/assets/loader.png';
-import { CardArt } from '@/components/CardArt';
-import { SwitcherPage } from '@/components/SwitcherPage';
+import { CardArt } from '@/components/card-art';
+import { SwitcherPage } from '@/components/switcher-page';
 import { useFetchArts } from '@/hooks/useFetchArts';
 
 import { Group, LoaderWrapper, SpinLoader, SwitcherWrap } from './styled';

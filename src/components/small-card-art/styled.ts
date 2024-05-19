@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TextInfo } from '../CardArt/styled';
+import { TextInfo } from '../card-art/styled';
 
 const LITTLE_ART_IMAGE_SIZE = 80;
 

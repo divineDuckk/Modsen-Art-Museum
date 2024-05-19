@@ -16,8 +16,8 @@ import favSvg from '@/assets/fav.svg';
 import homeSvg from '@/assets/home.svg';
 import logo from '@/assets/logo.svg';
 import menu from '@/assets/menu.svg';
-import { FavIcon } from '@/components/CardArt/styled';
-import { FlexDiv } from '@/components/SearchForm/styled';
+import { FavIcon } from '@/components/card-art/styled';
+import { FlexDiv } from '@/components/search-form/styled';
 
 export const Header: FC = () => {
   const location = useLocation().pathname;

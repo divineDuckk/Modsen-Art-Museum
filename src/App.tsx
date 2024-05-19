@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ErrorBoundary } from '@/components/error-boundary';
 import { RoutesArr } from '@/constants/constants';
 
-import { MainLayout } from './components/MainLayout';
+import { MainLayout } from './components/main-layout';
 
 function App() {
   return (

@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Gallery } from '@/components/Gallery';
-import { AnotherGallery } from '@/components/OtherWorksGallery';
-import { SearhForm } from '@/components/SearchForm';
-import { SearchResults } from '@/components/SearchResults';
-import { Topic } from '@/components/YoursTopic';
+import { ErrorBoundary } from '@/components/error-boundary';
+import { Gallery } from '@/components/gallery';
+import { AnotherGallery } from '@/components/other-works-gallery';
+import { SearhForm } from '@/components/search-form';
+import { SearchResults } from '@/components/search-results';
+import { Topic } from '@/components/yours-topic';
 import { useFetchSearchedArts } from '@/hooks/useFetchSearchedArts';
 
 import { MainTitle, SubMainText } from './styled';

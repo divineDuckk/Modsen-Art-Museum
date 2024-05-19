@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
 import magnifier from '@/assets/magnifier.png';
-import { AnotherGalleryGroup } from '@/components/OtherWorksGallery/styled';
-import { SmallCardArt } from '@/components/SmallCardArt';
+import { AnotherGalleryGroup } from '@/components/other-works-gallery/styled';
+import { SmallCardArt } from '@/components/small-card-art';
 import {
   DEFAULT_COLUMS_COUNT,
   DEFAULT_ROWS_COUNT,

@@ -20,7 +20,7 @@ import {
 } from './styled';
 
 import favSvg from '@/assets/fav.svg';
-import { AddToFavButton, FavIcon } from '@/components/CardArt/styled';
+import { AddToFavButton, FavIcon } from '@/components/card-art/styled';
 import { useToggleFavHandler } from '@/hooks/useToggleFavHandler';
 
 export const ArtPage: FC = () => {

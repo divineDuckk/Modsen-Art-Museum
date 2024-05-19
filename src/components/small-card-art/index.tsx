@@ -4,7 +4,7 @@ import {
   ArtTitle,
   ArtistName,
   FavIcon,
-} from '@/components/CardArt/styled';
+} from '@/components/card-art/styled';
 import {
   alreadyInFavs,
   createCurrArt,

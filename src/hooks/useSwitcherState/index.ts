@@ -4,7 +4,7 @@ import {
 } from '@/utils/functions';
 import { useEffect, useState } from 'react';
 
-import { Pages } from '@/components/SwitcherPage/constants';
+import { Pages } from '@/components/switcher-page/constants';
 
 export const useSwitcherState = (
   setActivePage: (page: number) => void,

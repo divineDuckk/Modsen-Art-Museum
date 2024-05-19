@@ -10,7 +10,7 @@ import {
 
 import footerLogo from '@/assets/footerLogo.svg';
 import modsenLogo from '@/assets/logoModsen.svg';
-import { Header } from '@/components/Header';
+import { Header } from '@/components/header';
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
   return (

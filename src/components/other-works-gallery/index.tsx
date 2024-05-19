@@ -1,15 +1,15 @@
-import { FC, memo } from 'react';
-
-import { SmallCardArt } from '@/components/SmallCardArt';
 import {
   DEFAULT_COLUMS_COUNT,
   DEFAULT_ROWS_COUNT,
 } from '@/constants/constants';
+import { FC } from 'react';
+
+import { SmallCardArt } from '@/components/small-card-art';
 import { useFetchAnotherArts } from '@/hooks/useFetchAnotherArts';
 
 import { AnotherGalleryGroup, CardSkeleton } from './styled';
 
-export const AnotherGallery: FC = memo(() => {
+export const AnotherGallery: FC = () => {
   const { anotherArts, isLoading } = useFetchAnotherArts();
 
   return (
@@ -26,4 +26,4 @@ export const AnotherGallery: FC = memo(() => {
       })}
     </AnotherGalleryGroup>
   );
-});
+};

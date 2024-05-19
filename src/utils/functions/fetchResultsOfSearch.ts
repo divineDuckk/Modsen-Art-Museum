@@ -1,7 +1,7 @@
 import {
   PromiseAllResponse,
   SearchResponse,
-} from '@/components/SearchForm/types';
+} from '@/components/search-form/types';
 import axios, { AxiosResponse } from 'axios';
 
 import { BASE_URL, BIG_LIMIT } from '@/constants/constants';
