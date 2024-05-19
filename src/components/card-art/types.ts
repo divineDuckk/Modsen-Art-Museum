@@ -1,4 +1,4 @@
-import { Art } from '@/components/utils/interfaces/galleryIntefaces';
+import { Art } from '@/utils/interfaces/galleryIntefaces';
 
 export interface BgColorProps {
   $is_active: boolean;

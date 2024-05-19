@@ -1,4 +1,4 @@
-import { Art } from '../utils/interfaces/galleryIntefaces';
+import { Art } from '@/utils/interfaces/galleryIntefaces';
 
 export interface SearchResponse {
   id: number;
