@@ -2,6 +2,13 @@ import { useFormik } from 'formik';
 import { FC, MouseEvent, useState } from 'react';
 import { object, string } from 'yup';
 import {
+  DEBOUNCE_MS,
+  MAX_LENGTH,
+  MAX_MESSAGE,
+  MIN_LENGTH,
+  MIN_MESSAGE,
+} from './constants';
+import {
   ClearButton,
   DropDownIcon,
   DropMenu,
@@ -21,8 +28,8 @@ import {
 import arrow from '@/assets/arrow.svg';
 import searchSvg from '@/assets/search.svg';
 import { SORT_VALUES } from '@/constants/constants';
+import { debounce } from '@/utils/functions';
 
-import { MAX_LENGTH, MAX_MESSAGE, MIN_LENGTH, MIN_MESSAGE } from './constants';
 import { SearchFormProps } from './types';
 
 export const SearhForm: FC<SearchFormProps> = ({
@@ -45,6 +52,7 @@ export const SearhForm: FC<SearchFormProps> = ({
   };
 
   const searchHandler = async (values: { text: string }) => {
+    if (isLoading) return;
     try {
       setNeedToRenderResults(true);
       fetchSearching({ text: values.text, sortByValue });
@@ -53,21 +61,11 @@ export const SearhForm: FC<SearchFormProps> = ({
     }
   };
 
-  const debounce = (
-    callback: (values: { text: string }) => void,
-    isLoading: boolean
-  ) => {
-    return function (values: { text: string }) {
-      if (isLoading) return;
-      callback(values);
-    };
-  };
-
   const formik = useFormik({
     initialValues: {
       text: '',
     },
-    onSubmit: debounce(searchHandler, isLoading),
+    onSubmit: searchHandler,
     validationSchema: object({
       text: string()
         .min(MIN_LENGTH, MIN_MESSAGE)
@@ -81,19 +79,25 @@ export const SearhForm: FC<SearchFormProps> = ({
     setSearchedArts([]);
     formik.values.text = '';
   };
-
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    formik.setFieldValue('text', e.target.value);
+    debounce(DEBOUNCE_MS, formik.handleSubmit)();
+  };
   return (
     <FormWrapper>
-      <Form onSubmit={formik.handleSubmit} data-testid="form">
+      <Form
+        onSubmit={debounce(DEBOUNCE_MS, formik.handleSubmit)}
+        data-testid="form"
+      >
         <SearchInput
           id="text"
           type="text"
           value={formik.values.text}
-          onChange={formik.handleChange}
+          onChange={handleChange}
           onBlur={formik.handleBlur}
           data-testid="input_value"
         />
-        <SearchButton type="submit" data-testid="submit">
+        <SearchButton data-testid="submit">
           <SearchIcon src={searchSvg} alt="search icon" />
         </SearchButton>
       </Form>
